@@ -1,0 +1,323 @@
+:root {
+  --container-width-big: 80vw;
+  --container-wdith-medium: 90vw;
+  --container-width-small: 95vw;
+  --container-width-min: 320px;
+  --container-width-max: 1200px;
+}
+/* NAVIGATION */
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  min-width: var(--container-width-min);
+  max-width: var(--container-width-max);
+}
+.nav-links {
+  margin-top: 0em;
+  margin-bottom: 0em;
+}
+.nav-link {
+  list-style: none;
+  display: inline;
+}
+.nav-link > a {
+  text-decoration: none;
+  margin-right: 0.5em;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+.nav-link > a:hover {
+  transform: translateY(10px);
+  font-weight: 600;
+}
+.nav-logo {
+  width: 75px;
+}
+.nav-socials {
+  margin-top: 0em;
+  margin-bottom: 0em;
+  margin: 0 1.5em 0 28px;
+}
+.nav-social {
+  list-style: none;
+  display: inline;
+  margin-left: 0.7em;
+}
+/* CONTAINER */
+.container {
+  margin: auto;
+  min-width: var(--container-width-min);
+  max-width: var(--container-width-max);
+}
+/* HOME */
+.home {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.home > address {
+  height: 45vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.home > address > a {
+  text-decoration: none;
+  text-align: center;
+  font-style: normal;
+  font-size: xx-large;
+  font-weight: 300;
+}
+/* MENU */
+.menu-container {
+  padding: 2vw;
+}
+.menu-section {
+  padding-bottom: 3em;
+}
+.menu-header {
+  font-weight: 500;
+  font-size: 2em;
+  margin: 0em;
+}
+.menu-subheader {
+  font-weight: 400;
+  font-size: 1.2em;
+}
+/* DISHES */
+.dishes {
+  display: grid;
+  margin: 1em;
+  column-gap: 5px;
+}
+/* DISH */
+.dish {
+  /* background-color: lawngreen; */
+  display: grid;
+  border: 0.2px solid #444;
+  border-radius: 5px;
+  margin: 1em;
+  justify-items: center;
+  justify-self: center;
+  column-gap: 5px;
+}
+.dish-description {
+  /* width: auto; */
+  padding: 0.5em;
+  /* border: 1px solid red; */
+}
+.dish-header {
+  margin: 0em;
+  min-width: 160px;
+}
+.dish-subheader {
+  margin: 0em;
+}
+.dish-price {
+}
+.dish-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5em;
+}
+.dish-image > img {
+  max-width: 100px;
+  max-height: 150px;
+}
+/* REVIEW */
+.review-container {
+  border-radius: 5px;
+  /* background-color: rgb(204, 204, 204); */
+  background: linear-gradient(
+    56deg,
+    rgba(211, 211, 218, 1) 1%,
+    rgba(163, 166, 167, 1) 100%
+  );
+}
+.review-container > header {
+  font-size: 2em;
+  padding: 2vw 2vw 0 2vw;
+}
+.reviews {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin-bottom: 10px;
+}
+.review {
+  border: 1px solid white;
+  border-radius: 5px;
+  margin: 1.5em;
+  display: grid;
+  grid-template-columns: calc(500px / 8) auto;
+  grid-template-rows: 50px auto;
+  grid-template-areas:
+    "image reviewer"
+    "image review";
+}
+.review > img {
+  grid-area: image;
+  margin: 0.6em;
+}
+.review-info-name > h4 {
+  grid-area: reviewer;
+  font-size: 1.1em;
+  margin: 0.6em 0 0.1em 0;
+}
+.review-info-name > h6 {
+  grid-area: reviewer;
+  margin: 0.2em;
+}
+.review-details {
+  grid-area: review;
+  margin: 0.5em;
+}
+.review-details > q {
+  width: 250px;
+}
+.open-quote::before {
+  content: open-quote;
+  margin: 0.2em;
+  font-size: 1.2em;
+}
+.close-quote::after {
+  content: close-quote;
+  margin: 0.2em;
+  font-size: 1.2em;
+}
+
+/**
+ * Basic CSS Media Query Template
+ * TODO: I should probably use Sass...
+ * Author: Michael Vieth
+ * ------------------------------------------
+ *  Responsive Grid Media Queries - 1280, 1024, 768, 480
+ *   1280-1024   - desktop (default grid)
+ *   1024-768    - tablet landscape
+ *   768-480     - tablet 
+ *   480-less    - phone landscape & smaller
+ * --------------------------------------------
+ */
+@media all and (min-width: 1024px) {
+  .container {
+    width: var(--container-width-big);
+  }
+  .dishes {
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    margin: 1em;
+  }
+  .dish {
+    grid-template-columns: auto 150px;
+  }
+  .dish-description {
+    width: 190px;
+  }
+}
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    width: var(--container-wdith-medium);
+  }
+  .dishes {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  .dish {
+    grid-template-columns: auto 110px;
+  }
+  .dish-description {
+    width: 150px;
+  }
+}
+
+@media all and (min-width: 480px) and (max-width: 768px) {
+  .container {
+    width: var(--container-width-small);
+  }
+
+  .dishes {
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  }
+  .dish {
+    grid-template-columns: auto 110px;
+  }
+  .dish-description {
+    width: 150px;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .container {
+    width: var(--container-width-small);
+  }
+
+  .dishes {
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  }
+  .dish {
+    grid-template-columns: auto 110px;
+  }
+  .dish-description {
+    width: 150px;
+  }
+  .dish-image > img {
+    max-width: 50px;
+    max-height: 150px;
+  }
+
+  /* .dishes {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 90vw));
+  }
+  .dish {
+    grid-template-columns: 200px 75px;
+    column-gap: 1px;
+    margin: .2em;
+  }
+  .dish-image > img {
+    max-width: 50px;
+    max-height: 150px;
+  } */
+}
+
+/* Portrait */
+@media screen and (orientation: portrait) {
+  /* Portrait styles here */
+}
+/* Landscape */
+@media screen and (orientation: landscape) {
+  /* Landscape styles here */
+}
+
+/* CSS for iPhone, iPad, and Retina Displays */
+
+/* Non-Retina */
+@media screen and (-webkit-max-device-pixel-ratio: 1) {
+}
+
+/* Retina */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+  only screen and (-o-min-device-pixel-ratio: 3/2),
+  only screen and (min--moz-device-pixel-ratio: 1.5),
+  only screen and (min-device-pixel-ratio: 1.5) {
+}
+
+/* iPhone Portrait */
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+}
+
+/* iPhone Landscape */
+@media screen and (max-device-width: 480px) and (orientation: landscape) {
+}
+
+/* iPad Portrait */
+@media screen and (min-device-width: 481px) and (orientation: portrait) {
+}
+
+/* iPad Landscape */
+@media screen and (min-device-width: 481px) and (orientation: landscape) {
+}
