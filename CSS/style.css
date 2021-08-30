@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: auto;
+  margin: 25px auto;
   min-width: var(--container-width-min);
   max-width: var(--container-width-max);
 }
@@ -53,27 +53,54 @@
 }
 /* HOME */
 .home {
-  height: 100vh;
+  height: 90vh;
+}
+.address {
+  height: 40vh;
+  background-image: url(/IMAGE/LOGO/Hero_img.png);
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.home > address {
-  height: 45vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
+.address-info {
+  background: cornsilk;
+  opacity: 0.9;
+  text-align: center;
+  border-radius: 5px;
+  padding: 15px;
 }
-.home > address > a {
+
+.address-info > address {
+  margin: 30px 0;
+}
+
+.address-info > address > a {
   text-decoration: none;
   text-align: center;
   font-style: normal;
   font-size: xx-large;
   font-weight: 300;
 }
+
+.map {
+  display: flex;
+  justify-content: center;
+}
+.delivery {
+  display: flex;
+  justify-content: center;
+}
+.delivery > a {
+  display: block;
+  align-self: center;
+}
+.delivery > a > img {
+  width: 20vw;
+}
+
 /* MENU */
 .menu-container {
   padding: 2vw;
@@ -97,8 +124,13 @@
   column-gap: 5px;
 }
 /* DISH */
+.menu-subheader {
+  display: none;
+}
+.dish-price {
+  display: none;
+}
 .dish {
-  /* background-color: lawngreen; */
   display: grid;
   border: 0.2px solid #444;
   border-radius: 5px;
@@ -108,9 +140,7 @@
   column-gap: 5px;
 }
 .dish-description {
-  /* width: auto; */
   padding: 0.5em;
-  /* border: 1px solid red; */
 }
 .dish-header {
   margin: 0em;
@@ -118,8 +148,8 @@
 }
 .dish-subheader {
   margin: 0em;
-}
-.dish-price {
+  font-weight: normal;
+  font-style: italic;
 }
 .dish-image {
   display: flex;
@@ -233,6 +263,9 @@
   .dish-description {
     width: 150px;
   }
+  .delivery > a > img {
+    width: 30vw;
+  }
 }
 
 @media all and (min-width: 480px) and (max-width: 768px) {
@@ -249,13 +282,15 @@
   .dish-description {
     width: 150px;
   }
+  .delivery > a > img {
+    width: 30vw;
+  }
 }
 
 @media all and (max-width: 480px) {
   .container {
     width: var(--container-width-small);
   }
-
   .dishes {
     grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
   }
@@ -269,19 +304,9 @@
     max-width: 50px;
     max-height: 150px;
   }
-
-  /* .dishes {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 90vw));
+  .delivery > a > img {
+    width: 50vw;
   }
-  .dish {
-    grid-template-columns: 200px 75px;
-    column-gap: 1px;
-    margin: .2em;
-  }
-  .dish-image > img {
-    max-width: 50px;
-    max-height: 150px;
-  } */
 }
 
 /* Portrait */
