@@ -57,7 +57,7 @@
 }
 .address {
   height: 40vh;
-  background-image: url(./IMAGE/LOGO/Hero_img.png);
+  background-image: url(./../IMAGE/LOGO/Hero_img.png);
   background-size: cover;
   display: flex;
   flex-direction: column;
