@@ -90,7 +90,8 @@
   justify-content: center;
 }
 .map > img {
-  width: 70%;
+  width: 100%;
+  max-width: 800px;
   height: auto;
 }
 
@@ -99,11 +100,7 @@
   justify-content: center;
 }
 .delivery > a {
-  display: block;
-  align-self: center;
-}
-.delivery > a > img {
-  width: 20vw;
+  padding: 25px 0;
 }
 
 /* MENU */
