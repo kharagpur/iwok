@@ -345,4 +345,8 @@
 
 /* iPad Landscape */
 @media screen and (min-device-width: 481px) and (orientation: landscape) {
+  .map > img {
+    width: 60%;
+    height: auto;
+  }
 }
