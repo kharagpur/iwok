@@ -53,7 +53,6 @@
 }
 /* HOME */
 .home {
-  height: 90vh;
 }
 .address {
   height: 40vh;
@@ -101,6 +100,15 @@
 }
 .delivery > a {
   padding: 25px 0;
+}
+
+.delivery > a > div {
+  position: relative;
+  width: 289px;
+  height: 59px;
+  margin: 0px auto;
+  background-image: url(https://cdn.doordash.com/media/button/button_red_l.svg);
+  color: transparent;
 }
 
 /* MENU */
@@ -265,16 +273,12 @@
   .dish-description {
     width: 150px;
   }
-  .delivery > a > img {
-    width: 30vw;
-  }
 }
 
 @media all and (min-width: 480px) and (max-width: 768px) {
   .container {
     width: var(--container-width-small);
   }
-
   .dishes {
     grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
   }
@@ -284,14 +288,17 @@
   .dish-description {
     width: 150px;
   }
-  .delivery > a > img {
-    width: 30vw;
-  }
 }
 
 @media all and (max-width: 480px) {
   .container {
     width: var(--container-width-small);
+  }
+  .address-info {
+    padding: 5px;
+  }
+  .address-info > address > a {
+    font-size: medium;
   }
   .dishes {
     grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
@@ -305,9 +312,6 @@
   .dish-image > img {
     max-width: 50px;
     max-height: 150px;
-  }
-  .delivery > a > img {
-    width: 50vw;
   }
 }
 
