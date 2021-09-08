@@ -96,6 +96,7 @@
 
 .delivery {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 .delivery > a {
@@ -109,6 +110,17 @@
   margin: 0px auto;
   background-image: url(https://cdn.doordash.com/media/button/button_red_l.svg);
   color: transparent;
+}
+
+.delivery > p {
+  min-width: 289px;
+  min-height: 51px;
+  padding-top: 12px;
+  margin: 25px;
+  border-radius: 45px;
+  border: 1px black solid;
+  text-align: center;
+  font-size: x-large;
 }
 
 /* MENU */
