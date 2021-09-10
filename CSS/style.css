@@ -101,6 +101,7 @@
 }
 .delivery > a {
   padding: 25px 0;
+  text-decoration: none;
 }
 
 .delivery > a > div {
