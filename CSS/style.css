@@ -98,6 +98,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  column-gap: 25px;
 }
 .delivery > a {
   padding: 25px 0;
@@ -109,36 +110,29 @@
   width: 289px;
   height: 59px;
   margin: 0px auto;
-  background-image: url(https://cdn.doordash.com/media/button/button_red_l.svg);
   color: transparent;
+}
+
+.doordash {
+  background-image: url(https://cdn.doordash.com/media/button/button_red_l.svg);
+}
+.ubereats {
+  border-radius: 45px;
+  background-image: url(../IMAGE/OTHER/UberEatsMediaButton.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 75%;
+  background-color: #06C167;
 }
 
 .delivery > p {
   min-width: 289px;
   min-height: 51px;
   padding-top: 12px;
-  margin: 25px;
   border-radius: 45px;
   border: 1px black solid;
   text-align: center;
   font-size: x-large;
-  animation-name: discountFlash;
-  animation-duration: 4s;
-  animation-iteration-count: 3;
-}
-@keyframes discountFlash {
-  0% {
-    background-color: #fff;
-    color: #444;
-  }
-  50% {
-    background-color: #444;
-    color: #fff;
-  }
-  100% {
-    background-color: #fff;
-    color: #444;
-  }
 }
 
 /* MENU */
