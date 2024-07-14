@@ -133,6 +133,23 @@
   border: 1px black solid;
   text-align: center;
   font-size: x-large;
+  animation-name: discountFlash;
+  animation-duration: 4s;
+  animation-iteration-count: 3;
+}
+@keyframes discountFlash {
+  0% {
+    background-color: #fff;
+    color: #444;
+  }
+  50% {
+    background-color: #444;
+    color: #fff;
+  }
+  100% {
+    background-color: #fff;
+    color: #444;
+  }
 }
 
 /* MENU */
