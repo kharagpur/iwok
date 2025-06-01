@@ -125,6 +125,15 @@
   background-color: #06C167;
 }
 
+.skipthedishes {
+  border-radius: 45px;
+  background-image: url(https://secretsauce.skipthedishes.com/wp-content/themes/secret-sauce-v2/images/skip-logo.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 40%;
+  background-color: #ee7300;
+}
+
 .delivery > p {
   min-width: 289px;
   min-height: 51px;
