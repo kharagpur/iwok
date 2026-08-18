@@ -1,0 +1,439 @@
+{
+  "categories": [
+    {
+      "name": "Appetizers",
+      "items": [
+        {
+          "name": "A1. Vegetarian Spring Roll (2 pcs)"
+        },
+        {
+          "name": "A2. Vegetarian Tofu Lettuce Wrap",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "A3. Vegetable Pakora"
+        },
+        {
+          "name": "A4. Chili Garlic Vegetarian Dumplings (6 pcs)",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "A5. Papadum (crispy flatbread)"
+        },
+        {
+          "name": "A6. Chicken Lettuce Wrap",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "A7. Chili Garlic Wings",
+          "meta": "Medium spicy · 🌶"
+        },
+        {
+          "name": "A8. Chili Garlic Chicken Dumplings (6 pcs)",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "A9. Combo Pakora (Chicken/Fish)"
+        },
+        {
+          "name": "A10. Dry Chili Chicken",
+          "meta": "Hot · 🌶🌶🌶"
+        }
+      ]
+    },
+    {
+      "name": "Soups",
+      "items": [
+        {
+          "name": "S1. Vegetable Hot and Sour Soup",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "S2. Vegetable Cream Corn Soup"
+        },
+        {
+          "name": "S3. Chicken Hot and Sour Soup",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "S4. Chicken Cream Corn Soup"
+        },
+        {
+          "name": "S5. Chicken Wonton Soup (6/12 pcs)"
+        },
+        {
+          "name": "S6. Chicken Clear Egg Drop Soup"
+        }
+      ]
+    },
+    {
+      "name": "Fish",
+      "items": [
+        {
+          "name": "F1. Bombay Style Garlic Fish",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "F2. Chili Fish",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "F3. Stir-Fried Szechuan Fish",
+          "meta": "Hot · 🌶🌶🌶"
+        },
+        {
+          "name": "F4. Sweet and Sour Fish"
+        },
+        {
+          "name": "F5. Fish With Black Bean Sauce",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "F6. Masala Fish",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "F7. Hot and Spicy Squid (Dry)",
+          "meta": "Medium spicy · 🌶🌶"
+        }
+      ]
+    },
+    {
+      "name": "Chicken",
+      "items": [
+        {
+          "name": "C1. Manchurian Chicken",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "C2. Spicy Green Bean With Chicken",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "C3. Masala Chicken",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "C4. Chili Chicken",
+          "meta": "Hot · 🌶🌶🌶"
+        },
+        {
+          "name": "C5. Tangerine Chicken",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "C6. Chicken With Black Bean Sauce",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "C8. Butter Chicken (Contains Nuts)"
+        },
+        {
+          "name": "C9. Sweet and Sour Chicken"
+        },
+        {
+          "name": "C11. Honey Garlic Chicken"
+        },
+        {
+          "name": "C12. Szechuan Chicken",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "C13. General Tso’s Chicken",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "C14. Dai Ching Chicken",
+          "meta": "Hot · 🌶🌶🌶"
+        },
+        {
+          "name": "C15. Boneless Chicken Curry",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "C16. Dry Manchurian Chicken",
+          "meta": "Medium spicy · 🌶🌶"
+        }
+      ]
+    },
+    {
+      "name": "Beef",
+      "items": [
+        {
+          "name": "B1. Beef with Spicy Eggplant and Green Beans",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "B2. Ginger Beef",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "B3. Beef with Broccoli",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "B4. Szechuan Beef",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "B5. Chili Beef",
+          "meta": "Hot · 🌶🌶🌶"
+        },
+        {
+          "name": "B6. Curry Beef",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "B7. Beef with Black Bean Sauce",
+          "meta": "Mild spicy · 🌶"
+        }
+      ]
+    },
+    {
+      "name": "Prawn",
+      "items": [
+        {
+          "name": "P1. Bombay Style Garlic Prawns",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "P2. Szechuan Prawns",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "P3. Masala Prawns (Dry)",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "P4. Curry Prawns",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "P5. Hot and Spicy Prawns (Dry)",
+          "meta": "Medium spicy · 🌶🌶"
+        }
+      ]
+    },
+    {
+      "name": "Tofu and Paneer",
+      "items": [
+        {
+          "name": "T2. Hot and Spicy Tofu (Dry)",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "T3. Tofu with Broccoli and Baby Corn",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "T4. Tofu Eggplant in Black Bean Sauce",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "T5. Chili Garlic Paneer",
+          "meta": "Hot · 🌶🌶🌶"
+        },
+        {
+          "name": "T6. Dry Hot and Spicy Paneer (Dry)",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "T7. Butter Paneer (Contains Nuts)"
+        }
+      ]
+    },
+    {
+      "name": "Vegetable",
+      "items": [
+        {
+          "name": "V1. Vegetable Manchurian",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "V2. Gobi Manchurian with Tofu (Cauliflower)",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "V3. Spicy Eggplant and Green Beans",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "V4. Spicy Green Beans",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "V5. Stir-Fried Mix Vegetables (With Mushrooms)",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "V6. Sautéed Broccoli",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "V7. Spicy Green Beans and Broccoli",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "V8. Vegetable Manchurian (Dry)",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "V9. Vegetable Curry",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "V10. Bombay Style Sweet and Sour Vegetable",
+          "meta": "Mild spicy · 🌶"
+        }
+      ]
+    },
+    {
+      "name": "Noodles",
+      "items": [
+        {
+          "name": "N1. Calcutta Vegetarian Hakka Chow Mein"
+        },
+        {
+          "name": "N2. Vegetarian Shanghai Chow Mein",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "N3. Vegetarian Szechuan Chow Mein",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "N4. Vegetarian Manchurian Noodle (With Sauce)",
+          "meta": "Mild · 🌶"
+        },
+        {
+          "name": "N5. Vegetarian American Chopsuey",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "N6. Pan-Fried Noodles with Vegetables",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "N7. Calcutta Chicken Hakka Chow Mein",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "N8. Chicken Shanghai Chow Mein",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "N9. Chicken Szechuan Chow Mein",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "N10. Chicken Manchurian Noodle (With Sauce)",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "N11. Chicken American Chop Suey",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "N12. Crispy Noodles with Chicken and Vegetables",
+          "meta": "Mild spicy · 🌶"
+        }
+      ]
+    },
+    {
+      "name": "Rice Dishes",
+      "items": [
+        {
+          "name": "R1. Vegetarian Fried Rice",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "R2. Vegetarian Masala Rice",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "R3. Vegetarian Szechuan Rice",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "R4. Vegetarian Manchurian Rice (No veg balls included)",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "R5. Chicken Fried Rice",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "R6. Chicken Masala Rice",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "R7. Chicken Szechuan Rice",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "R8. Chicken Manchurian Rice (No veg balls included)",
+          "meta": "Medium spicy · 🌶🌶"
+        },
+        {
+          "name": "R9. Beef Fried Rice",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "R10. Egg Fried Rice",
+          "meta": "Mild spicy · 🌶"
+        }
+      ]
+    },
+    {
+      "name": "Gluten-Free Dishes",
+      "items": [
+        {
+          "name": "G1. Gluten-Free Chicken with Broccoli",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "G2. Gluten-Free Chicken with Pineapple (in sweet and sour sauce)"
+        },
+        {
+          "name": "G3. Gluten-Free Vegetarian Vermicelli Noodles",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "G4. Gluten-Free Vegetarian Fried Rice",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "G5. Gluten-Free Chicken Vermicelli Noodles",
+          "meta": "Mild spicy · 🌶"
+        },
+        {
+          "name": "G6. Gluten-Free Chicken Fried Rice",
+          "meta": "Mild spicy · 🌶"
+        }
+      ]
+    },
+    {
+      "name": "Side Orders",
+      "items": [
+        {
+          "name": "Plain Rice (Small)"
+        },
+        {
+          "name": "Plain Rice (Medium)"
+        },
+        {
+          "name": "Naan"
+        },
+        {
+          "name": "Plain Rice (Large)"
+        },
+        {
+          "name": "Chicken and Fries"
+        },
+        {
+          "name": "Fries"
+        }
+      ]
+    }
+  ]
+}
