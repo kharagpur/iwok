@@ -1,1911 +1,514 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="title" content="Indian Wok Restaurant" />
     <meta
       name="description"
-      content="Best Indian Chinese Food in the greater Vancouver area."
+      content="Indian Wok serves Indo-Chinese cuisine in Burnaby. Call to place a pickup or catering order, or use a third-party delivery app."
     />
-    <meta
-      name="keywords"
-      content="Indian Chinese, Kharagpur, Indo-Chinese Food, Indo Chinese Canada, Hakka Food,"
-    />
-    <meta name="robots" content="index, follow" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="language" content="English" />
-    <meta name="revisit-after" content="14 days" />
-    <meta name="author" content="Kenneth Wong" />
-    <title>Indian Wok</title>
-    <link
-      rel="shortcut icon"
-      href="./IMAGE/LOGO/iwok-favicon.png"
-      type="image/x-icon"
-    />
-    <link rel="stylesheet" href="./CSS/base.css" />
-    <link rel="stylesheet" href="./CSS/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-133PP3446J"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-133PP3446J");
-    </script>
+    <meta name="theme-color" content="#173d31" />
+    <title>Indian Wok | Indo-Chinese Cuisine in Burnaby</title>
+    <link rel="icon" href="IMAGE/LOGO/iwok-favicon.png" type="image/png" />
+    <link rel="stylesheet" href="CSS/style.css" />
+    <link rel="stylesheet" href="CSS/overrides.css" />
   </head>
   <body>
-    <nav class="nav-bar">
-      <!-- TODO: https://www.w3schools.com/howto/howto_js_collapsible.asp -->
-      <ul class="nav-links">
-        <!-- <li class="nav-link"><a href="#home">Home</a></li> -->
-        <li class="nav-link"><a href="#menu">Menu</a></li>
-        <!-- <li class="nav-link"><a href="#review">Review</a></li> -->
-        <!-- <li class="nav-link"><a href="#location">Location</a></li> -->
-        <!-- <li class="nav-link"><a href="#serving-schedule">Hours</a></li> -->
-      </ul>
-      <img
-        loading="eager"
-        class="nav-logo"
-        src="./IMAGE/LOGO/nav-logo.png"
-        alt="IndianWokLogo"
-      />
-      <ul class="nav-socials">
-        <li class="nav-social">
-          <a
-            href="https://www.instagram.com/indian.wok/"
-            rel="noopener"
-            target="_blank"
-            aria-label="instagram"
-            ><i class="fab fa-instagram fa-lg"></i
-          ></a>
-        </li>
-        <li class="nav-social">
-          <a
-            href="https://www.yelp.ca/biz/indian-wok-burnaby"
-            rel="noopener"
-            target="_blank"
-            aria-label="Yelp"
-            ><i class="fab fa-yelp fa-lg"></i
-          ></a>
-        </li>
-        <li class="nav-social">
-          <a
-            href="https://www.facebook.com/indianwokcanada/"
-            rel="noopener"
-            target="_blank"
-            aria-label="Facebook"
-            ><i class="fab fa-facebook-f fa-lg"></i
-          ></a>
-        </li>
-      </ul>
-    </nav>
-    <div class="container">
-      <div class="home">
-        <div class="address">
-          <div class="address-info">
-            <address>
-              <a
-                href="https://www.google.com/maps/place/Indian+Wok/@49.2246744,-122.9884601,17z/data=!4m12!1m6!3m5!1s0x548676500bcc2711:0x2edae4a746bb718e!2sIndian+Wok!8m2!3d49.2246744!4d-122.9884601!3m4!1s0x548676500bcc2711:0x2edae4a746bb718e!8m2!3d49.2246744!4d-122.9884601"
-                >5212 Kingsway Ave.<br />Burnaby, B.C</a
-              >
-            </address>
-            <address class="phone">
-              <a href="tel:+1-604-428-2673" aria-label="Phone Number"
-                ><i class="fas fa-phone" alt="Phone Number"></i
-              ></a>
-            </address>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#home" aria-label="Indian Wok home">
+          <img
+            src="IMAGE/OPTIMIZED/indian-wok-logo-320.png"
+            alt="Indian Wok"
+            width="320"
+            height="256"
+            decoding="async"
+          />
+        </a>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-navigation"
+        >
+          <span class="sr-only">Open navigation</span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+        <nav id="site-navigation" class="site-nav" aria-label="Primary navigation">
+          <a href="#home">Home</a>
+          <a href="#menu">Menu</a>
+          <a href="#catering">Catering</a>
+          <a href="#location">Location</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a class="header-call" href="tel:+16044282673">
+          Call to Order
+          <svg class="ui-icon" aria-hidden="true">
+            <use href="IMAGE/SVG/icon-external.svg#icon-external" />
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section id="home" class="hero" aria-labelledby="hero-title">
+        <picture class="hero-picture">
+          <source media="(max-width: 680px)" srcset="IMAGE/OPTIMIZED/hero-butter-chicken-960.jpg" />
+          <img
+            class="hero-image"
+            src="IMAGE/OPTIMIZED/hero-butter-chicken-1920.jpg"
+            alt="Butter chicken served in a copper bowl"
+            width="1920"
+            height="1399"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
+        <div class="hero-overlay"></div>
+        <div class="hero-content page-width">
+          <p class="eyebrow">
+            <span></span>
+            Indo-Chinese Cuisine in Burnaby
+          </p>
+          <h1 id="hero-title">
+            A Fusion of
+            <br />
+            Chinese Technique
+            <br />
+            and Indian Spice.
+          </h1>
+          <p class="hero-copy">
+            Indian Wok serves freshly prepared Indo-Chinese favourites for pickup, delivery through
+            third-party apps, and catering orders.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="tel:+16044282673">
+              Call to Order Pickup
+              <span aria-hidden="true">→</span>
+            </a>
+            <a class="button button-light" href="#menu">View Menu</a>
           </div>
         </div>
-        <div class="map">
-          <img
-            loading="eager"
-            src="./IMAGE/LOGO/IndianWok-Map.png"
-            alt="Indian Wok Map"
-          />
+        <a class="hero-location" href="#location">
+          <span>Find us</span>
+          <strong>5212 Kingsway Ave, Burnaby</strong>
+          <b aria-hidden="true">↓</b>
+        </a>
+      </section>
+
+      <section class="quick-facts" aria-label="Ordering options and location">
+        <div class="page-width facts-grid">
+          <article>
+            <span class="fact-icon" aria-hidden="true">
+              <svg class="ui-icon"><use href="IMAGE/SVG/icon-phone.svg#icon-phone" /></svg>
+            </span>
+            <div>
+              <strong>Pickup by phone or in person</strong>
+              <p>Call us or visit the restaurant to order.</p>
+            </div>
+          </article>
+          <article>
+            <span class="fact-icon" aria-hidden="true">
+              <svg class="ui-icon"><use href="IMAGE/SVG/icon-external.svg#icon-external" /></svg>
+            </span>
+            <div>
+              <strong>Third-party delivery</strong>
+              <p>Order delivery through our listed delivery apps.</p>
+            </div>
+          </article>
+          <article>
+            <span class="fact-icon" aria-hidden="true">
+              <svg class="ui-icon"><use href="IMAGE/SVG/icon-sparkle.svg#icon-sparkle" /></svg>
+            </span>
+            <div>
+              <strong>Catering available</strong>
+              <p>Call to discuss your catering order.</p>
+            </div>
+          </article>
+          <article>
+            <span class="fact-icon" aria-hidden="true">
+              <svg class="ui-icon"><use href="IMAGE/SVG/icon-location.svg#icon-location" /></svg>
+            </span>
+            <div>
+              <strong>Burnaby, B.C.</strong>
+              <p>5212 Kingsway Ave.</p>
+            </div>
+          </article>
         </div>
-        <div class="delivery">
+      </section>
+
+      <section class="featured section page-width" aria-labelledby="featured-title">
+        <div class="section-heading split-heading">
+          <div>
+            <p class="eyebrow eyebrow-green">
+              <span></span>
+              From the wok
+            </p>
+            <h2 id="featured-title">Made for the table.</h2>
+          </div>
+          <p>Explore a few dishes from our menu, then browse the full selection below.</p>
+        </div>
+        <div class="featured-grid">
+          <article class="feature-card feature-card-large">
+            <img
+              src="IMAGE/OPTIMIZED/featured-manchurian-chicken-960.jpg"
+              alt="Manchurian chicken"
+              width="960"
+              height="720"
+              loading="lazy"
+              decoding="async"
+            />
+            <div>
+              <p>Chicken</p>
+              <h3>C1. Manchurian Chicken</h3>
+              <span class="spice">Medium spicy · 🌶🌶</span>
+            </div>
+          </article>
+          <article class="feature-card">
+            <img
+              src="IMAGE/DISH/Chowmein%20%26%20Rice/Skinny%20Hakka%20Chowmein/N7.Calcutta_Hakka_Style_Chowmmein.JPG"
+              alt="Calcutta chicken Hakka chow mein"
+              width="500"
+              height="500"
+              loading="lazy"
+            />
+            <div>
+              <p>Noodles</p>
+              <h3>N7. Calcutta Chicken Hakka Chow Mein</h3>
+              <span class="spice">Mild spicy · 🌶</span>
+            </div>
+          </article>
+          <article class="feature-card">
+            <img
+              src="IMAGE/DISH/Vegetarian/V5.Mix_vegetable.jpg"
+              alt="Stir-fried mixed vegetables"
+              width="500"
+              height="375"
+              loading="lazy"
+            />
+            <div>
+              <p>Vegetable</p>
+              <h3>V5. Stir-Fried Mix Vegetables</h3>
+              <span class="spice">Mild spicy · 🌶</span>
+            </div>
+          </article>
+          <article class="feature-card feature-card-text">
+            <span aria-hidden="true">
+              <svg class="ui-icon"><use href="IMAGE/SVG/icon-sparkle.svg#icon-sparkle" /></svg>
+            </span>
+            <p>Full flavour, your way</p>
+            <h3>See the complete menu.</h3>
+            <a href="#menu">
+              View Full Menu
+              <b aria-hidden="true">→</b>
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <section id="menu" class="menu-section section" aria-labelledby="menu-title">
+        <div class="page-width">
+          <div class="section-heading menu-heading">
+            <p class="eyebrow eyebrow-green">
+              <span></span>
+              Indian Wok menu
+            </p>
+            <h2 id="menu-title">Find your favourite.</h2>
+            <p>
+              Prices and availability may change. Please call the restaurant for current
+              information.
+            </p>
+          </div>
+          <div class="menu-tools">
+            <label class="search-field" for="menu-search">
+              <span aria-hidden="true">⌕</span>
+              <span class="sr-only">Search the menu</span>
+              <input
+                id="menu-search"
+                type="search"
+                placeholder="Search dishes"
+                autocomplete="off"
+              />
+            </label>
+            <p id="menu-count" aria-live="polite"></p>
+          </div>
+        </div>
+        <nav class="category-nav" aria-label="Menu categories">
+          <div class="category-scroll page-width" id="category-nav"></div>
+        </nav>
+        <div class="page-width" id="menu-list"></div>
+        <p id="empty-menu" class="empty-menu" hidden>
+          No matching dishes found. Try another search.
+        </p>
+      </section>
+
+      <section id="catering" class="catering section" aria-labelledby="catering-title">
+        <div class="page-width catering-inner">
+          <div class="catering-copy">
+            <p class="eyebrow">
+              <span></span>
+              Indian Wok catering
+            </p>
+            <h2 id="catering-title">Catering for Your Next Gathering</h2>
+            <p>
+              Planning an office lunch, family celebration, party, or special event? Indian Wok
+              accepts catering orders. Call us to discuss your order and availability.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="tel:+16044282673">
+                Call About Catering
+                <span aria-hidden="true">→</span>
+              </a>
+              <a class="button button-light" href="#menu">View Menu</a>
+            </div>
+          </div>
+          <div class="catering-art" aria-hidden="true">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <span>
+              <svg class="ui-icon">
+                <use href="IMAGE/SVG/icon-sparkle.svg#icon-sparkle" />
+              </svg>
+            </span>
+            <span>
+              <svg class="ui-icon"><use href="IMAGE/SVG/icon-burst.svg#icon-burst" /></svg>
+            </span>
+            <span>
+              <svg class="ui-icon"><use href="IMAGE/SVG/icon-sparkle.svg#icon-sparkle" /></svg>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="ordering section page-width" aria-labelledby="ordering-title">
+        <div class="section-heading">
+          <p class="eyebrow eyebrow-green">
+            <span></span>
+            How to order
+          </p>
+          <h2 id="ordering-title">Pickup or delivery—clearly yours to choose.</h2>
+        </div>
+        <div class="ordering-grid">
+          <article class="order-card pickup-card">
+            <span class="card-number">01</span>
+            <p class="card-kicker">Pickup</p>
+            <h3>Order for Pickup</h3>
+            <p>Call us or visit the restaurant to place your pickup order.</p>
+            <a class="text-link" href="tel:+16044282673">
+              Call to Order
+              <b aria-hidden="true">→</b>
+            </a>
+          </article>
+          <article class="order-card delivery-card">
+            <span class="card-number">02</span>
+            <p class="card-kicker">External delivery options</p>
+            <h3>Order Delivery</h3>
+            <p>Select a delivery partner below to open its external ordering service.</p>
+            <div class="delivery-links">
+              <a
+                href="https://www.doordash.com/business/36831/?utm_source=partner-link&amp;utm_medium=website&amp;utm_campaign=36831&amp;utm_content=red-l"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                DoorDash
+                <svg class="ui-icon" aria-hidden="true">
+                  <use href="IMAGE/SVG/icon-external.svg#icon-external" />
+                </svg>
+                <span class="sr-only">(opens in a new tab)</span>
+              </a>
+              <a
+                href="https://www.ubereats.com/ca/store/indian-wok/VvVHiMUwV5uqOOpdugoI9w"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Uber Eats
+                <svg class="ui-icon" aria-hidden="true">
+                  <use href="IMAGE/SVG/icon-external.svg#icon-external" />
+                </svg>
+                <span class="sr-only">(opens in a new tab)</span>
+              </a>
+              <a
+                href="https://www.skipthedishes.com/indian-wok-kingsway"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                SkipTheDishes
+                <svg class="ui-icon" aria-hidden="true">
+                  <use href="IMAGE/SVG/icon-external.svg#icon-external" />
+                </svg>
+                <span class="sr-only">(opens in a new tab)</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="location" class="location section" aria-labelledby="location-title">
+        <div class="page-width location-grid">
+          <div class="location-copy">
+            <p class="eyebrow eyebrow-green">
+              <span></span>
+              Visit Indian Wok
+            </p>
+            <h2 id="location-title">Find us in Burnaby.</h2>
+            <address>
+              <strong>Indian Wok</strong>
+              <span>
+                5212 Kingsway Ave.
+                <br />
+                Burnaby, B.C.
+              </span>
+              <a href="tel:+16044282673">604-428-2673</a>
+            </address>
+            <div class="location-actions">
+              <a
+                class="button button-dark"
+                href="https://www.google.com/maps/place/Indian+Wok/@49.2246744,-122.9884601,17z/data=!4m12!1m6!3m5!1s0x548676500bcc2711:0x2edae4a746bb718e!2sIndian+Wok!8m2!3d49.2246744!4d-122.9884601!3m4!1s0x548676500bcc2711:0x2edae4a746bb718e!8m2!3d49.2246744!4d-122.9884601"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Get Directions
+                <svg class="ui-icon" aria-hidden="true">
+                  <use href="IMAGE/SVG/icon-external.svg#icon-external" />
+                </svg>
+                <span class="sr-only">(opens in a new tab)</span>
+              </a>
+              <a class="button button-outline" href="tel:+16044282673">Call Restaurant</a>
+            </div>
+          </div>
           <a
-            href="https://www.doordash.com/business/36831/?utm_source=partner-link&utm_medium=website&utm_campaign=36831&utm_content=red-l"
+            class="map-card"
+            href="https://www.google.ca/maps/place/Indian+Wok/@49.2246744,-122.991035,17z/data=!3m1!4b1!4m6!3m5!1s0x548676500bcc2711:0x2edae4a746bb718e!8m2!3d49.2246744!4d-122.9884601!16s%2Fg%2F11btz2g_bl?entry=ttu&amp;g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D"
             target="_blank"
-            alt="Order Food Delivery with DoorDash"
-            title="Order Food Delivery with DoorDash"
-            rel="noopener"
-            aria-label="DoorDash"
-            ><div class="doordash">Order Food Delivery with DoorDash</div></a
+            rel="noopener noreferrer"
+            aria-label="Get directions to Indian Wok on Google Maps, opens in a new tab"
           >
+            <img
+              src="IMAGE/LOGO/IndianWok-Map.png"
+              alt="Map showing Indian Wok at 5212 Kingsway Avenue in Burnaby"
+              width="2106"
+              height="1336"
+              loading="lazy"
+            />
+            <span>
+              Open in Google Maps
+              <svg class="ui-icon" aria-hidden="true">
+                <use href="IMAGE/SVG/icon-external.svg#icon-external" />
+              </svg>
+            </span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="page-width footer-grid">
+        <div class="footer-brand">
+          <a href="#home">
+            <img
+              src="IMAGE/OPTIMIZED/indian-wok-logo-320.png"
+              alt="Indian Wok"
+              width="320"
+              height="256"
+              loading="lazy"
+              decoding="async"
+            />
+          </a>
+          <p>Indo-Chinese cuisine in Burnaby.</p>
+        </div>
+        <div>
+          <h2>Visit</h2>
+          <address>
+            5212 Kingsway Ave.
+            <br />
+            Burnaby, B.C.
+            <br />
+            <a href="tel:+16044282673">604-428-2673</a>
+          </address>
+        </div>
+        <div>
+          <h2>Explore</h2>
+          <a href="#menu">Menu</a>
+          <a href="#catering">Catering</a>
+          <a href="#location">Location</a>
+        </div>
+        <div>
+          <h2>Delivery</h2>
+          <a
+            href="https://www.doordash.com/business/36831/?utm_source=partner-link&amp;utm_medium=website&amp;utm_campaign=36831&amp;utm_content=red-l"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            DoorDash
+            <svg class="ui-icon" aria-hidden="true">
+              <use href="IMAGE/SVG/icon-external.svg#icon-external" />
+            </svg>
+          </a>
           <a
             href="https://www.ubereats.com/ca/store/indian-wok/VvVHiMUwV5uqOOpdugoI9w"
             target="_blank"
-            alt="Order Food Delivery with Uber Eats"
-            title="Order Food Delivery with Uber Eats"
-            rel="noopener"
-            aria-label="Uber Eats"
-            ><div class="ubereats">Order Food Delivery with Uber Eats</div></a
+            rel="noopener noreferrer"
           >
+            Uber Eats
+            <svg class="ui-icon" aria-hidden="true">
+              <use href="IMAGE/SVG/icon-external.svg#icon-external" />
+            </svg>
+          </a>
           <a
             href="https://www.skipthedishes.com/indian-wok-kingsway"
             target="_blank"
-            alt="Order Food Delivery with Skip The Dishes"
-            title="Order Food Delivery with Skip The Dishes"
-            rel="noopener"
-            aria-label="Skip The Dishes"
-            ><div class="skipthedishes">Order Food Delivery with Skip The Dishes</div></a
+            rel="noopener noreferrer"
           >
-          <p class="takeout">10% off in-store pickup</p>
+            SkipTheDishes
+            <svg class="ui-icon" aria-hidden="true">
+              <use href="IMAGE/SVG/icon-external.svg#icon-external" />
+            </svg>
+          </a>
+        </div>
+        <div>
+          <h2>Follow</h2>
+          <a href="https://www.instagram.com/indian.wok/" target="_blank" rel="noopener noreferrer">
+            Instagram
+            <svg class="ui-icon" aria-hidden="true">
+              <use href="IMAGE/SVG/icon-external.svg#icon-external" />
+            </svg>
+          </a>
+          <a
+            href="https://www.facebook.com/indianwokcanada/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Facebook
+            <svg class="ui-icon" aria-hidden="true">
+              <use href="IMAGE/SVG/icon-external.svg#icon-external" />
+            </svg>
+          </a>
+          <a
+            href="https://www.yelp.ca/biz/indian-wok-burnaby"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Yelp
+            <svg class="ui-icon" aria-hidden="true">
+              <use href="IMAGE/SVG/icon-external.svg#icon-external" />
+            </svg>
+          </a>
         </div>
       </div>
-      <div class="menu-container" id="menu">
-        <section class="menu-section">
-          <header class="menu-header">Popular Items</header>
-          <h2 class="menu-subheader">
-            The most commonly ordered items and dishes from this store
-          </h2>
-          <div class="dishes">
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  N1. Calcutta Vegetarian Hakka Chow Mein
-                </h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">$12.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">R7. Chicken Szechuan Rice</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$13.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R7.Chicken_Szechuan_Rice.JPG"
-                  alt="Chicken Szechuan Rice"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  A4. Chili Garlic Vegetarian Dumplings (6)
-                </h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$7.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  N7. Calcutta Chicken Hakka Chow Mein
-                </h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">$13.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N7.Calcutta_Hakka_Style_Chowmmein.JPG"
-                  alt="Calcutta Chicken Hakka Chow Mein"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  A8. Chili Garlic Chicken Dumplings (6)
-                </h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$7.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Appitizers/A8.Chili_Garlic_Chicken_Dumplings.jpg"
-                  alt="Chili Garlic Chicken Dumplings"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">C4. Chili Chicken</h3>
-                <h4 class="dish-subheader">Hot 🌶🌶🌶</h4>
-                <h4 class="dish-price">$16.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chicken/C4.Chili_Chicken.JPG"
-                  alt="Chili chicken"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">N3. Vegetarian Szechuan Chow Mein</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$13.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N3.Vegetarain_Szechuan_Chow_Mein.jpg"
-                  alt="Vegetarian Szechuan Chow Mein"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">A1. Vegetarian Spring Roll (2)</h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">$4.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Appitizers/A1.Vegetarian_Spring_Roll.jpg"
-                  alt="Vegetarain Spring Roll"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">C1. Manchurian Chicken</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$16.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chicken/C1.Manchurian_Ch.JPG"
-                  alt="Manchurian Chicken"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="menu-section">
-          <h1 class="menu-header">Appetizers</h1>
-          <h2 class="menu-subheader"></h2>
-          <div class="dishes">
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">A1. Vegetarian Spring Roll (2 pcs)</h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">$4.96</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Appitizers/A1.Vegetarian_Spring_Roll.jpg"
-                  alt="Vegetarian Spring Roll"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">A2. Vegetarian Tofu Lettuce Wrap</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$15.50</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">A3. Vegetable Pakora</h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">$8.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Appitizers/A3.Vegetable_Pakora.JPG"
-                  alt="Vegetable Pakora"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  A4. Chili Garlic Vegetarian Dumplings (6 psc)
-                </h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$6.75</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">A5. Papadum (cripsy flatbread)</h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">$2.75</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Appitizers/A5.Papadum.jpg"
-                  alt="Papadum"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">A6. chicken Lettuce Wrap</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$15.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Appitizers/A6.Chicken_Lettuce_Wrap.jpg"
-                  alt="Chicken Lettuce Wrap"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">A7. Chili Garlic Wings</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶</h4>
-                <h4 class="dish-price">$7.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Appitizers/A7.Chili_Garlic_Wings.png"
-                  alt="Chili Garlic Wings"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  A8. Chili Garlic Chicken Dumplings (6 psc)
-                </h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$6.75</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Appitizers/A8.Chili_Garlic_Chicken_Dumplings.jpg"
-                  alt="Chili Garlic Chicken Dumplings"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">A9. Combo Pakora (Chicken/Fish)</h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">$11.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">A10. Dry Chili Chicken</h3>
-                <h4 class="dish-subheader">Hot 🌶🌶🌶</h4>
-                <h4 class="dish-price">$16.00</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Appitizers/A10.Dry_Chili_Chicken.JPG"
-                  alt="Dry Chili chicken"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="menu-section">
-          <h1 class="menu-header">Soups</h1>
-          <h2 class="menu-subheader"></h2>
-          <div class="dishes">
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">S1. Vegetable Hot and Sour Soup</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">Small $2.95 Medium $5.95 Large $9.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">S2. Vegetable Cream Corn Soup</h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">Small $2.95 Medium $5.95 Large $9.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">S3. Chicken Hot and Sour Soup</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">
-                  Small $3.95 Medium $6.95 Large $11.95
-                </h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/S - Soups/S3.Chicken_Hot_and_Sour_Soup.jpg"
-                  alt="chicken hot and sour soup"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">S4. Chicken Cream Corn Soup</h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">
-                  Small $3.95 Medium $6.95 Large $11.95
-                </h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">S5. Chicken Wonton Soup (6/12 Pcs)</h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">
-                  Small $3.95 Medium $6.95 Large $11.95
-                </h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Appitizers/IMG_0028.jpg"
-                  alt="chicken Wonton Soup"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">S6. Chicken Clear Egg Drop Soup</h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">
-                  Small $3.50 Medium $6.25 Large $11.50
-                </h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/S - Soups/S6.chicken_clear_egg_drop_Soup.jpg"
-                  alt="Chicken Clear Egg Drop Soup"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="menu-section">
-          <h1 class="menu-header">Fish</h1>
-          <h2 class="menu-subheader"></h2>
-          <div class="dishes">
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">F1. Bombay Style Garlic Fish</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$15.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  loading="lazy"
-                  src="/IMAGE/DISH/Fish/F1.Bombay_Style_Garlic_Fish.JPG"
-                  alt="Bombay Style Garlic Fish"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">F2. Chili Fish</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$15.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  loading="lazy"
-                  src="/IMAGE/DISH/Fish/F2.Chili_Fish.JPG"
-                  alt="Chili Fish"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">F3. Stir-Fried Szechuan Fish</h3>
-                <h4 class="dish-subheader">Hot 🌶🌶🌶</h4>
-                <h4 class="dish-price">$17.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  loading="lazy"
-                  src="./IMAGE/DISH/Fish/F3.Stir-Fried_Szechuan_Fish.JPG"
-                  alt="Stir-Fried Szechuan Fish"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">F4. Sweet and Sour Fish</h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">$15.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  loading="lazy"
-                  src="/IMAGE/DISH/Fish/F4.Sweet_and_Sour_Fish.jpg"
-                  alt="Sweat and Sour Fish"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">F5. Fish With Black Bean Sauce</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$15.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  loading="lazy"
-                  src="/IMAGE/DISH/Fish/F5.Fish_With_Black_Bean_Sauce.JPG"
-                  alt="Fish With Black Bean Sauce"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">F6. Masala Fish</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$16.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  loading="lazy"
-                  src="./IMAGE/DISH/Fish/F6.Masala_fish.JPG"
-                  alt="Masala Fish"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">F7. Hot and Spicy Squid (Dry)</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$17.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  loading="lazy"
-                  src="/IMAGE/DISH/Fish/F7.Hot_and_Spicy_Squid_Dry.JPG"
-                  alt="Hot and Spicy Squid Dry"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="menu-section">
-          <h1 class="menu-header">Chicken</h1>
-          <h2 class="menu-subheader"></h2>
-          <div class="dishes">
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">C1. Manchurian Chicken</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$15.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chicken/C1.Manchurian_Ch.JPG"
-                  alt="Manchurian Chicken"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">C2. Spicy Green Bean With Chicken</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$15.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chicken/C2.GreenBean_with_Chicken.JPG"
-                  alt="Spicy Green Bean With Chicken"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">C3. Masala Chicken</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$17.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chicken/C3.Masala_Chicken.jpg"
-                  alt="Masala Chicken"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">C4. Chili Chicken</h3>
-                <h4 class="dish-subheader">Hot 🌶🌶🌶</h4>
-                <h4 class="dish-price">$15.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  loading="lazy"
-                  src="/IMAGE/DISH/Chicken/C4.Chili_Chicken.JPG"
-                  alt="Chili Chicken"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">C5. Tangerine Chicken</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$15.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chicken/C5.Tangerine_Chicken.JPG"
-                  alt="Tangerine Chicken"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">C6. Chicken With Black Bean Sauce</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$15.50</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">C7. Chicken With Mixed Vegetables</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$15.50</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">C8. Butter Chicken (Contain Nuts)</h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">$16.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chicken/C8.Butter_Chicken.JPG"
-                  alt="Butter Chicken"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">C9. Sweet and Sour Chicken</h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">$14.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chicken/C9.Sweet_and_Sour_Chicken.JPG"
-                  alt="Sweet and sour chicken"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">C10. Lemon Chicken</h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">$15.50</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">C11. Honey Garlic Chicken</h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">$16.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chicken/C11.Honey_Garlic_Chicken.JPG"
-                  alt="Honey Garlic Chicken"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">C12. Szechuan Chicken</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$15.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chicken/C12.Szechuan_Chicken.JPG"
-                  alt="Szechuan Chicken"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">C13. General Tso's Chicken</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$15.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chicken/C13.General_Tso's_Chicken.JPG"
-                  alt="General Tso's Chicken"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">C14. Dai Ching Chicken</h3>
-                <h4 class="dish-subheader">Hot 🌶🌶🌶</h4>
-                <h4 class="dish-price">$17.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chicken/C14.Dai_Ching_Chicken.JPG"
-                  alt="Dai Ching Chicken"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">C15. Boneless Chicken Curry</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$15.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chicken/C15.Chicken_Curry.JPG"
-                  alt="Boneless Chicken Curry"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">C16. Dry Manchurian Chicken</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price"></h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="menu-section">
-          <h1 class="menu-header">Beef</h1>
-          <h2 class="menu-subheader"></h2>
-          <div class="dishes">
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  B1. Beef with Spicy Eggplant and Green Beans
-                </h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$16.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Beef/B1.Beef_With_Spicy_Eggplant_and_Green_Beans.JPG"
-                  alt="Beef with spicy eggplant and green Beans"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">B2. Ginger Beef</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$16.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Beef/B2.Ginger_Beef.jpg"
-                  alt="Ginger Beef"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">B3. Beef with Broccoli</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$16.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Beef/B3.Beef_With_Broccoli.jpg"
-                  alt="Beef With Broccoli"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">B4.Szechuan Beef</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$16.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Beef/B4.Szechuan_Beef.JPG"
-                  alt="Szechuan Beef"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">B5. Chili Beef</h3>
-                <h4 class="dish-subheader">Hot 🌶🌶🌶</h4>
-                <h4 class="dish-price">$16.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Beef/B5.Chili_Beef.jpg"
-                  alt="Chili Beef"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">B6. Curry Beef</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$16.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Beef/B6.Curry_Beef.jpg"
-                  alt="Curry Beef"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">B7.Beef with Black Bean Sauce</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$16.50</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="menu-section">
-          <h1 class="menu-header">Prawn</h1>
-          <h2 class="menu-subheader"></h2>
-          <div class="dishes">
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">P1. Bambay Style Garlic Prawns</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$17.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">P2. Szechuan Prawns</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$17.50</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">P3. Masala Prawns (Dry)</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$17.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="/IMAGE/DISH/Prawn/P3.Masala_Prawns_Dry.jpg"
-                  alt="Masala_Prawns_Dry"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">P4. Curry Prawns</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$17.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="/IMAGE/DISH/Prawn/P4.Curry_Prawns.jpg"
-                  alt="Curry_Prawns"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">P5. Hot and Spicy Prawns (Dry)</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$17.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Prawn/P5.Hot_&_Spicy_Prawns.jpg"
-                  alt="Hot and Spicy Prawns (Dry)"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="menu-section">
-          <h1 class="menu-header">Tofu and Paneer</h1>
-          <h2 class="menu-subheader"></h2>
-          <div class="dishes">
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">T1. Tofu with Mixed Vegetables</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$13.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">T2. Hot and Spicy Tofu (Dry)</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$14.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  T3. Tofu with Broccoli and Baby Corn
-                </h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$13.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  T4. Tofu Eggplant in Black Bean Sauce
-                </h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$13.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Tofu_and_Paneer/T4.Tofu_Eggplant_in_Black_Bean_Sauce.JPG"
-                  alt="Tofu Eggplant in Black Bean Sauce"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">T5. Chili Garlic Paneer</h3>
-                <h4 class="dish-subheader">Hot 🌶🌶🌶</h4>
-                <h4 class="dish-price">$15.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Tofu_and_Paneer/T5.Chili_Garlic_Paneer.jpg"
-                  alt="chili garlic Paneer"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">T6. Dry Hot and spicy Paneer (Dry)</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$15.50</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">T7. Butter Paneer (Contain Nuts)</h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">$15.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="menu-section">
-          <h1 class="menu-header">Vegetable</h1>
-          <h2 class="menu-subheader"></h2>
-          <div class="dishes">
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">V1. Vegetable Manchurian</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$13.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Vegetarian/V1.Vegetable_Manchurian.JPG"
-                  alt="Vegetable Manchurian"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  V2. Gobi Manchurian with Tofu (Cauliflower)
-                </h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$14.50</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">V3. Spicy Eggplant and Green Beans</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$13.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Vegetarian/V3.GreenBean_EggPlant.JPG"
-                  alt="Eggplant and Green Beans"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">V4. Spicy Green Beans</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$13.50</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  V5. Stir-Fried Mix Vegetables (With Mushrooms)
-                </h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$13.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Vegetarian/V5.Mix_vegetable.jpg"
-                  alt="Stir-Fried Mix Vegetables (With Mushrooms)"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">V6. Sautéed Broccoli</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$13.50</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">V7. Spicy Green Beans and Broccoli</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$13.50</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">V8. Vegetable Manchurian (Dry)</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price"></h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">V9. Vegetable Curry</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$13.50</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  V10. Bombay Style Sweet and Sour Vegetable
-                </h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$13.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Vegetarian/V10.Sweat_and_sour_veg.jpg"
-                  alt="Sweet and sour Vegetables"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="menu-section">
-          <h1 class="menu-header">Noodles</h1>
-          <h2 class="menu-subheader"></h2>
-          <div class="dishes">
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  N1. Calcutta Vegetarian Hakka Chow Mein
-                </h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">$11.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">N2. Vegetarian Shanghai Chow Mein</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$11.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">N3. Vegetarian Szechuan Chow Mein</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$12.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  N4. Vegetarian Manchurian Noodle (With Sauce)
-                </h3>
-                <h4 class="dish-subheader">Mild 🌶</h4>
-                <h4 class="dish-price">$13.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N4.Veg_Manchurian_Noodle.jpg"
-                  alt="Vegetarian Manchurian Noodles (With Sauce)"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">N5. Vegetarian American Chopsuey</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$13.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N5.Veg_American_Chopsuey.jpg"
-                  alt="Vegetarian American Chop Suey"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  N6. Pan-Fried Noodles with Vegetables
-                </h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$13.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  N7. Calcutta Chicken Hakka Chow Mein
-                </h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$12.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="/IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N7.Calcutta_Hakka_Style_Chowmmein.JPG"
-                  alt="Calacutta Hakka Style Chowmein"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">N8. Chicken Shanghai Chow Mein</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$12.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N8.Ch_Shangai_Chowmein.jpg"
-                  alt="Chicken Shanghai Chow Mein"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">N9. Chicken Szechuan Chow Mein</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$13.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N9.Chicken_Szechuan_Chowmein.JPG"
-                  alt="Chicken Szechuan Chow Mein"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  N10. Chicken Manchurian Noodle (With sauce)
-                </h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$14.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N10.Chicken_Manchurian_Noodle.jpg"
-                  alt="Chicken Manchurian Noodles (With Sauce)"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">N11. Chicken American Chop Suey</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$14.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  N12. Crispy Noodles with Chicken and Vegetables
-                </h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$14.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="menu-section">
-          <h1 class="menu-header">Rice Dishes</h1>
-          <h2 class="menu-subheader"></h2>
-          <div class="dishes">
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">R1. Vegetarian Fried Rice</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$10.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R1.Vegetarian_Fried_Rice.jpg"
-                  alt="Vegetarian Fried Rice"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">R2. Vegetarian Masala Rice</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$11.50</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">R3. Vegetarian Szechuan Rice</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$11.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R3.Vegetarian_Szechuan_Rice.jpg"
-                  alt="Vegetarian Szechuan Rice"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  R4. Vegetarian Manchurian Rice (No veg Balls included)
-                </h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$11.50</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R4.Veg_Manchurian_Rice.png"
-                  alt="Vegetarian Manchurian Rice (No Veg Balls included)"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">R5. chicken Fried Rice</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$12.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R5.Chicken_Fried_Rice.JPG"
-                  alt="Chicken Fried Rice"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">R6. chicken Masala Rice</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$12.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R6.Masala_rice.jpg"
-                  alt="Chicken Masala Rice"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">R7. chicken Szechuan Rice</h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$12.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="/IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R7.Chicken_Szechuan_Rice.JPG"
-                  alt="Chicken_Szechuan_Rice"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  R8. chicken Manchurian Rice (No veg Balls included)
-                </h3>
-                <h4 class="dish-subheader">Medium Spicy 🌶🌶</h4>
-                <h4 class="dish-price">$12.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R8.Chicken_Manchurian_Rice.jpg"
-                  alt="Chicken Manchurian Rice"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">R9. Beef Fried Rice</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$13.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">R10. Egg Fried Rice</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$11.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="menu-section">
-          <h1 class="menu-header">Gluten-Free Dishes</h1>
-          <h2 class="menu-subheader"></h2>
-          <div class="dishes">
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  G1. Gluten-Free Chicken with Broccoli
-                </h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$16.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/G - Gluten Free/G1.G-Free Chicken With Broccoli.JPG"
-                  alt="Gluten-Free Chicken With Broccoli"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  G2. Gluten-Free Chicken with pineapple (in Sweet and sour
-                  sauce)
-                </h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">$16.95</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/G - Gluten Free/G2.Gluten_Free_Ch_pineapple.jpg"
-                  alt="Glucten-Free Chicken With Pineapple"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  G3. Gluten-Free Vegetarian Vermicelli Noodles
-                </h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$15.99</h4>
-              </div>
-              <div class="dish-image">
-                <img
-                  loading="lazy"
-                  src="./IMAGE/DISH/G - Gluten Free/G3.Gluten_Free_Veg_vemicilli_noodle.jpg"
-                  alt="Gluten-Free Vegetarian Vermicelli Noodles"
-                />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  G4. Gluten-Free Vegetarian Fried Rice
-                </h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$13.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">
-                  G5. Gluten-Free Chicken Vermicelli Noodles
-                </h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$16.99</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">G6. Gluten-Free Chicken Fried Rice</h3>
-                <h4 class="dish-subheader">Mild Spicy 🌶</h4>
-                <h4 class="dish-price">$14.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="menu-section">
-          <h1 class="menu-header">Side Orders</h1>
-          <h2 class="menu-subheader"></h2>
-          <div class="dishes">
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">Plain Rice (Small)</h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">$1.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">Plain Rice (Medium)</h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">$3.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">Naan</h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">$2.50</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">Plain Rice (Large)</h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">$5.25</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">Chicken And Fries</h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">$5.95</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-            <!-- MENU ITEM -->
-            <div class="dish">
-              <div class="dish-description">
-                <h3 class="dish-header">Fries</h3>
-                <h4 class="dish-subheader"></h4>
-                <h4 class="dish-price">$3.75</h4>
-              </div>
-              <div class="dish-image">
-                <img loading="lazy" src="" alt="" />
-              </div>
-            </div>
-          </div>
-        </section>
+      <div class="footer-bottom page-width">
+        <p>
+          ©
+          <span id="year"></span>
+          Indian Wok. All rights reserved.
+        </p>
+        <a href="#home">Back to top ↑</a>
       </div>
-      <!-- menu-container  -->
-      <!-- <div class="review-container" id="review">
-        <header>Featured Reviews</header>
-        <section class="reviews">
-          <div class="review">
-            <img loading="lazy"
-              src="https://lh3.googleusercontent.com/a-/AOh14GhkQJrZwk41SVCwXOaX9AU9b7hbF2Qsf6meeSVO=s40-c-c0x00000000-cc-rp-mo-ba3-br100"
-              alt="Reviewer Profile Pics"
-            />
-            <div class="review-info-name">
-              <h4>Bijal Patel</h4>
-              <h6>google.com</h6>
-            </div>
-            <div class="review-details">
-              <q
-                ><i class="open-quote"></i>Simply amazing Indian Chinese food.
-                Tried chilli garlic vegetarian dumplings, vegetable manchurian
-                and vegetarian szechuan rice. It was just delicious. Would love
-                to order again. Although it's only available on doordash.
-                Quality and quantity are too good. Price is reasonable too. My
-                order sufficed two meals for two people.<i
-                  class="close-quote"
-                ></i>
-              </q>
-            </div>
-          </div>
-
-          <div class="review">
-            <img loading="lazy"
-              src="https://lh3.googleusercontent.com/a-/AOh14GhkQJrZwk41SVCwXOaX9AU9b7hbF2Qsf6meeSVO=s40-c-c0x00000000-cc-rp-mo-ba3-br100"
-              alt="Reviewer Profile Pics"
-            />
-            <div class="review-info-name">
-              <h4>Bijal Patel</h4>
-              <h6>google.com</h6>
-            </div>
-            <div class="review-details">
-              <q
-                ><i class="open-quote"></i>Lorem ipsum<i
-                  class="close-quote"
-                ></i>
-              </q>
-            </div>
-          </div>
-
-          <div class="review">
-            <img loading="lazy"
-              src="https://lh3.googleusercontent.com/a-/AOh14GhkQJrZwk41SVCwXOaX9AU9b7hbF2Qsf6meeSVO=s40-c-c0x00000000-cc-rp-mo-ba3-br100"
-              alt="Reviewer Profile Pics"
-            />
-            <div class="review-info-name">
-              <h4>Bijal Patel</h4>
-              <h6>google.com</h6>
-            </div>
-            <div class="review-details">
-              <q
-                ><i class="open-quote"></i>Simply amazing Indian Chinese food.
-                Tried chilli garlic vegetarian dumplings, vegetable manchurian
-                and vegetarian szechuan rice. It was just delicious. Would love
-                to order again. Although it's only available on doordash.
-                Quality and quantity are too good. Price is reasonable too. My
-                order sufficed two meals for two people.<i
-                  class="close-quote"
-                ></i>
-              </q>
-            </div>
-          </div>
-
-          <div class="review">
-            <img loading="lazy"
-              src="https://lh3.googleusercontent.com/a-/AOh14GhkQJrZwk41SVCwXOaX9AU9b7hbF2Qsf6meeSVO=s40-c-c0x00000000-cc-rp-mo-ba3-br100"
-              alt="Reviewer Profile Pics"
-            />
-            <div class="review-info-name">
-              <h4>Bijal Patel</h4>
-              <h6>google.com</h6>
-            </div>
-            <div class="review-details">
-              <q
-                ><i class="open-quote"></i>Simply amazing Indian Chinese food.
-                Tried chilli garlic vegetarian dumplings, vegetable manchurian
-                and vegetarian szechuan rice. It was just delicious. Would love
-                to order again. Although it's only available on doordash.
-                Quality and quantity are too good. Price is reasonable too. My
-                order sufficed two meals for two people.<i
-                  class="close-quote"
-                ></i>
-              </q>
-            </div>
-          </div>
-        </section>
-      </div> -->
-      <!-- https://www.burnabynow.com/local-business/fusing-flavours-in-burnaby-2985598 -->
-    </div>
-    <footer>
-      <!-- <ul class="footer-nav-links">
-      <li class="footer-nav-link"><a href="#home">Home</a></li>
-      <li class="footer-nav-link"><a href="#menu">Menu</a></li>
-      <li class="footer-nav-link"><a href="#review">Review</a></li>
-      <li class="footer-nav-link"><a href="#location">Location</a></li>
-      <li class="footer-nav-link"><a href="#serving-schedule">Hours</a></li>
-    </ul> -->
-      <!-- <address>
-      <a href="mailto:indianwokca@gmail.com"><i class="far fa-envelope"></i></a><br>
-      <a href="tel:+1-604-428-2673"><i class="fas fa-phone"></i></a>
-    </address> -->
     </footer>
+
+    <script src="JS/site.js" defer></script>
   </body>
 </html>

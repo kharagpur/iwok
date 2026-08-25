@@ -1,0 +1,55 @@
+/* Show the existing white map as a clean, light location card. */
+.map-card { background: #fff; }
+
+.map-card img {
+  object-fit: contain;
+  mix-blend-mode: normal;
+  opacity: 1;
+}
+
+/* The logo uses an alpha PNG; retain its original red and green colours in the footer. */
+.footer-brand img { filter: none; }
+
+/* Keep the picture element out of layout while its responsive hero image loads. */
+.hero-picture { position: absolute; inset: 0; display: block; }
+
+/* Let the hero fill the screen below the header so the food image is not over-cropped. */
+.hero { min-height: calc(100vh - 78px); }
+
+/* Keep every in-page anchor visible below the sticky header. The matching
+   offset also makes #home return the document to its true starting position. */
+html { scroll-padding-top: 78px; }
+
+/* Keep the longer hero message spacious and limited to three intentional lines. */
+.hero h1 {
+  max-width: 900px;
+  font-size: clamp(3.1rem, 5.2vw, 5rem);
+  line-height: 1.02;
+}
+
+/* The supporting label needs stronger contrast against the gold card. */
+.feature-card-text p { color: #762c20; }
+
+@media (max-width: 680px) {
+  .site-header { backdrop-filter: none; }
+  .hero { min-height: max(600px, calc(100svh - 68px)); }
+  html { scroll-padding-top: 68px; }
+  .hero h1 { font-size: clamp(2.25rem, 10vw, 2.65rem); }
+  .hero-actions .button { flex: 1 1 100%; }
+  .site-nav a, .category-scroll button { min-height: 44px; display: inline-flex; align-items: center; }
+  .map-card, .map-card img { min-height: 220px; }
+
+  /* Keep the mobile introduction compact with one strong featured dish. */
+  .featured-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 310px;
+  }
+
+  .feature-card-large { grid-row: auto; }
+
+  .feature-card { min-height: 310px; }
+
+  .featured-grid > .feature-card:not(.feature-card-large):not(.feature-card-text) {
+    display: none;
+  }
+}
