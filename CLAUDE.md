@@ -23,5 +23,6 @@ Static site for Indian Wok (an Indian-Chinese restaurant, Burnaby). Built with N
 - This Next.js version (16) differs from older docs: read AGENTS.md and the guides in `node_modules/next/dist/docs/` before writing code.
 
 ## Commands
-- `npm run dev` — local preview
+- `npm start` — builds, then serves `out/` at http://localhost:4000 (the owner's choice: always port 4000)
+- `npm run dev` — local preview with live reload (port 3000)
 - `npm run build` — writes the static site to `out/`
