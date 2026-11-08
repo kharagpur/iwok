@@ -3,9 +3,7 @@
 Static site for Indian Wok (an Indian-Chinese restaurant, Burnaby). Built with Next.js as a static export, published to GitHub Pages at indianwok.ca.
 
 ## Project notes live in the project notes, not here
-- Project: /Users/home/Documents/project notes/10 Projects/Indian Wok Website Redesign/Indian Wok Website Redesign.md
-- Requirements: …/Specs/Indian Wok – Requirements.md
-- Decisions: …/Decisions/
+- In the project notes, folder `10 Projects/Indian Wok Website Redesign/`: the project note, `Specs/Indian Wok – Requirements.md` and `Decisions/`.
 - Every new requirement or decision goes into those notes, following the CLAUDE.md. Keep "Setup & developer info" in the project note current.
 
 ## Rules
@@ -18,7 +16,7 @@ Static site for Indian Wok (an Indian-Chinese restaurant, Burnaby). Built with N
 - Design: option A "chili signboard": white page, big logo, red hero band, Bricolage Grotesque headings, text-first menu, sticky Call/Order/Directions bar on phones.
 - Restaurant facts live in `data/site.ts`, questions in `data/faq.ts`; `lib/seo.ts` builds the structured data and llms.txt from them. Never hand-write a fact in a component.
 - Photos come from the full-size 2021 originals in kharagpur/iwok's history: `npm run photos -- <clone>` (scripts/photo-sources.json).
-- Source code is in local Git only for now (no GitHub remote); the restaurant previews on the owner's laptop. Built files go to github.com/kharagpur/iwok only at launch, after her approval ([[2026-11-07 Local Git and Laptop Preview]] in the project notes).
+- Source code lives on the `redesign-2026` branch of github.com/kharagpur/iwok, with its own history (the owner, 2026-11-08; project notes: 2026-11-08 Code on the redesign-2026 Branch). `master` stays the live 2021 site until launch; never push to `master` before the restaurant approves. the owner runs `git push` himself.
 - Commit code here with `app: <summary>`. Code changes don't get project notes notes; requirements, decisions and milestones do.
 - `npm install` must stay clean (the owner, 2026-11-08): ESLint 10; patched `minimatch`/`compression` pinned under `overrides` in package.json; `.npmrc` has `legacy-peer-deps=true` because the Next.js lint plugins haven't declared ESLint 10 support. Run `npm audit` after adding packages.
 - This Next.js version (16) differs from older docs: read AGENTS.md and the guides in `node_modules/next/dist/docs/` before writing code.
