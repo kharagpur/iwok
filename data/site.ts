@@ -37,8 +37,7 @@ export const site = {
 
   pickupOffer: "10% off in-store pickup",
 
-  // Parking (the owner, 2026-11-08: "the parking is at the back"). Entrance from Royal Oak Ave, per Google Maps'
-  // "Public Parking – 6514 Royal Oak" behind the building (to confirm with the owner).
+  // Parking (the owner, 2026-11-08: "the parking is at the back"; entrance from Royal Oak Ave, confirmed by the owner).
   parking: {
     text: "Parking is at the back of the building: drive in from Royal Oak Ave, just south of Kingsway.",
     short: "Parking at the back, entrance on Royal Oak Ave",
@@ -58,6 +57,13 @@ export const site = {
     { name: "Facebook", href: "https://www.facebook.com/indianwokcanada/" },
     { name: "Yelp", href: "https://www.yelp.ca/biz/indian-wok-burnaby" },
   ],
+
+  // Press: Burnaby Now's feature on the restaurant (linked only; no text copied).
+  press: {
+    outlet: "Burnaby Now",
+    title: "Fusing flavours in Burnaby",
+    url: "https://www.burnabynow.com/local-business/fusing-flavours-in-burnaby-2985598",
+  },
 
   story:
     "The owners are of Chinese descent, born and raised in India. They cooked Indian-Chinese food in their own restaurant in Austria for about thirty years before bringing those recipes to Burnaby.",

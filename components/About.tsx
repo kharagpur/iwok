@@ -10,6 +10,12 @@ export function About() {
           Our story
         </h2>
         <p className="mt-3 max-w-prose text-lg leading-relaxed">{site.story}</p>
+        <p className="mt-3 text-stone">
+          As featured in {site.press.outlet}:{" "}
+          <a href={site.press.url} rel="noopener" className="font-semibold text-chili underline underline-offset-2 hover:text-chili-dark">
+            {site.press.title}
+          </a>
+        </p>
       </section>
 
       <section aria-labelledby="groups-h" className="rounded-3xl bg-leaf p-5 text-white sm:p-7">
