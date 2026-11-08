@@ -261,7 +261,7 @@ export function Menu() {
                         type="button"
                         onClick={() => setPhoto(item)}
                         aria-haspopup="dialog"
-                        className="group w-fit text-left text-[15px] leading-snug font-semibold"
+                        className="group relative w-fit text-left text-[15px] leading-snug font-semibold before:absolute before:-inset-x-2 before:-inset-y-3 before:content-['']"
                       >
                         <PhotoLabel name={item.name} />
                       </button>
@@ -294,11 +294,12 @@ export function Menu() {
         aria-labelledby="photo-h"
         onClose={() => setPhoto(null)}
         onClick={(e) => e.target === dialogRef.current && dialogRef.current?.close()}
-        className="m-auto w-[min(92vw,440px)] overflow-hidden rounded-3xl bg-white p-0 text-ink backdrop:bg-ink/70"
+        className="m-auto max-h-[calc(100dvh-1.5rem)] w-[min(92vw,440px)] overflow-y-auto rounded-3xl bg-white p-0 text-ink backdrop:bg-ink/70 [@media(max-height:520px)]:w-[min(92vw,640px)]"
       >
+        {/* Phones held sideways: photo on the left, name and Call button on the right, so nothing is cut off. */}
         {photo && (
-          <div>
-            <div className="relative">
+          <div className="[@media(max-height:520px)]:flex [@media(max-height:520px)]:items-center">
+            <div className="relative [@media(max-height:520px)]:w-[min(45%,calc(100dvh-1.5rem))] [@media(max-height:520px)]:shrink-0">
               <DishPhoto item={photo} sizes="(min-width: 480px) 440px, 92vw" className="aspect-square w-full" />
               <button
                 type="button"
@@ -309,7 +310,7 @@ export function Menu() {
                 <span className="sr-only">Close</span>
               </button>
             </div>
-            <div className="flex flex-col gap-2 p-5">
+            <div className="flex flex-col gap-2 p-5 [@media(max-height:520px)]:grow">
               <div className="flex items-baseline justify-between gap-3">
                 <h3 id="photo-h" className="font-display text-xl leading-tight font-extrabold">
                   {photo.name}
