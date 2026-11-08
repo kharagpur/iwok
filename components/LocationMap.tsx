@@ -1,7 +1,7 @@
 import { site } from "@/data/site";
 
 // A simple stick map of the block: Kingsway, Royal Oak Ave, the row of shops with Indian Wok
-// second from the corner, and the parking lot behind it. Drawn as inline SVG, so it's sharp at
+// second from the corner (the bank is on the corner), and the parking behind Indian Wok and the bank. Drawn as inline SVG, so it's sharp at
 // any size and costs nothing to download. Layout checked against Google Maps (2026-11-08).
 
 // Kingsway runs down to the east; its south curb is y = 92 + 0.35x in this drawing.
@@ -9,7 +9,7 @@ const curb = (x: number) => 92 + 0.35 * x;
 
 // The row of shops along the south side of Kingsway, west to east.
 const shops = [
-  { x1: 189, x2: 270, bottom: 336 }, // corner building (runs south along Royal Oak)
+  { x1: 189, x2: 270, bottom: 336 }, // the bank on the corner (runs south along Royal Oak)
   { x1: 274, x2: 376, bottom: 292, us: true }, // Indian Wok
   { x1: 380, x2: 452, bottom: 300 },
   { x1: 456, x2: 528, bottom: 318 },

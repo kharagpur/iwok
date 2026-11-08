@@ -66,6 +66,7 @@ export function structuredData() {
       },
     ],
     hasMap: site.mapUrl,
+    subjectOf: { "@type": "NewsArticle", headline: site.press.title, url: site.press.url, publisher: { "@type": "Organization", name: site.press.outlet } },
     acceptsReservations: false,
     sameAs: [...site.social.map((s) => s.href), site.mapUrl],
     hasMenu: {
@@ -127,6 +128,7 @@ ${faq.map((f) => `- ${f.q} ${f.a}`).join("\n")}
 ## Links
 - [Website](${site.url})
 - [Google Maps and reviews](${site.mapUrl})
+- [${site.press.outlet}: ${site.press.title}](${site.press.url})
 ${site.delivery.map((d) => `- [${d.name}](${d.href})`).join("\n")}
 ${site.social.map((s) => `- [${s.name}](${s.href})`).join("\n")}
 `;
