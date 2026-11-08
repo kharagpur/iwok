@@ -15,7 +15,7 @@ export type MenuItem = {
   /** For soups and plain rice, which come in sizes. */
   sizes?: { label: string; price: number }[];
   containsNuts?: boolean;
-  /** Base name of the dish photo; the resized files come in build plan step 3. */
+  /** Base name of the dish photo: public/images/dishes/<photo>-320.webp and -640.webp (4:3, made by scripts/resize-photos.mjs). */
   photo?: string;
   /** Open question to settle before launch. */
   check?: string;
@@ -54,7 +54,7 @@ export const menu: MenuCategory[] = [
       { code: "A6", name: "Chicken Lettuce Wrap", spice: "mild", price: 15.50, photo: "a6" },
       { code: "A7", name: "Chili Garlic Wings", spice: "medium", price: 7.50, photo: "a7", check: "Label says Medium Spicy but shows one chili (mild). Which is right?" },
       { code: "A8", name: "Chili Garlic Chicken Dumplings (6 pcs)", spice: "medium", price: 6.75, photo: "a8" },
-      { code: "A9", name: "Combo Pakora (Chicken/Fish)", spice: "none", price: 11.95 },
+      { code: "A9", name: "Combo Pakora (Chicken/Fish)", spice: "none", price: 11.95, photo: "a9" },
       { code: "A10", name: "Dry Chili Chicken", spice: "hot", price: 16.00, photo: "a10" },
     ],
   },
@@ -133,12 +133,12 @@ export const menu: MenuCategory[] = [
     id: "tofu-paneer",
     name: "Tofu and Paneer",
     items: [
-      { code: "T1", name: "Tofu with Mixed Vegetables", spice: "mild", price: 13.95, check: "Missing from the August 2026 redesign branch: still on the menu?" },
-      { code: "T2", name: "Hot and Spicy Tofu (Dry)", spice: "medium", price: 14.95 },
+      { code: "T1", name: "Tofu with Mixed Vegetables", spice: "mild", price: 13.95, photo: "t1", check: "Missing from the August 2026 redesign branch: still on the menu?" },
+      { code: "T2", name: "Hot and Spicy Tofu (Dry)", spice: "medium", price: 14.95, photo: "t2" },
       { code: "T3", name: "Tofu with Broccoli and Baby Corn", spice: "mild", price: 13.95 },
       { code: "T4", name: "Tofu Eggplant in Black Bean Sauce", spice: "mild", price: 13.50, photo: "t4" },
       { code: "T5", name: "Chili Garlic Paneer", spice: "hot", price: 15.50, photo: "t5" },
-      { code: "T6", name: "Dry Hot and Spicy Paneer (Dry)", spice: "medium", price: 15.50 },
+      { code: "T6", name: "Dry Hot and Spicy Paneer (Dry)", spice: "medium", price: 15.50, photo: "t6" },
       { code: "T7", name: "Butter Paneer", spice: "none", price: 15.95, containsNuts: true },
     ],
   },
@@ -149,7 +149,7 @@ export const menu: MenuCategory[] = [
       { code: "V1", name: "Vegetable Manchurian", spice: "medium", price: 13.50, photo: "v1" },
       { code: "V2", name: "Gobi Manchurian with Tofu (Cauliflower)", spice: "medium", price: 14.50 },
       { code: "V3", name: "Spicy Eggplant and Green Beans", spice: "mild", price: 13.50, photo: "v3" },
-      { code: "V4", name: "Spicy Green Beans", spice: "medium", price: 13.50 },
+      { code: "V4", name: "Spicy Green Beans", spice: "medium", price: 13.50, photo: "v4" },
       { code: "V5", name: "Stir-Fried Mixed Vegetables (With Mushrooms)", spice: "mild", price: 13.50, photo: "v5" },
       { code: "V6", name: "Sautéed Broccoli", spice: "medium", price: 13.50 },
       { code: "V7", name: "Spicy Green Beans and Broccoli", spice: "mild", price: 13.50 },
@@ -164,7 +164,7 @@ export const menu: MenuCategory[] = [
     items: [
       { code: "N1", name: "Calcutta Vegetarian Hakka Chow Mein", spice: "none", price: 11.95 },
       { code: "N2", name: "Vegetarian Shanghai Chow Mein", spice: "mild", price: 11.95 },
-      { code: "N3", name: "Vegetarian Szechuan Chow Mein", spice: "medium", price: 12.95 },
+      { code: "N3", name: "Vegetarian Szechuan Chow Mein", spice: "medium", price: 12.95, photo: "n3" },
       { code: "N4", name: "Vegetarian Manchurian Noodle (With Sauce)", spice: "mild", price: 13.95, photo: "n4" },
       { code: "N5", name: "Vegetarian American Chopsuey", spice: "mild", price: 13.95, photo: "n5" },
       { code: "N6", name: "Pan-Fried Noodles with Vegetables", spice: "mild", price: 13.95 },
@@ -209,7 +209,7 @@ export const menu: MenuCategory[] = [
     name: "Side Orders",
     items: [
       { name: "Plain Rice", spice: "none", sizes: [{ label: "Small", price: 1.95 }, { label: "Medium", price: 3.95 }, { label: "Large", price: 5.25 }] },
-      { name: "Naan", spice: "none", price: 2.50 },
+      { name: "Naan", spice: "none", price: 2.50, photo: "naan" },
       { name: "Chicken And Fries", spice: "none", price: 5.95 },
       { name: "Fries", spice: "none", price: 3.75 },
     ],
