@@ -35,6 +35,7 @@ export function Menu() {
   const navRef = useRef<HTMLUListElement>(null);
   const pillRef = useRef<HTMLDivElement>(null);
   const tailRef = useRef<HTMLDivElement>(null);
+  const layerRef = useRef<HTMLLIElement>(null);
   // Set while the page scrolls to a section that was tapped in the bar; cleared once scrolling stops,
   // so the pill goes straight to the tapped section instead of visiting every section on the way.
   const tapped = useRef<string | null>(null);
@@ -97,13 +98,20 @@ export function Menu() {
       el.style.top = `${chip.offsetTop}px`;
       el.style.height = `${chip.offsetHeight}px`;
     };
-    // Speed scales with distance (the owner, 2026-11-08): nearby moves as before, far moves a little longer
-    // (capped); the trailing blob follows closely so both land by the time the page stops scrolling.
+    // Moves start at once and slow into place (ease-out); far moves take a little longer, capped
+    // (the owner, 2026-11-08: "as soon as I click it, the animation starts moving"). The blob trails just behind.
     const distance = Math.abs(chip.offsetLeft - lastX.current);
-    const pill = Math.round(Math.min(560, 280 + distance * 0.3));
-    const tail = pill + 140;
-    place(pillRef.current, `transform ${pill}ms cubic-bezier(.5,0,.2,1), width ${pill}ms ease`);
-    place(tailRef.current, `transform ${tail}ms cubic-bezier(.5,0,.2,1) 30ms, width ${tail}ms ease 30ms`);
+    const pill = Math.round(Math.min(420, 220 + distance * 0.25));
+    const tail = pill + 100;
+    place(pillRef.current, `transform ${pill}ms cubic-bezier(.2,.8,.2,1), width ${pill}ms cubic-bezier(.2,.8,.2,1)`);
+    place(tailRef.current, `transform ${tail}ms cubic-bezier(.3,.7,.2,1), width ${tail}ms cubic-bezier(.3,.7,.2,1)`);
+    // The new section's label turns white as the pill arrives; the old one turns dark as the pill leaves.
+    bar?.querySelectorAll<HTMLElement>("[data-label]").forEach((label) => {
+      label.style.transitionDelay = animate && label.parentElement === chip ? `${Math.round(pill * 0.45)}ms` : "0ms";
+      label.style.transitionDuration = animate ? `${Math.round(pill * 0.4)}ms` : "0ms";
+    });
+    // The goo layer spans the whole scrolling bar, so the filter never clips the pill near the far end.
+    if (layerRef.current && bar) layerRef.current.style.width = `${bar.scrollWidth}px`;
     lastX.current = chip.offsetLeft;
     moved.current = true;
     setMeasured(true);
@@ -114,6 +122,7 @@ export function Menu() {
     const bar = navRef.current;
     if (!bar) return;
     const observer = new ResizeObserver(() => {
+      if (layerRef.current) layerRef.current.style.width = `${bar.scrollWidth}px`;
       const chip = bar.querySelector<HTMLElement>("[aria-current]");
       [pillRef.current, tailRef.current].forEach((el) => {
         if (!el || !chip) return;
@@ -193,7 +202,7 @@ export function Menu() {
           </defs>
         </svg>
         <ul ref={navRef} className="no-scrollbar relative isolate mx-auto flex max-w-6xl gap-1.5 overflow-x-auto px-5 py-2.5 sm:px-6">
-          <li aria-hidden className="pointer-events-none absolute inset-0 z-[1] [filter:url(#menu-goo)]">
+          <li ref={layerRef} aria-hidden className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-full [filter:url(#menu-goo)]">
             <div ref={tailRef} className="absolute left-0 rounded-full bg-chili motion-reduce:hidden" />
             <div ref={pillRef} className="absolute left-0 rounded-full bg-chili" />
           </li>
@@ -214,7 +223,8 @@ export function Menu() {
                     className={`absolute inset-0 z-0 rounded-full ${current && !measured ? "bg-chili" : "bg-mist group-hover:bg-blush"}`}
                   />
                   <span
-                    className={`relative z-[2] transition-colors delay-100 duration-200 motion-reduce:transition-none ${
+                    data-label
+                    className={`relative z-[2] transition-colors motion-reduce:transition-none ${
                       current ? "text-white" : "text-ink"
                     }`}
                   >
