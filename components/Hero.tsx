@@ -1,5 +1,6 @@
 import { site } from "@/data/site";
 import { BagIcon, PhoneIcon } from "./icons";
+import { OpenNow } from "./OpenNow";
 
 /** The red band: headline, Call and Order, and a round dish photo that echoes the logo's dragon circle. */
 export function Hero() {
@@ -53,6 +54,7 @@ export function Hero() {
             <br />
             <span className="text-stone">Closed {site.hours[1].days}</span>
           </p>
+          <OpenNow className="mt-2" />
         </section>
 
         <p className="mt-8 flex max-w-xl items-center gap-3 rounded-2xl bg-turmeric-soft px-4 py-3.5 md:mt-6">

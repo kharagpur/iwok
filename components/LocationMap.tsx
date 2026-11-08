@@ -1,7 +1,7 @@
 import { site } from "@/data/site";
 
 // A simple stick map of the block: Kingsway, Royal Oak Ave, the row of shops with Indian Wok
-// second from the corner (the bank is on the corner), and the parking behind Indian Wok and the bank. Drawn as inline SVG, so it's sharp at
+// second from the corner, and the parking lot behind it. Drawn as inline SVG, so it's sharp at
 // any size and costs nothing to download. Layout checked against Google Maps (2026-11-08).
 
 // Kingsway runs down to the east; its south curb is y = 92 + 0.35x in this drawing.
@@ -9,7 +9,7 @@ const curb = (x: number) => 92 + 0.35 * x;
 
 // The row of shops along the south side of Kingsway, west to east.
 const shops = [
-  { x1: 189, x2: 270, bottom: 336 }, // the bank on the corner (runs south along Royal Oak)
+  { x1: 189, x2: 270, bottom: 336 }, // corner building (runs south along Royal Oak)
   { x1: 274, x2: 376, bottom: 292, us: true }, // Indian Wok
   { x1: 380, x2: 452, bottom: 300 },
   { x1: 456, x2: 528, bottom: 318 },
@@ -35,7 +35,7 @@ export function LocationMap() {
         </desc>
 
         {/* Parking: only behind Indian Wok and the bank, driven into from Royal Oak (the owner, 2026-11-08) */}
-        <path d="M186,342 L272,342 L272,296 L378,296 L378,404 L186,404 Z" fill="#eaf1e2" />
+        <path d="M186,342 L272,342 L272,296 L378,296 L378,404 L186,404 Z" fill="var(--color-leaf-soft)" />
         <g stroke="#c9d8b8" strokeWidth="2">
           {[292, 316].map((x) => (
             <line key={x} x1={x} y1={300} x2={x} y2={336} />

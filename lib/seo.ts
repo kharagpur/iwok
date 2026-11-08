@@ -20,13 +20,17 @@ function menuItem(item: MenuItem, glutenFree: boolean) {
   const notes = [item.spice !== "none" ? `Spice: ${item.spice}.` : "", item.containsNuts ? "Contains nuts." : ""]
     .filter(Boolean)
     .join(" ");
+  const diets = [
+    ...(glutenFree ? ["https://schema.org/GlutenFreeDiet"] : []),
+    ...(item.vegetarian ? ["https://schema.org/VegetarianDiet"] : []),
+  ];
   return {
     "@type": "MenuItem",
     name: item.code ? `${item.code}. ${item.name}` : item.name,
     ...(notes ? { description: notes } : {}),
     ...(item.photo ? { image: `${site.url}/images/dishes/${item.photo}-640.webp` } : {}),
     ...(offers ? { offers } : {}),
-    ...(glutenFree ? { suitableForDiet: "https://schema.org/GlutenFreeDiet" } : {}),
+    ...(diets.length ? { suitableForDiet: diets.length === 1 ? diets[0] : diets } : {}),
   };
 }
 
@@ -62,7 +66,6 @@ export function structuredData() {
       },
     ],
     hasMap: site.mapUrl,
-    subjectOf: { "@type": "NewsArticle", headline: site.press.title, url: site.press.url, publisher: { "@type": "Organization", name: site.press.outlet } },
     acceptsReservations: false,
     sameAs: [...site.social.map((s) => s.href), site.mapUrl],
     hasMenu: {
@@ -124,7 +127,6 @@ ${faq.map((f) => `- ${f.q} ${f.a}`).join("\n")}
 ## Links
 - [Website](${site.url})
 - [Google Maps and reviews](${site.mapUrl})
-- [${site.press.outlet}: ${site.press.title}](${site.press.url})
 ${site.delivery.map((d) => `- [${d.name}](${d.href})`).join("\n")}
 ${site.social.map((s) => `- [${s.name}](${s.href})`).join("\n")}
 `;

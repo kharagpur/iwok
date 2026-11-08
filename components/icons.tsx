@@ -63,3 +63,29 @@ export function PlusIcon({ className = "size-5" }: IconProps) {
     </svg>
   );
 }
+
+export function CameraIcon({ className = "size-4" }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M14.5 4h-5L7.5 6.5H4a2 2 0 0 0-2 2V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8.5a2 2 0 0 0-2-2h-3.5z" />
+      <circle cx="12" cy="13" r="3.5" />
+    </svg>
+  );
+}
+
+export function LeafIcon({ className = "size-3.5" }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M5 19c0-9 6-14 15-14 0 9-5 15-14 15" />
+      <path d="M5 19l8-8" />
+    </svg>
+  );
+}
+
+export function CloseIcon({ className = "size-5" }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M6 6l12 12M18 6L6 18" />
+    </svg>
+  );
+}

@@ -3,6 +3,7 @@
 import { menu } from "./menu";
 import { site } from "./site";
 
+const vegetarianCount = menu.reduce((n, c) => n + c.items.filter((i) => i.vegetarian).length, 0);
 const glutenFree = menu.find((c) => c.id === "gluten-free")?.items.map((i) => i.name) ?? [];
 const nutDishes = menu.flatMap((c) => c.items).filter((i) => i.containsNuts).map((i) => i.name);
 const delivery = site.delivery.map((d) => d.name);
@@ -30,7 +31,7 @@ export const faq: { q: string; a: string }[] = [
   },
   {
     q: "Do you have vegetarian dishes?",
-    a: "Yes: vegetable, tofu and paneer dishes, vegetarian noodles and fried rice, vegetarian appetizers and soups. Vegan? Call and tell us what you need.",
+    a: `Yes, ${vegetarianCount} of them: vegetable, tofu and paneer dishes, vegetarian noodles and fried rice, vegetarian appetizers and soups. They’re marked Vegetarian on the menu, and you can filter for them. Vegan? Call and tell us what you need.`,
   },
   {
     q: "Do any dishes contain nuts?",
