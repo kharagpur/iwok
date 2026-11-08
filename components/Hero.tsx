@@ -13,7 +13,7 @@ export function Hero() {
               {site.headline}
             </h1>
             <p className="mt-4 max-w-[19rem] text-[17px] leading-snug md:max-w-md md:text-xl">
-              Family-run on Kingsway at Royal Oak, Burnaby. Dinner Tuesday to Sunday.
+              {site.heritage.line} Now on Kingsway at Royal Oak, Burnaby.
             </p>
             <div className="mt-6 flex flex-wrap gap-2.5">
               <a

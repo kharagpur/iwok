@@ -115,7 +115,7 @@ export function llmsTxt() {
 - Seating: small restaurant, walk-ins welcome; bigger groups call a couple of days ahead
 - Catering: for special events, by phone
 - Google rating: ${googleReviews.rating} from ${googleReviews.countLabel} reviews
-- Family-run: ${site.story}
+- Family history: ${site.story}
 
 ## Menu
 - [Full menu with prices](${site.url}/llms-full.txt): every dish, spice level and price as plain text

@@ -7,7 +7,7 @@ export const site = {
   title: "Indian Wok | Hakka & Indian-Chinese food in Burnaby, Metro Vancouver",
   headline: "Hakka & Calcutta-style Indian-Chinese",
   description:
-    "Family-run Indian-Chinese restaurant at 5212 Kingsway, Burnaby (Metro Vancouver), at Royal Oak. Hakka and Calcutta-style dishes like chili chicken, Manchurian and Hakka noodles, with vegetarian and gluten-free choices. Dinner Tuesday to Sunday; 10% off pickup; delivery on DoorDash, Uber Eats and SkipTheDishes.",
+    "Second-generation, family-run Indian-Chinese restaurant, over 50 years in the family, at 5212 Kingsway, Burnaby (Metro Vancouver), at Royal Oak. Hakka and Calcutta-style dishes like chili chicken, Manchurian and Hakka noodles, with vegetarian and gluten-free choices. Dinner Tuesday to Sunday; 10% off pickup; delivery on DoorDash, Uber Eats and SkipTheDishes.",
 
   phone: { display: "604-428-2673", href: "tel:+16044282673", schema: "+1-604-428-2673" },
   email: "indianwokca@gmail.com",
@@ -65,8 +65,15 @@ export const site = {
     url: "https://www.burnabynow.com/local-business/fusing-flavours-in-burnaby-2985598",
   },
 
+  // Family history (the owner, 2026-11-08): over 50 years in the restaurant business; Indian Wok is the second
+  // generation. The first was the parents' restaurant, the Waldorf in Kharagpur, India. No founding year
+  // found online, so the site says "over 50 years" until the restaurant confirms one.
+  heritage: {
+    line: "Two generations and over 50 years of family cooking.",
+    first: "the Waldorf in Kharagpur, India",
+  },
   story:
-    "The owners are of Chinese descent, born and raised in India. They cooked Indian-Chinese food in their own restaurant in Austria for about thirty years before bringing those recipes to Burnaby.",
+    "Indian Wok is a second-generation family restaurant. It began over 50 years ago with the family’s first restaurant, the Waldorf in Kharagpur, India. The owners, of Chinese descent and born and raised in India, then cooked Indian-Chinese food in their own restaurant in Austria for about thirty years before bringing those recipes to Burnaby.",
 };
 
 // Google reviews (R12): rating, count and what guests say, written in our own words.
