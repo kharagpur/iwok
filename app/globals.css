@@ -1,3 +1,43 @@
-/* Tailwind CSS v4: styles come from utility classes in the components.
-   Brand colours and fonts go in @theme when the design direction is agreed (build plan step 4). */
+/* Tailwind CSS v4. The design direction lives in @theme:
+   colours from the logo on warm cream; Fraunces for headings, the phone's own font for body. */
 @import "tailwindcss";
+
+@theme {
+  --color-chili: #a4161a; /* buttons, prices, spice */
+  --color-chili-dark: #7e1014;
+  --color-blush: #f6e3df; /* mild/medium spice tags */
+  --color-leaf: #2f4a14; /* headings, footer */
+  --color-turmeric: #e9a23b; /* the pickup offer */
+  --color-cream: #fbf5ec; /* page background */
+  --color-ink: #2a211c; /* text */
+  --color-clay: #6b5e55; /* small print */
+  --color-line: #e8dccb; /* borders */
+  --color-sand: #d9c9b4; /* button outlines */
+}
+
+@theme inline {
+  --font-display: var(--font-fraunces), Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+/* Hide the scrollbar on the menu's section bar; it still scrolls by swipe. */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
