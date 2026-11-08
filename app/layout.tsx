@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { site } from "@/data/site";
+import { Analytics } from "@/components/Analytics";
 import "./globals.css";
 
 // Bricolage Grotesque for headings, served from the site itself (no call to Google at visit time).
@@ -50,7 +51,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en-CA" className={bricolage.variable}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

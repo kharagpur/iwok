@@ -37,6 +37,9 @@ export const site = {
 
   pickupOffer: "10% off in-store pickup",
 
+  // Google Analytics 4 measurement ID, carried over from the 2021 site (index.html, "Adding Google Analytics").
+  analytics: { googleId: "G-133PP3446J" },
+
   // Parking (the owner, 2026-11-08): only behind Indian Wok and the bank on the corner; entrance from Royal Oak Ave.
   parking: {
     text: "Parking is at the back, behind Indian Wok and the bank on the corner: drive in from Royal Oak Ave, just south of Kingsway.",
