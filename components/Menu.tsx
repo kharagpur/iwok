@@ -54,7 +54,7 @@ export function Menu() {
     const observer = new IntersectionObserver(
       (entries) => {
         const hit = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
-        if (hit) setActive(hit.target.id);
+        if (hit && !tapped.current) setActive(hit.target.id);
       },
       { rootMargin: "-72px 0px -65% 0px" },
     );
@@ -66,6 +66,24 @@ export function Menu() {
   // tail blob share an SVG blur filter, so they stretch and melt together as the highlight moves to the next
   // section. It moves to wherever `active` points; reduced-motion visitors get an instant switch.
   const moved = useRef(false);
+  const lastX = useRef(0);
+  // Set while the page scrolls to a section that was tapped in the bar; cleared once scrolling stops,
+  // so the pill goes straight to the tapped section instead of visiting every section on the way.
+  const tapped = useRef<string | null>(null);
+  const goTo = (id: string) => {
+    tapped.current = id;
+    setActive(id);
+    let timer = window.setTimeout(release, 150);
+    function release() {
+      tapped.current = null;
+      window.removeEventListener("scroll", onScroll);
+    }
+    function onScroll() {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(release, 150);
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+  };
   useLayoutEffect(() => {
     const bar = navRef.current;
     const chip = bar?.querySelector<HTMLElement>(`[data-section="${active}"]`);
@@ -79,8 +97,14 @@ export function Menu() {
       el.style.top = `${chip.offsetTop}px`;
       el.style.height = `${chip.offsetHeight}px`;
     };
-    place(pillRef.current, "transform 320ms cubic-bezier(.5,0,.2,1), width 320ms ease");
-    place(tailRef.current, "transform 620ms cubic-bezier(.5,0,.2,1) 60ms, width 620ms ease 60ms");
+    // Speed scales with distance (the owner, 2026-11-08): nearby moves as before, far moves a little longer
+    // (capped); the trailing blob follows closely so both land by the time the page stops scrolling.
+    const distance = Math.abs(chip.offsetLeft - lastX.current);
+    const pill = Math.round(Math.min(560, 280 + distance * 0.3));
+    const tail = pill + 140;
+    place(pillRef.current, `transform ${pill}ms cubic-bezier(.5,0,.2,1), width ${pill}ms ease`);
+    place(tailRef.current, `transform ${tail}ms cubic-bezier(.5,0,.2,1) 30ms, width ${tail}ms ease 30ms`);
+    lastX.current = chip.offsetLeft;
     moved.current = true;
     setMeasured(true);
   }, [active, shownIds]);
@@ -179,6 +203,7 @@ export function Menu() {
               <li key={c.id} className="shrink-0">
                 <a
                   href={`#${c.id}`}
+                  onClick={() => goTo(c.id)}
                   data-section={c.id}
                   aria-current={current ? "true" : undefined}
                   className="group relative inline-flex min-h-10 items-center rounded-full px-3.5 text-sm font-semibold whitespace-nowrap"
