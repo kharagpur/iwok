@@ -35,6 +35,9 @@ export function Menu() {
   const navRef = useRef<HTMLUListElement>(null);
   const pillRef = useRef<HTMLDivElement>(null);
   const tailRef = useRef<HTMLDivElement>(null);
+  // Set while the page scrolls to a section that was tapped in the bar; cleared once scrolling stops,
+  // so the pill goes straight to the tapped section instead of visiting every section on the way.
+  const tapped = useRef<string | null>(null);
   // Before the browser measures the bar (first paint, or no JavaScript), the active button paints its own red.
   const [measured, setMeasured] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -67,9 +70,6 @@ export function Menu() {
   // section. It moves to wherever `active` points; reduced-motion visitors get an instant switch.
   const moved = useRef(false);
   const lastX = useRef(0);
-  // Set while the page scrolls to a section that was tapped in the bar; cleared once scrolling stops,
-  // so the pill goes straight to the tapped section instead of visiting every section on the way.
-  const tapped = useRef<string | null>(null);
   const goTo = (id: string) => {
     tapped.current = id;
     setActive(id);
