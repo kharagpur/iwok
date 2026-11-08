@@ -46,13 +46,31 @@ export const site = {
     short: "Parking at the back, behind Indian Wok and the corner bank; entrance on Royal Oak Ave",
   },
 
+  // Order buttons use each app's own official artwork (Kenneth, 2026-11-08: "easier to recognize the brand"):
+  // DoorDash's merchant button (cdn.doordash.com/media/button/button_red_l.svg), the Uber Eats media button
+  // and the Skip logo from the 2021 site. Files in public/images/delivery/; `logoHeight` is how much of the button the logo fills.
   delivery: [
     {
       name: "DoorDash",
       href: "https://www.doordash.com/business/36831/?utm_source=partner-link&utm_medium=website&utm_campaign=36831&utm_content=red-l",
+      logo: "/images/delivery/doordash.svg",
+      color: "#EB1700",
+      logoHeight: "100%",
     },
-    { name: "Uber Eats", href: "https://www.ubereats.com/ca/store/indian-wok/VvVHiMUwV5uqOOpdugoI9w" },
-    { name: "SkipTheDishes", href: "https://www.skipthedishes.com/indian-wok-kingsway" },
+    {
+      name: "Uber Eats",
+      href: "https://www.ubereats.com/ca/store/indian-wok/VvVHiMUwV5uqOOpdugoI9w",
+      logo: "/images/delivery/ubereats.svg",
+      color: "#06C167",
+      logoHeight: "100%",
+    },
+    {
+      name: "SkipTheDishes",
+      href: "https://www.skipthedishes.com/indian-wok-kingsway",
+      logo: "/images/delivery/skip.svg",
+      color: "#EE7300",
+      logoHeight: "62%",
+    },
   ],
 
   social: [

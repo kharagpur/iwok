@@ -41,18 +41,22 @@ export function Popular() {
         <h2 id="order-h" className="font-display text-[28px] font-extrabold md:text-4xl">
           Delivery
         </h2>
-        <div className="mt-3 grid max-w-xl grid-cols-3 gap-2">
+        {/* Each app's own button artwork, so the brand is recognized at a glance (Kenneth, 2026-11-08). */}
+        <ul className="mt-3 grid max-w-3xl gap-2.5 sm:grid-cols-3">
           {site.delivery.map((d) => (
-            <a
-              key={d.name}
-              href={d.href}
-              rel="noopener"
-              className="flex min-h-12 items-center justify-center rounded-xl bg-mist px-2 text-center text-sm font-semibold hover:bg-blush hover:text-chili-dark sm:text-base"
-            >
-              {d.name}
-            </a>
+            <li key={d.name}>
+              <a
+                href={d.href}
+                rel="noopener"
+                className="flex h-14 items-center justify-center overflow-hidden rounded-full transition hover:brightness-110 hover:shadow-md"
+                style={{ backgroundColor: d.color }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={d.logo} alt={`Order delivery on ${d.name}`} className="max-w-full object-contain" style={{ height: d.logoHeight }} />
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
         <p className="mt-2 text-sm text-stone">
           Or call{" "}
           <a href={site.phone.href} className="font-semibold text-chili hover:underline">
