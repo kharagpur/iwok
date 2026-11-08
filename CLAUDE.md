@@ -14,6 +14,7 @@ Static site for Indian Wok (an Indian-Chinese restaurant, Burnaby). Built with N
 - Photos: resized ahead of time (WebP, the sizes shown); never ship the original 2021 files as-is.
 - `public/CNAME` = indianwok.ca; the published folder must contain an empty `.nojekyll`.
 - The menu is one data file; every section reads prices from it.
+- Styling: Tailwind CSS v4 (utility classes; brand colours and fonts in `@theme` in `app/globals.css`). the owner's choice, 2026-11-07.
 - Source code is in local Git only for now (no GitHub remote); the restaurant previews on the owner's laptop. Built files go to github.com/kharagpur/iwok only at launch, after her approval ([[2026-11-07 Local Git and Laptop Preview]] in the project notes).
 - Commit code here with `app: <summary>`. Code changes don't get project notes notes; requirements, decisions and milestones do.
 - This Next.js version (16) differs from older docs: read AGENTS.md and the guides in `node_modules/next/dist/docs/` before writing code.

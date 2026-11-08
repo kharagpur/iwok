@@ -1,25 +1,3 @@
-/* Global styles. The design direction comes in build plan step 4. */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  line-height: 1.5;
-  color: #222;
-  background: #fff;
-}
-
-.placeholder {
-  max-width: 40rem;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-}
+/* Tailwind CSS v4: styles come from utility classes in the components.
+   Brand colours and fonts go in @theme when the design direction is agreed (build plan step 4). */
+@import "tailwindcss";
