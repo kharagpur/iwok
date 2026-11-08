@@ -1,7 +1,7 @@
 import { site } from "@/data/site";
 
 // A simple stick map of the block: Kingsway, Royal Oak Ave, the row of shops with Indian Wok
-// second from the corner, and the parking lot behind it. Drawn as inline SVG, so it's sharp at
+// second from the corner (the bank is on the corner), and the parking behind Indian Wok and the bank. Drawn as inline SVG, so it's sharp at
 // any size and costs nothing to download. Layout checked against Google Maps (2026-11-08).
 
 // Kingsway runs down to the east; its south curb is y = 92 + 0.35x in this drawing.
@@ -9,7 +9,7 @@ const curb = (x: number) => 92 + 0.35 * x;
 
 // The row of shops along the south side of Kingsway, west to east.
 const shops = [
-  { x1: 189, x2: 270, bottom: 336 }, // corner building (runs south along Royal Oak)
+  { x1: 189, x2: 270, bottom: 336 }, // the bank on the corner (runs south along Royal Oak)
   { x1: 274, x2: 376, bottom: 292, us: true }, // Indian Wok
   { x1: 380, x2: 452, bottom: 300 },
   { x1: 456, x2: 528, bottom: 318 },
@@ -34,11 +34,11 @@ export function LocationMap() {
           Indian Wok is on the south side of Kingsway, the second building east of Royal Oak Avenue. {site.parking.text}
         </desc>
 
-        {/* Parking lot behind the shops, and the driveway in from Royal Oak */}
-        <path d="M186,346 L274,346 L274,300 L620,300 L620,404 L186,404 Z" fill="#eaf1e2" />
+        {/* Parking: only behind Indian Wok and the bank, driven into from Royal Oak (the owner, 2026-11-08) */}
+        <path d="M186,342 L272,342 L272,296 L378,296 L378,404 L186,404 Z" fill="#eaf1e2" />
         <g stroke="#c9d8b8" strokeWidth="2">
-          {[300, 330, 360, 390].map((x) => (
-            <line key={x} x1={x} y1={350} x2={x} y2={400} />
+          {[292, 316].map((x) => (
+            <line key={x} x1={x} y1={300} x2={x} y2={336} />
           ))}
         </g>
         <path
@@ -54,14 +54,14 @@ export function LocationMap() {
             <path d="M0,0 L10,5 L0,10 Z" fill="var(--color-leaf)" />
           </marker>
         </defs>
-        <circle cx="436" cy="366" r="21" fill="var(--color-leaf)" />
-        <text x="436" y="375" textAnchor="middle" fontSize="25" fontWeight="800" fill="#fff">
+        <circle cx="346" cy="364" r="21" fill="var(--color-leaf)" />
+        <text x="346" y="373" textAnchor="middle" fontSize="25" fontWeight="800" fill="#fff">
           P
         </text>
-        <text x="466" y="360" fontSize="22" fontWeight="800" fill="var(--color-leaf)">
+        <text x="390" y="360" fontSize="22" fontWeight="800" fill="var(--color-leaf)">
           Parking
         </text>
-        <text x="466" y="386" fontSize="22" fontWeight="800" fill="var(--color-leaf)">
+        <text x="390" y="386" fontSize="22" fontWeight="800" fill="var(--color-leaf)">
           at the back
         </text>
 
@@ -86,6 +86,10 @@ export function LocationMap() {
         </text>
         <text x={(us.x1 + us.x2) / 2} y={usTop + 72} textAnchor="middle" fontSize="23" fontWeight="800" fill="#fff">
           Wok
+        </text>
+
+        <text x="229" y="262" textAnchor="middle" fontSize="19" fontWeight="700" fill="var(--color-stone)">
+          Bank
         </text>
 
         {/* Front door on Kingsway */}

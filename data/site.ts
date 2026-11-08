@@ -37,10 +37,10 @@ export const site = {
 
   pickupOffer: "10% off in-store pickup",
 
-  // Parking (the owner, 2026-11-08: "the parking is at the back"; entrance from Royal Oak Ave, confirmed by the owner).
+  // Parking (the owner, 2026-11-08): only behind Indian Wok and the bank on the corner; entrance from Royal Oak Ave.
   parking: {
-    text: "Parking is at the back of the building: drive in from Royal Oak Ave, just south of Kingsway.",
-    short: "Parking at the back, entrance on Royal Oak Ave",
+    text: "Parking is at the back, behind Indian Wok and the bank on the corner: drive in from Royal Oak Ave, just south of Kingsway.",
+    short: "Parking at the back, behind Indian Wok and the corner bank; entrance on Royal Oak Ave",
   },
 
   delivery: [
