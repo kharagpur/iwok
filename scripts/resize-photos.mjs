@@ -1,9 +1,10 @@
-// Resizes the old site's photos for the web (build plan step 3).
-// Reads originals straight from a clone of github.com/kharagpur/iwok, so they never enter this repo,
-// and writes small WebP files to public/images/ plus the site icons to app/.
+// Prepares the site's photos (build plan step 3, redone for the modern design on 2026-11-08).
+// Reads the full-size 2021 camera originals from the old site's repo history (github.com/kharagpur/iwok),
+// colour-corrects them, crops tight so the food fills the frame, and writes small WebP files
+// to public/images/ plus the site icons to app/. The originals never enter this repo.
 //
 // Usage:  npm run photos -- ~/dev/iwok-published
-// (any clone of kharagpur/iwok works; the logo comes from its Feature--Website-Redesign branch)
+// (any clone of kharagpur/iwok with its history works; a "blobless" clone fetches originals as needed)
 
 import { execFileSync } from "node:child_process";
 import { mkdirSync, readFileSync, rmSync } from "node:fs";
@@ -21,69 +22,96 @@ const dishesOut = join(out, "dishes");
 rmSync(dishesOut, { recursive: true, force: true });
 mkdirSync(dishesOut, { recursive: true });
 
+const git = (args) => execFileSync("git", ["-C", source, ...args], { maxBuffer: 128 * 1024 * 1024 });
 const fromRepo = (path) => readFileSync(join(source, path));
-const fromBranch = ({ ref, path }) =>
-  execFileSync("git", ["-C", source, "show", `${ref}:${path}`], { maxBuffer: 64 * 1024 * 1024 });
+// A dish's best source: the full-size original if the history has it, else the 2021 web copy.
+const dishSource = (d) => (d.blob ? git(["cat-file", "-p", d.blob]) : fromRepo(d.file));
 
-// .rotate() applies the camera's orientation flag, so sideways phone photos come out upright.
-const webp = (input) => sharp(input).rotate();
+/**
+ * Colour correction for the 2021 phone photos:
+ * removes the bluish cast of the restaurant lights (balancing on the brightest pixels — plates and
+ * tablecloth), stretches contrast a little, adds a touch of warmth and colour.
+ */
+async function graded(input) {
+  const base = sharp(input).rotate(); // .rotate() applies the camera's orientation flag
+  const { data, info } = await base.clone().resize(200).raw().toBuffer({ resolveWithObject: true });
+  const px = [];
+  for (let i = 0; i < data.length; i += info.channels) px.push([data[i], data[i + 1], data[i + 2]]);
+  const lum = px.map((p) => (p[0] + p[1] + p[2]) / 3).sort((a, b) => a - b);
+  const threshold = lum[Math.floor(lum.length * 0.7)];
+  const bright = px.filter((p) => (p[0] + p[1] + p[2]) / 3 > threshold);
+  const mean = [0, 1, 2].map((c) => bright.reduce((s, p) => s + p[c], 0) / bright.length);
+  const target = (mean[0] + mean[1] + mean[2]) / 3;
+  const gain = mean.map((v) => Math.pow(target / v, 0.6));
+  const buf = await base
+    .linear([gain[0] * 1.03, gain[1], gain[2] * 0.96], [0, 0, 0])
+    .normalise({ lower: 0.5, upper: 99.5 })
+    .modulate({ saturation: 1.15 })
+    .linear(1.06, -6)
+    .toBuffer();
+  return buf;
+}
+
+/** Square crop zoomed in ~25% around the most interesting part, so the food fills the frame. */
+async function tightSquare(buf, size, zoom = 0.78) {
+  const big = Math.round(size / zoom);
+  const scaled = await sharp(buf).resize(big, big, { fit: "cover", position: sharp.strategy.attention }).toBuffer();
+  const off = Math.round((big - size) / 2);
+  return sharp(scaled).extract({ left: off, top: off, width: size, height: size });
+}
 
 let count = 0;
-async function save(pipeline, file) {
+const save = async (pipeline, file) => {
   await pipeline.toFile(file);
   count++;
-}
+};
 
-// Dish photos: 4:3, cropped around the most interesting part, at two widths
-// (320 px for small cards, 640 px for larger cards and sharp phone screens).
-for (const [name, path] of Object.entries(sources.dishes)) {
-  const input = fromRepo(path);
-  for (const width of [320, 640]) {
-    await save(
-      webp(input)
-        .resize(width, Math.round((width * 3) / 4), { fit: "cover", position: sharp.strategy.attention })
-        .webp({ quality: 72 }),
-      join(dishesOut, `${name}-${width}.webp`),
-    );
+// Dish photos: square, two sizes (320 px for small spots, 640 px for big cards and sharp screens).
+const gradedDishes = {};
+for (const [name, d] of Object.entries(sources.dishes)) {
+  const buf = await graded(dishSource(d));
+  gradedDishes[name] = buf;
+  for (const size of [320, 640]) {
+    await save((await tightSquare(buf, size)).webp({ quality: 74 }), join(dishesOut, `${name}-${size}.webp`));
   }
 }
 
-// Hero collage and the static map: keep their shape, two widths each.
-for (const [name, widths] of [["hero", [960, 1920]], ["map", [640, 1280]]]) {
-  const input = fromRepo(sources[name]);
-  for (const width of widths) {
-    await save(
-      webp(input).resize({ width, withoutEnlargement: true }).webp({ quality: 70 }),
-      join(out, `${name}-${width}.webp`),
-    );
-  }
+// Hero dish: the round photo in the red band, 640 and 960 px.
+const heroBuf = gradedDishes[sources.hero];
+for (const size of [640, 960]) {
+  await save((await tightSquare(heroBuf, size, 0.85)).webp({ quality: 76 }), join(out, `hero-dish-${size}.webp`));
 }
 
-// Logo (transparent background), two widths.
-const logo = fromBranch(sources.logo);
-for (const width of [240, 480]) {
-  await save(sharp(logo).resize({ width }).webp({ quality: 85 }), join(out, `logo-${width}.webp`));
-}
-
-// Social sharing preview (Facebook, iMessage, Google): 1200 x 630 JPEG from the hero collage.
+// Social sharing preview (Facebook, iMessage, Google): 1200 x 630 from the hero dish.
 await save(
-  webp(fromRepo(sources.hero)).resize(1200, 630, { fit: "cover" }).jpeg({ quality: 78 }),
+  sharp(heroBuf).resize(1200, 630, { fit: "cover", position: sharp.strategy.attention }).jpeg({ quality: 78 }),
   join(out, "og.jpg"),
 );
 
+// The static map, two widths.
+for (const width of [640, 1280]) {
+  await save(
+    sharp(fromRepo(sources.map)).resize({ width, withoutEnlargement: true }).webp({ quality: 70 }),
+    join(out, `map-${width}.webp`),
+  );
+}
+
+// Logo (transparent background), three widths: header on phones, header on desktop, sharp screens.
+const logo = git(["show", `${sources.logo.ref}:${sources.logo.path}`]);
+for (const width of [240, 480, 720]) {
+  await save(sharp(logo).resize({ width }).webp({ quality: 85 }), join(out, `logo-${width}.webp`));
+}
+
 // Site icons: the logo on white, square. Next.js picks up app/icon.png and app/apple-icon.png.
-const square = (size) =>
-  sharp(logo)
-    .resize(Math.round(size * 0.86), Math.round(size * 0.86), { fit: "contain", background: "#ffffff" })
-    .extend({
-      top: Math.round(size * 0.07),
-      bottom: size - Math.round(size * 0.86) - Math.round(size * 0.07),
-      left: Math.round(size * 0.07),
-      right: size - Math.round(size * 0.86) - Math.round(size * 0.07),
-      background: "#ffffff",
-    })
+const square = (size) => {
+  const inner = Math.round(size * 0.86);
+  const pad = Math.round(size * 0.07);
+  return sharp(logo)
+    .resize(inner, inner, { fit: "contain", background: "#ffffff" })
+    .extend({ top: pad, bottom: size - inner - pad, left: pad, right: size - inner - pad, background: "#ffffff" })
     .flatten({ background: "#ffffff" })
     .png({ palette: true, compressionLevel: 9 });
+};
 await save(square(512), join(root, "app", "icon.png"));
 await save(square(180), join(root, "app", "apple-icon.png"));
 

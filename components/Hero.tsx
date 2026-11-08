@@ -1,82 +1,64 @@
 import { site } from "@/data/site";
-import { PhoneIcon, PinIcon } from "./icons";
+import { BagIcon, PhoneIcon } from "./icons";
 
-/** Headline, Call and Directions, then Order (with the pickup offer) and Hours. */
+/** The red band: headline, Call and Order, and a round dish photo that echoes the logo's dragon circle. */
 export function Hero() {
   return (
     <>
-      <section className="mx-auto grid max-w-6xl gap-6 px-4 pt-7 pb-5 sm:px-6 md:grid-cols-2 md:items-center md:gap-10 md:py-12">
-        <div className="flex flex-col gap-4">
-          <h1 className="font-display text-[34px] leading-[1.1] font-bold text-leaf md:text-5xl">{site.tagline}</h1>
-          <p className="text-clay md:text-lg">
-            {site.address.street} at Royal Oak · Family-run · Dinner Tuesday to Sunday
-          </p>
-          <div className="grid grid-cols-2 gap-2.5 sm:max-w-md">
-            <a
-              href={site.phone.href}
-              className="inline-flex min-h-[50px] items-center justify-center gap-2 rounded-full bg-chili font-semibold text-white hover:bg-chili-dark"
-            >
-              <PhoneIcon /> Call to order
-            </a>
-            <a
-              href={site.mapUrl}
-              className="inline-flex min-h-[50px] items-center justify-center gap-2 rounded-full border-2 border-leaf font-semibold text-leaf hover:bg-leaf hover:text-white"
-            >
-              <PinIcon /> Directions
-            </a>
+      <section className="bg-chili text-white">
+        <div className="relative mx-auto max-w-6xl px-5 pt-8 pb-[150px] sm:px-6 md:grid md:grid-cols-[1.25fr_1fr] md:gap-10 md:pt-16 md:pb-20">
+          <div className="relative z-10">
+            <h1 className="font-display text-[46px] leading-[0.98] font-extrabold tracking-[-0.02em] md:text-7xl">
+              {site.headline}
+            </h1>
+            <p className="mt-4 max-w-[19rem] text-[17px] leading-snug md:max-w-md md:text-xl">
+              Family-run on Kingsway at Royal Oak, Burnaby. Dinner Tuesday to Sunday.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-2.5">
+              <a
+                href={site.phone.href}
+                className="inline-flex min-h-[50px] items-center gap-2 rounded-full bg-white px-6 font-bold text-chili hover:bg-turmeric-soft"
+              >
+                <PhoneIcon /> Call to order
+              </a>
+              <a
+                href="#order"
+                className="inline-flex min-h-[50px] items-center gap-2 rounded-full border-2 border-white px-6 font-bold text-white hover:bg-white hover:text-chili"
+              >
+                <BagIcon /> Order delivery
+              </a>
+            </div>
           </div>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/hero-dish-640.webp"
+            srcSet="/images/hero-dish-640.webp 640w, /images/hero-dish-960.webp 960w"
+            sizes="(min-width: 768px) 440px, 250px"
+            width={640}
+            height={640}
+            alt="Masala Chicken"
+            fetchPriority="high"
+            className="absolute right-[-24px] bottom-[-110px] size-[250px] rounded-full border-8 border-white object-cover md:right-6 md:bottom-[-120px] md:size-[440px]"
+          />
         </div>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/hero-960.webp"
-          srcSet="/images/hero-960.webp 960w, /images/hero-1920.webp 1920w"
-          sizes="(min-width: 768px) 50vw, 100vw"
-          width={960}
-          height={532}
-          alt="A spread of Indian Wok dishes"
-          fetchPriority="high"
-          className="h-[210px] w-full rounded-2xl object-cover sm:h-72 md:h-auto"
-        />
       </section>
 
-      <div className="mx-auto grid max-w-6xl gap-4 px-4 sm:px-6 md:grid-cols-[2fr_1fr]">
-        <section id="order" aria-labelledby="order-h" className="flex scroll-mt-4 flex-col gap-3 rounded-2xl border border-line bg-white p-4 sm:p-5">
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <h2 id="order-h" className="font-display text-[22px] font-bold">
-              Order
-            </h2>
-            <span className="inline-flex min-h-[30px] items-center rounded-full bg-turmeric px-3 text-[13px] font-bold">
-              {site.pickupOffer}
-            </span>
-          </div>
-          <p className="text-sm text-clay">
-            Call ahead and pick up at the restaurant, or order delivery:
-          </p>
-          <div className="grid gap-2.5 sm:grid-cols-3">
-            {site.delivery.map((d) => (
-              <a
-                key={d.name}
-                href={d.href}
-                rel="noopener"
-                className="flex min-h-12 items-center justify-center rounded-xl border border-sand font-semibold hover:border-chili hover:text-chili"
-              >
-                {d.name}
-              </a>
-            ))}
-          </div>
-        </section>
-
-        <section aria-labelledby="hours-h" className="flex flex-col gap-2 rounded-2xl border border-line bg-white p-4 sm:p-5">
-          <h2 id="hours-h" className="font-display text-[22px] font-bold">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6">
+        <section aria-labelledby="hours-h" className="max-w-[150px] pt-6 md:max-w-none md:pt-10">
+          <h2 id="hours-h" className="font-display text-xl font-extrabold">
             Hours
           </h2>
-          {site.hours.map((h) => (
-            <div key={h.days} className={`flex justify-between gap-4 ${h.time === "Closed" ? "text-clay" : ""}`}>
-              <span>{h.days}</span>
-              <span className={h.time === "Closed" ? "" : "font-bold"}>{h.time}</span>
-            </div>
-          ))}
+          <p className="mt-1 leading-relaxed">
+            {site.hours[0].short} <strong className="whitespace-nowrap">{site.hours[0].time}</strong>
+            <br />
+            <span className="text-stone">Closed {site.hours[1].days}</span>
+          </p>
         </section>
+
+        <p className="mt-8 flex max-w-xl items-center gap-3 rounded-2xl bg-turmeric-soft px-4 py-3.5 md:mt-6">
+          <span className="font-display text-[28px] font-extrabold">10%</span>
+          <span className="leading-snug">off when you pick up in store. Call ahead and it’s ready when you arrive.</span>
+        </p>
       </div>
     </>
   );

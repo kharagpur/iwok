@@ -1,22 +1,22 @@
-/* Tailwind CSS v4. The design direction lives in @theme:
-   colours from the logo on warm cream; Fraunces for headings, the phone's own font for body. */
+/* Tailwind CSS v4. Design: option A, "chili signboard".
+   White page, the logo big, a bold chili-red band; Bricolage Grotesque for headings, the phone's own font for body. */
 @import "tailwindcss";
 
 @theme {
-  --color-chili: #a4161a; /* buttons, prices, spice */
-  --color-chili-dark: #7e1014;
-  --color-blush: #f6e3df; /* mild/medium spice tags */
-  --color-leaf: #2f4a14; /* headings, footer */
-  --color-turmeric: #e9a23b; /* the pickup offer */
-  --color-cream: #fbf5ec; /* page background */
-  --color-ink: #2a211c; /* text */
-  --color-clay: #6b5e55; /* small print */
-  --color-line: #e8dccb; /* borders */
-  --color-sand: #d9c9b4; /* button outlines */
+  --color-chili: #b3131b; /* the red band, buttons, prices, spice */
+  --color-chili-dark: #8a0e14;
+  --color-blush: #fbe9e7; /* mild/medium spice tags */
+  --color-leaf: #2f4a14; /* the logo's green: groups card, footer */
+  --color-turmeric: #e9a23b;
+  --color-turmeric-soft: #fdf1d6; /* the pickup offer */
+  --color-ink: #1e1a17; /* text */
+  --color-stone: #6e625a; /* small print */
+  --color-mist: #f5f1ee; /* soft fills */
+  --color-line: #eee7e2; /* dividers */
 }
 
 @theme inline {
-  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-display: var(--font-bricolage), system-ui, sans-serif;
 }
 
 html {
@@ -30,14 +30,33 @@ html {
 }
 
 body {
-  background: var(--color-cream);
+  background: #ffffff;
   color: var(--color-ink);
 }
 
-/* Hide the scrollbar on the menu's section bar; it still scrolls by swipe. */
+/* Clear keyboard focus on everything clickable. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--color-turmeric);
+  outline-offset: 2px;
+}
+
+/* Hide scrollbars on the swipe rows; they still scroll by swipe, trackpad or keyboard. */
 .no-scrollbar {
   scrollbar-width: none;
 }
 .no-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+/* FAQ: hide the default triangle; a plus sign rotates instead. */
+summary {
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .faq-plus {
+  transform: rotate(45deg);
 }

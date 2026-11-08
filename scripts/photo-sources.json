@@ -1,80 +1,352 @@
 {
-  "_about": "Where each image comes from in the old site's repo (github.com/kharagpur/iwok). Used by scripts/resize-photos.mjs; originals never go into this repo.",
+  "_about": "Where each image comes from in the old site's repo (github.com/kharagpur/iwok). 'blob' is the full-size camera original kept in the repo's history (before the 2021 compression); 'file' is the 2021 web copy, used when no original exists. Used by scripts/resize-photos.mjs; originals never go into this repo.",
   "logo": {
     "ref": "origin/Feature--Website-Redesign",
     "path": "IMAGE/LOGO/nav-logo-transparent.png"
   },
-  "hero": "IMAGE/LOGO/Hero_img.png",
   "map": "IMAGE/LOGO/IndianWok-Map.png",
+  "hero": "c3",
   "dishes": {
-    "a1": "IMAGE/DISH/Appitizers/A1.Vegetarian_Spring_Roll.jpg",
-    "a3": "IMAGE/DISH/Appitizers/A3.Vegetable_Pakora.JPG",
-    "a5": "IMAGE/DISH/Appitizers/A5.Papadum.jpg",
-    "a6": "IMAGE/DISH/Appitizers/A6.Chicken_Lettuce_Wrap.jpg",
-    "a7": "IMAGE/DISH/Appitizers/A7.Chili_Garlic_Wings.png",
-    "a8": "IMAGE/DISH/Appitizers/A8.Chili_Garlic_Chicken_Dumplings.jpg",
-    "a9": "IMAGE/DISH/Appitizers/Combo pakora.JPG",
-    "a10": "IMAGE/DISH/Appitizers/A10.Dry_Chili_Chicken.JPG",
-    "b1": "IMAGE/DISH/Beef/B1.Beef_With_Spicy_Eggplant_and_Green_Beans.JPG",
-    "b2": "IMAGE/DISH/Beef/B2.Ginger_Beef.jpg",
-    "b3": "IMAGE/DISH/Beef/B3.Beef_With_Broccoli.jpg",
-    "b4": "IMAGE/DISH/Beef/B4.Szechuan_Beef.JPG",
-    "b5": "IMAGE/DISH/Beef/B5.Chili_Beef.jpg",
-    "b6": "IMAGE/DISH/Beef/B6.Curry_Beef.jpg",
-    "c1": "IMAGE/DISH/Chicken/C1.Manchurian_Ch.JPG",
-    "c2": "IMAGE/DISH/Chicken/C2.GreenBean_with_Chicken.JPG",
-    "c3": "IMAGE/DISH/Chicken/C3.Masala_Chicken.jpg",
-    "c4": "IMAGE/DISH/Chicken/C4.Chili_Chicken.JPG",
-    "c5": "IMAGE/DISH/Chicken/C5.Tangerine_Chicken.JPG",
-    "c8": "IMAGE/DISH/Chicken/C8.Butter_Chicken.JPG",
-    "c9": "IMAGE/DISH/Chicken/C9.Sweet_and_Sour_Chicken.JPG",
-    "c11": "IMAGE/DISH/Chicken/C11.Honey_Garlic_Chicken.JPG",
-    "c12": "IMAGE/DISH/Chicken/C12.Szechuan_Chicken.JPG",
-    "c13": "IMAGE/DISH/Chicken/C13.General_Tso's_Chicken.JPG",
-    "c14": "IMAGE/DISH/Chicken/C14.Dai_Ching_Chicken.JPG",
-    "c15": "IMAGE/DISH/Chicken/C15.Chicken_Curry.JPG",
-    "f1": "IMAGE/DISH/Fish/F1.Bombay_Style_Garlic_Fish.JPG",
-    "f2": "IMAGE/DISH/Fish/F2.Chili_Fish.JPG",
-    "f3": "IMAGE/DISH/Fish/F3.Stir-Fried_Szechuan_Fish.JPG",
-    "f4": "IMAGE/DISH/Fish/F4.Sweet_and_Sour_Fish.jpg",
-    "f5": "IMAGE/DISH/Fish/F5.Fish_With_Black_Bean_Sauce.JPG",
-    "f6": "IMAGE/DISH/Fish/F6.Masala_fish.JPG",
-    "f7": "IMAGE/DISH/Fish/F7.Hot_and_Spicy_Squid_Dry.JPG",
-    "g1": "IMAGE/DISH/Chicken/CH BB3.JPG",
-    "g2": "IMAGE/DISH/G - Gluten Free/G2.Gluten_Free_Ch_pineapple.jpg",
-    "g3": "IMAGE/DISH/G - Gluten Free/G3.Gluten_Free_Veg_vemicilli_noodle.jpg",
-    "naan": "IMAGE/DISH/Unsorted or Duplicates/NAAN.jpg",
-    "n1": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/Hakka Skinny Chowmein.jpg",
-    "n3": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N3.Vegetarain_Szechuan_Chow_Mein.jpg",
-    "n4": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N4.Veg_Manchurian_Noodle.jpg",
-    "n5": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N5.Veg_American_Chopsuey.jpg",
-    "n6": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/Crispy Noodle with Vegetables.JPG",
-    "n7": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N7.Calcutta_Hakka_Style_Chowmmein.JPG",
-    "n8": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N8.Ch_Shangai_Chowmein.jpg",
-    "n9": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N9.Chicken_Szechuan_Chowmein.JPG",
-    "n10": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N10.Chicken_Manchurian_Noodle.jpg",
-    "p3": "IMAGE/DISH/Prawn/P3.Masala_Prawns_Dry.jpg",
-    "p4": "IMAGE/DISH/Prawn/P4.Curry_Prawns.jpg",
-    "p5": "IMAGE/DISH/Prawn/P5.Hot_&_Spicy_Prawns.jpg",
-    "r1": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R1.Vegetarian_Fried_Rice.jpg",
-    "r3": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R3.Vegetarian_Szechuan_Rice.jpg",
-    "r4": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R4.Veg_Manchurian_Rice.png",
-    "r5": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R5.Chicken_Fried_Rice.JPG",
-    "r6": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R6.Masala_rice.jpg",
-    "r7": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R7.Chicken_Szechuan_Rice.JPG",
-    "r8": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R8.Chicken_Manchurian_Rice.jpg",
-    "s3": "IMAGE/DISH/S - Soups/S3.Chicken_Hot_and_Sour_Soup.jpg",
-    "s5": "IMAGE/DISH/Appitizers/IMG_0028.jpg",
-    "s6": "IMAGE/DISH/S - Soups/S6.chicken_clear_egg_drop_Soup.jpg",
-    "t1": "IMAGE/DISH/Vegetarian/TOFU VEG2.JPG",
-    "t2": "IMAGE/DISH/Vegetarian/H S TOFU2.JPG",
-    "t4": "IMAGE/DISH/Tofu_and_Paneer/T4.Tofu_Eggplant_in_Black_Bean_Sauce.JPG",
-    "t5": "IMAGE/DISH/Tofu_and_Paneer/T5.Chili_Garlic_Paneer.jpg",
-    "t6": "IMAGE/DISH/Vegetarian/H S PANEER2.JPG",
-    "v1": "IMAGE/DISH/Vegetarian/V1.Vegetable_Manchurian.JPG",
-    "v3": "IMAGE/DISH/Vegetarian/V3.GreenBean_EggPlant.JPG",
-    "v4": "IMAGE/DISH/Vegetarian/V4.Spicy_Greenbean.JPG",
-    "v5": "IMAGE/DISH/Vegetarian/V5.Mix_vegetable.jpg",
-    "v10": "IMAGE/DISH/Vegetarian/V10.Sweat_and_sour_veg.jpg"
+    "a1": {
+      "blob": "628a57b3113fff8a188931c8b3a9a80ec570cfb9",
+      "original": "IMAGE/DISH/Appitizers/A1.Vegetarian_Spring_Roll.jpg",
+      "file": "IMAGE/DISH/Appitizers/A1.Vegetarian_Spring_Roll.jpg"
+    },
+    "a3": {
+      "blob": "b270e2d387a807d1b0cf937ebb5a5db19cccb3ab",
+      "original": "IMAGE/DISH/Appitizers/A3.Vegetable_Pakora.JPG",
+      "file": "IMAGE/DISH/Appitizers/A3.Vegetable_Pakora.JPG"
+    },
+    "a5": {
+      "blob": "094272b05852d8b48710db12d08d0cb5b6b05f36",
+      "original": "IMAGE/DISH/Papadum.JPG",
+      "file": "IMAGE/DISH/Appitizers/A5.Papadum.jpg"
+    },
+    "a6": {
+      "blob": "059e18661822f461768d5c54e4e0b5a067959fd7",
+      "original": "IMAGE/DISH/Chicken/Archive/Chicken Lettuce Wrap.jpg",
+      "file": "IMAGE/DISH/Appitizers/A6.Chicken_Lettuce_Wrap.jpg"
+    },
+    "a7": {
+      "blob": "266cff69b1180693f4f078417ff4a09de28d9c07",
+      "original": "IMAGE/DISH/View recent photos.png",
+      "file": "IMAGE/DISH/Appitizers/A7.Chili_Garlic_Wings.png"
+    },
+    "a8": {
+      "blob": "8e7af0c8e70b71b0d6fc9ca436326477ffa0f6fe",
+      "original": "IMAGE/DISH/Appitizers/A8.Chili_Garlic_Chicken_Dumplings.jpg",
+      "file": "IMAGE/DISH/Appitizers/A8.Chili_Garlic_Chicken_Dumplings.jpg"
+    },
+    "a9": {
+      "blob": "ac9399b07a62e95073bb79e35b5cf04ac4e50dc4",
+      "original": "IMAGE/DISH/Appitizers/Combo pakora.JPG",
+      "file": "IMAGE/DISH/Appitizers/Combo pakora.JPG"
+    },
+    "a10": {
+      "blob": "a8aa572d9b573933e38c9674d024d5d6d5dade61",
+      "original": "IMAGE/DISH/Appitizers/DRY CHILI CH1.JPG",
+      "file": "IMAGE/DISH/Appitizers/A10.Dry_Chili_Chicken.JPG"
+    },
+    "b1": {
+      "blob": "3654344154a15a9a292ad5c14f9ae7e69139ce49",
+      "original": "IMAGE/DISH/Beef/B1.Beef_With_Spicy_Eggplant_and_Green_Beans.JPG",
+      "file": "IMAGE/DISH/Beef/B1.Beef_With_Spicy_Eggplant_and_Green_Beans.JPG"
+    },
+    "b2": {
+      "blob": "ab9dff552651b12a6ada27880f410068a12d7a7f",
+      "original": "IMAGE/DISH/Beef/B2.Ginger_Beef.jpg",
+      "file": "IMAGE/DISH/Beef/B2.Ginger_Beef.jpg"
+    },
+    "b3": {
+      "blob": "5a1537a8eded31d5e2c741785e6fa7196831c475",
+      "original": "IMAGE/DISH/Beef/B3.Beef_With_Broccoli.jpg",
+      "file": "IMAGE/DISH/Beef/B3.Beef_With_Broccoli.jpg"
+    },
+    "b4": {
+      "blob": "51c6d570e04efd146fcb0516f51936044e7c1707",
+      "original": "IMAGE/DISH/Beef/B4.Szechuan_Beef.JPG",
+      "file": "IMAGE/DISH/Beef/B4.Szechuan_Beef.JPG"
+    },
+    "b5": {
+      "file": "IMAGE/DISH/Beef/B5.Chili_Beef.jpg"
+    },
+    "b6": {
+      "blob": "beeed89131d39eba7f203fc4d2df96c91684657d",
+      "original": "IMAGE/DISH/curry beef.JPG",
+      "file": "IMAGE/DISH/Beef/B6.Curry_Beef.jpg"
+    },
+    "c1": {
+      "blob": "47b73719c4f491d2e4da13b392500b97910b30d1",
+      "original": "IMAGE/DISH/Appitizers/Manchurian Ch.JPG",
+      "file": "IMAGE/DISH/Chicken/C1.Manchurian_Ch.JPG"
+    },
+    "c2": {
+      "file": "IMAGE/DISH/Chicken/C2.GreenBean_with_Chicken.JPG"
+    },
+    "c3": {
+      "blob": "511f1c7e3dd9066cd76de57ea1a42e624787a5a0",
+      "original": "IMAGE/DISH/Masala chicken.JPG",
+      "file": "IMAGE/DISH/Chicken/C3.Masala_Chicken.jpg"
+    },
+    "c4": {
+      "blob": "6d031f676bd500f9fd8d4181c87be7a6413d7672",
+      "original": "IMAGE/DISH/Chicken/C4.Chili_Chicken.JPG",
+      "file": "IMAGE/DISH/Chicken/C4.Chili_Chicken.JPG"
+    },
+    "c5": {
+      "blob": "9f03c2e803eed7c46891730525b897326ad4c3b4",
+      "original": "IMAGE/DISH/Chicken/C5.Tangerine_Chicken.JPG",
+      "file": "IMAGE/DISH/Chicken/C5.Tangerine_Chicken.JPG"
+    },
+    "c8": {
+      "blob": "7c5cc605ce5167a821c7f42d742b78e2cbebe43c",
+      "original": "IMAGE/DISH/Appitizers/Butter Ch.JPG",
+      "file": "IMAGE/DISH/Chicken/C8.Butter_Chicken.JPG"
+    },
+    "c9": {
+      "blob": "1e76ae168c49ab3b866b7d90fe28f2d0521ded77",
+      "original": "IMAGE/DISH/Chicken/C9.Sweet_and_Sour_Chicken.JPG",
+      "file": "IMAGE/DISH/Chicken/C9.Sweet_and_Sour_Chicken.JPG"
+    },
+    "c11": {
+      "blob": "9d43050b81f2dd9e4f0112d68c51370adae8d23b",
+      "original": "IMAGE/DISH/Appitizers/Honey Garlic Ch.JPG",
+      "file": "IMAGE/DISH/Chicken/C11.Honey_Garlic_Chicken.JPG"
+    },
+    "c12": {
+      "blob": "e04277413b488a4f437ae32e9b6fe7be706fb3a5",
+      "original": "IMAGE/DISH/Appitizers/SZ CH 3.JPG",
+      "file": "IMAGE/DISH/Chicken/C12.Szechuan_Chicken.JPG"
+    },
+    "c13": {
+      "blob": "c47f6ab21ae0aa98f53c30004fbf55e3a091d472",
+      "original": "IMAGE/DISH/Chicken/C13.General_Tso's_Chicken.JPG",
+      "file": "IMAGE/DISH/Chicken/C13.General_Tso's_Chicken.JPG"
+    },
+    "c14": {
+      "blob": "fa483d41521d177929725e6feb9316b420d96912",
+      "original": "IMAGE/DISH/Chicken/C14.Dai_Ching_Chicken.JPG",
+      "file": "IMAGE/DISH/Chicken/C14.Dai_Ching_Chicken.JPG"
+    },
+    "c15": {
+      "blob": "42573cf956e385c182c425c7be9711ca7bc42579",
+      "original": "IMAGE/DISH/Appitizers/Ch curry.JPG",
+      "file": "IMAGE/DISH/Chicken/C15.Chicken_Curry.JPG"
+    },
+    "f1": {
+      "blob": "956a93802677f33d725f30e8e3241f2f1cf937be",
+      "original": "IMAGE/DISH/Fish/F1.Bombay_Style_Garlic_Fish.JPG",
+      "file": "IMAGE/DISH/Fish/F1.Bombay_Style_Garlic_Fish.JPG"
+    },
+    "f2": {
+      "blob": "3d3e3ccf8e14e91a07875399e307a26853f68c8b",
+      "original": "IMAGE/DISH/Fish/F2.Chili_Fish.JPG",
+      "file": "IMAGE/DISH/Fish/F2.Chili_Fish.JPG"
+    },
+    "f3": {
+      "blob": "ac33065dea28e1e88ec536943b9ccfecbc944c4e",
+      "original": "IMAGE/DISH/Fish/Fish/Sz Fish.JPG",
+      "file": "IMAGE/DISH/Fish/F3.Stir-Fried_Szechuan_Fish.JPG"
+    },
+    "f4": {
+      "blob": "6730a5b8104ea0d289d2b1633c636502cf2c775c",
+      "original": "IMAGE/DISH/Fish/F4.Sweet_and_Sour_Fish.jpg",
+      "file": "IMAGE/DISH/Fish/F4.Sweet_and_Sour_Fish.jpg"
+    },
+    "f5": {
+      "blob": "cdae53a45d08db2b784876c123eb1e4c6a0d976a",
+      "original": "IMAGE/DISH/Fish/F5.Fish_With_Black_Bean_Sauce.JPG",
+      "file": "IMAGE/DISH/Fish/F5.Fish_With_Black_Bean_Sauce.JPG"
+    },
+    "f6": {
+      "blob": "30ed2bd0e36f327c0300973fd02915f93d61b94b",
+      "original": "IMAGE/DISH/Fish/Fish/masala fish.JPG",
+      "file": "IMAGE/DISH/Fish/F6.Masala_fish.JPG"
+    },
+    "f7": {
+      "blob": "e7308e504b5396505cd584d8df6d864548b76d8e",
+      "original": "IMAGE/DISH/Fish/F7.Hot_and_Spicy_Squid_Dry.JPG",
+      "file": "IMAGE/DISH/Fish/F7.Hot_and_Spicy_Squid_Dry.JPG"
+    },
+    "g1": {
+      "blob": "bc98609f94349b691d5f1f95b48171e2da5df771",
+      "original": "IMAGE/DISH/Chicken/CH BB3.JPG",
+      "file": "IMAGE/DISH/Chicken/CH BB3.JPG"
+    },
+    "g2": {
+      "blob": "8ce018bf10d6adacc4e82503d4da9fd394e1ae3c",
+      "original": "IMAGE/DISH/Gluten Free Ch pineapple.JPG",
+      "file": "IMAGE/DISH/G - Gluten Free/G2.Gluten_Free_Ch_pineapple.jpg"
+    },
+    "g3": {
+      "blob": "582c83a235fb5801fe8c63070390909816311f0c",
+      "original": "IMAGE/DISH/Gluten Free Veg vemicilli noodle.JPG",
+      "file": "IMAGE/DISH/G - Gluten Free/G3.Gluten_Free_Veg_vemicilli_noodle.jpg"
+    },
+    "naan": {
+      "blob": "58441312fe026425e5295f807959bbc9e8996d45",
+      "original": "IMAGE/DISH/NAAN.JPG",
+      "file": "IMAGE/DISH/Unsorted or Duplicates/NAAN.jpg"
+    },
+    "n1": {
+      "blob": "5d265880841934cf61a37e502d175b610617b3f9",
+      "original": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/Hakka Skinny Chowmein.jpg",
+      "file": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/Hakka Skinny Chowmein.jpg"
+    },
+    "n3": {
+      "blob": "726202c51e51c3e604307ec24edd9c6b07fc580e",
+      "original": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N3.Vegetarain_Szechuan_Chow_Mein.jpg",
+      "file": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N3.Vegetarain_Szechuan_Chow_Mein.jpg"
+    },
+    "n4": {
+      "blob": "352f7c9200497769d64c61639ad97e9ec0b6aad7",
+      "original": "IMAGE/DISH/Veg Manchurian Noodle.jpeg",
+      "file": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N4.Veg_Manchurian_Noodle.jpg"
+    },
+    "n5": {
+      "blob": "ab2c8ce2d7b86a00b87f67661e43fb62e157feff",
+      "original": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/Veg American Chopsuey.JPG",
+      "file": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N5.Veg_American_Chopsuey.jpg"
+    },
+    "n6": {
+      "blob": "58f6dd83e7b57b3637edf8c6f8b22e43f5934b56",
+      "original": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/Crispy Noodle with Vegetables.JPG",
+      "file": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/Crispy Noodle with Vegetables.JPG"
+    },
+    "n7": {
+      "blob": "38f4b2834e47f92169170721ab323ea00210eac6",
+      "original": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N7.Calcutta_Hakka_Style_Chowmmein.JPG",
+      "file": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N7.Calcutta_Hakka_Style_Chowmmein.JPG"
+    },
+    "n8": {
+      "blob": "6f7930050461034ac0ff8dd390316227574504cb",
+      "original": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N8.Ch_Shangai_Chowmein.jpg",
+      "file": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N8.Ch_Shangai_Chowmein.jpg"
+    },
+    "n9": {
+      "blob": "611625b7790c57670d510230643924a503927a9c",
+      "original": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N9.Chicken_Szechuan_Chowmein.JPG",
+      "file": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N9.Chicken_Szechuan_Chowmein.JPG"
+    },
+    "n10": {
+      "blob": "77cdb8173b0ae99e7bf3d48cd95cf3c4f5c93d19",
+      "original": "IMAGE/DISH/IMG_1891.jpg",
+      "file": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/N10.Chicken_Manchurian_Noodle.jpg"
+    },
+    "p3": {
+      "blob": "ecb4bd85c485009092efa1660664c49cae66626a",
+      "original": "IMAGE/DISH/Prawn/P3.Masala_Prawns_Dry.jpg",
+      "file": "IMAGE/DISH/Prawn/P3.Masala_Prawns_Dry.jpg"
+    },
+    "p4": {
+      "blob": "8c22183c4e54c4bbbe1a530d72f8ae5b82ac4c4c",
+      "original": "IMAGE/DISH/Prawn/P4.Curry_Prawns.jpg",
+      "file": "IMAGE/DISH/Prawn/P4.Curry_Prawns.jpg"
+    },
+    "p5": {
+      "blob": "a34b7ccffeaa643d1f1d528eabae8d06ecf6d3a8",
+      "original": "IMAGE/DISH/Prawn/P5.Hot_&_Spicy_Prawns.jpg",
+      "file": "IMAGE/DISH/Prawn/P5.Hot_&_Spicy_Prawns.jpg"
+    },
+    "r1": {
+      "blob": "6764f919c26648585773f85973ecd2b12af8fdac",
+      "original": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R1.Vegetarian_Fried_Rice.jpg",
+      "file": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R1.Vegetarian_Fried_Rice.jpg"
+    },
+    "r3": {
+      "blob": "9ba7bb95e42b3e702f692a482b6f1df15b3ac35c",
+      "original": "IMAGE/DISH/Veg SZ Rice.JPG",
+      "file": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R3.Vegetarian_Szechuan_Rice.jpg"
+    },
+    "r4": {
+      "blob": "014e726cc13c1ee6c36f3e5cb13e19f3a16aff25",
+      "original": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R4. Veg. Manchurian Rice.png",
+      "file": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R4.Veg_Manchurian_Rice.png"
+    },
+    "r5": {
+      "blob": "dbc75fd9ce8926d821ebab021a706364563a4e08",
+      "original": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R5.Chicken_Fried_Rice.JPG",
+      "file": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R5.Chicken_Fried_Rice.JPG"
+    },
+    "r6": {
+      "blob": "fd352e7530acd42f662352f903bbf73837dcff5d",
+      "original": "IMAGE/DISH/masala rice.JPG",
+      "file": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R6.Masala_rice.jpg"
+    },
+    "r7": {
+      "blob": "5d6ba97ee6217062b9c815d5b5f030b7685d14e2",
+      "original": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R7.Chicken_Szechuan_Rice.JPG",
+      "file": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R7.Chicken_Szechuan_Rice.JPG"
+    },
+    "r8": {
+      "blob": "762e572ca4f6571e517d19801a66599af7b6938c",
+      "original": "IMAGE/DISH/IMG_1892.jpg",
+      "file": "IMAGE/DISH/Chowmein & Rice/Skinny Hakka Chowmein/R8.Chicken_Manchurian_Rice.jpg"
+    },
+    "s3": {
+      "blob": "ec7ca7535630752cda82206c9821cf0bc2abc6ee",
+      "original": "IMAGE/DISH/IMG_1895.jpg",
+      "file": "IMAGE/DISH/S - Soups/S3.Chicken_Hot_and_Sour_Soup.jpg"
+    },
+    "s5": {
+      "blob": "e8e07df7a105c0fcadf73296c3f7fe82eb80e0ef",
+      "original": "IMAGE/DISH/Appitizers/IMG_0028.jpg",
+      "file": "IMAGE/DISH/Appitizers/IMG_0028.jpg"
+    },
+    "s6": {
+      "blob": "0c92ea90e024932d67e954dbdff0f6a0c6a7a88a",
+      "original": "IMAGE/DISH/Appitizers/IMG_3391.JPG",
+      "file": "IMAGE/DISH/S - Soups/S6.chicken_clear_egg_drop_Soup.jpg"
+    },
+    "t1": {
+      "blob": "4d5ff819402579e392e6dff74dd7506b0d9f02e8",
+      "original": "IMAGE/DISH/Vegetarian/TOFU VEG2.JPG",
+      "file": "IMAGE/DISH/Vegetarian/TOFU VEG2.JPG"
+    },
+    "t2": {
+      "blob": "52035a5f67aebfdf798531e1f1a073abcc0f106a",
+      "original": "IMAGE/DISH/Vegetarian/H S TOFU2.JPG",
+      "file": "IMAGE/DISH/Vegetarian/H S TOFU2.JPG"
+    },
+    "t4": {
+      "blob": "cac85c10be616f824c3332526800cb3a8ac22568",
+      "original": "IMAGE/DISH/New folder/IMG_3467.JPG",
+      "file": "IMAGE/DISH/Tofu_and_Paneer/T4.Tofu_Eggplant_in_Black_Bean_Sauce.JPG"
+    },
+    "t5": {
+      "blob": "a62c4d40e0df3b698499fc5259c28b6d7cfc433c",
+      "original": "IMAGE/DISH/Tofu_and_Paneer/T5.Chili_Garlic_Paneer.jpg",
+      "file": "IMAGE/DISH/Tofu_and_Paneer/T5.Chili_Garlic_Paneer.jpg"
+    },
+    "t6": {
+      "blob": "b9940e1f3322450bbf5ecdc7a5ae03b89adcf8dd",
+      "original": "IMAGE/DISH/Vegetarian/H S PANEER2.JPG",
+      "file": "IMAGE/DISH/Vegetarian/H S PANEER2.JPG"
+    },
+    "v1": {
+      "blob": "b320b1d8a7f519d8abc27d63a40ef3b8fb50cebc",
+      "original": "IMAGE/DISH/Vegetarian/GOBI2.JPG",
+      "file": "IMAGE/DISH/Vegetarian/V1.Vegetable_Manchurian.JPG"
+    },
+    "v3": {
+      "blob": "79fb8dadd4f99110956c9641d9badb39875bbd12",
+      "original": "IMAGE/DISH/Vegetarian/GB EGG2.JPG",
+      "file": "IMAGE/DISH/Vegetarian/V3.GreenBean_EggPlant.JPG"
+    },
+    "v4": {
+      "blob": "d9fc2051a08fbebd95b094c3c98316dde9db7d97",
+      "original": "IMAGE/DISH/Vegetarian/GB BRO2.JPG",
+      "file": "IMAGE/DISH/Vegetarian/V4.Spicy_Greenbean.JPG"
+    },
+    "v5": {
+      "blob": "dddc82bc8d9ae386d2f1d3050c87ff2266275f9b",
+      "original": "IMAGE/DISH/Mix vegetable.jpeg",
+      "file": "IMAGE/DISH/Vegetarian/V5.Mix_vegetable.jpg"
+    },
+    "v10": {
+      "blob": "a5af3ced006caa4d3a5557030ed025a9aa113944",
+      "original": "IMAGE/DISH/sweat and sour veg.JPG",
+      "file": "IMAGE/DISH/Vegetarian/V10.Sweat_and_sour_veg.jpg"
+    }
   }
 }

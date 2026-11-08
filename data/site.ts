@@ -1,14 +1,15 @@
-// Restaurant facts used across the page. The menu lives in data/menu.ts.
-// Source: the current site (kharagpur/iwok) and the Indian Wok – Requirements note.
+// Restaurant facts used across the page, the structured data and llms.txt. The menu lives in data/menu.ts.
+// Source: the current site (kharagpur/iwok), Google Maps, and the Indian Wok – Requirements note.
 
 export const site = {
   name: "Indian Wok",
   url: "https://indianwok.ca",
-  tagline: "Hakka & Calcutta-style Indian-Chinese in Burnaby",
+  title: "Indian Wok | Hakka & Indian-Chinese food in Burnaby, Metro Vancouver",
+  headline: "Hakka & Calcutta-style Indian-Chinese",
   description:
-    "Family-run Indian-Chinese restaurant at 5212 Kingsway, Burnaby (Kingsway and Royal Oak). Hakka and Calcutta-style dishes, dinner Tuesday to Sunday. Order for pickup, or on DoorDash, Uber Eats and SkipTheDishes.",
+    "Family-run Indian-Chinese restaurant at 5212 Kingsway, Burnaby (Metro Vancouver), at Royal Oak. Hakka and Calcutta-style dishes like chili chicken, Manchurian and Hakka noodles, with vegetarian and gluten-free choices. Dinner Tuesday to Sunday; 10% off pickup; delivery on DoorDash, Uber Eats and SkipTheDishes.",
 
-  phone: { display: "604-428-2673", href: "tel:+16044282673" },
+  phone: { display: "604-428-2673", href: "tel:+16044282673", schema: "+1-604-428-2673" },
   email: "indianwokca@gmail.com",
 
   address: {
@@ -16,6 +17,7 @@ export const site = {
     city: "Burnaby",
     region: "BC",
     country: "CA",
+    area: "Metro Vancouver",
     landmark: "Corner of Kingsway and Royal Oak",
   },
   geo: { lat: 49.2246744, lng: -122.9884601 },
@@ -24,11 +26,14 @@ export const site = {
 
   // Tuesday to Sunday 4:30–9:30 pm, closed Monday (Google Maps, 2026-11-07).
   hours: [
-    { days: "Tuesday – Sunday", time: "4:30 – 9:30 pm" },
-    { days: "Monday", time: "Closed" },
+    { days: "Tuesday – Sunday", short: "Tue–Sun", time: "4:30 – 9:30 pm" },
+    { days: "Monday", short: "Mon", time: "Closed" },
   ],
-  // Same hours for search engines (schema.org format).
-  openingHours: ["Tu-Su 16:30-21:30"],
+  openingHours: {
+    days: ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    opens: "16:30",
+    closes: "21:30",
+  },
 
   pickupOffer: "10% off in-store pickup",
 
@@ -46,8 +51,23 @@ export const site = {
     { name: "Facebook", href: "https://www.facebook.com/indianwokcanada/" },
     { name: "Yelp", href: "https://www.yelp.ca/biz/indian-wok-burnaby" },
   ],
+
+  story:
+    "The owners are of Chinese descent, born and raised in India. They cooked Indian-Chinese food in their own restaurant in Austria for about thirty years before bringing those recipes to Burnaby.",
 };
 
-// Featured Google reviews (R12). The section stays hidden until reviews are added here.
-// Each: { quote: "…", author: "First name or name as shown on Google" }
-export const reviews: { quote: string; author: string }[] = [];
+// Google reviews (R12): rating, count and what guests say, written in our own words.
+// Checked on Google Maps on 2026-11-08; update `rating` and `count` now and then.
+export const googleReviews = {
+  rating: 4.4,
+  count: 1019,
+  countLabel: "1,000+",
+  url: site.mapUrl,
+  themes: [
+    { title: "Feels like family", text: "Guests say the owners make them feel like guests in their own home." },
+    { title: "Worth the drive", text: "Regulars come in from as far as Chilliwack for the Hakka cooking." },
+    { title: "Vegetarian-friendly", text: "Plenty of vegetarian dishes, and a kitchen that adjusts dishes for vegans." },
+  ],
+  // The dishes guests mention most (Google's review topics).
+  mostLoved: ["V1", "S1", "C4"],
+};

@@ -5,8 +5,8 @@ import { PinIcon } from "./icons";
 export function FindUs() {
   return (
     <>
-      <section id="find-us" aria-labelledby="find-h" className="mx-auto grid max-w-6xl scroll-mt-4 gap-4 px-4 pt-8 sm:px-6 md:grid-cols-2 md:items-center md:gap-10 md:pt-14">
-        <a href={site.mapUrl} className="block overflow-hidden rounded-2xl border border-line" aria-label="Open Indian Wok in Google Maps">
+      <section id="find-us" aria-labelledby="find-h" className="mx-auto grid max-w-6xl scroll-mt-4 gap-5 px-5 pt-12 sm:px-6 md:grid-cols-2 md:items-center md:gap-12 md:pt-16">
+        <a href={site.mapUrl} rel="noopener" className="block overflow-hidden rounded-3xl border border-line" aria-label="Open Indian Wok in Google Maps">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/map-640.webp"
@@ -17,14 +17,14 @@ export function FindUs() {
             alt="Map showing Indian Wok at Kingsway and Royal Oak"
             loading="lazy"
             decoding="async"
-            className="h-48 w-full object-cover md:h-72"
+            className="h-52 w-full object-cover md:h-80"
           />
         </a>
         <div className="flex flex-col gap-3">
-          <h2 id="find-h" className="font-display text-[26px] font-bold text-leaf md:text-3xl">
+          <h2 id="find-h" className="font-display text-[28px] font-extrabold md:text-4xl">
             Find us
           </h2>
-          <address className="leading-relaxed not-italic md:text-lg">
+          <address className="text-lg leading-relaxed not-italic">
             {site.address.street}, {site.address.city}, {site.address.region}
             <br />
             {site.address.landmark}
@@ -38,32 +38,27 @@ export function FindUs() {
               {site.email}
             </a>
           </p>
-          <div className="grid grid-cols-2 gap-2.5 sm:max-w-md">
-            <a
-              href={site.mapUrl}
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border-2 border-leaf font-semibold text-leaf hover:bg-leaf hover:text-white"
-            >
-              <PinIcon /> Directions
-            </a>
-            <a
-              href={`mailto:${site.email}`}
-              className="inline-flex min-h-12 items-center justify-center rounded-full border-2 border-leaf font-semibold text-leaf hover:bg-leaf hover:text-white"
-            >
-              Email
-            </a>
-          </div>
+          <a
+            href={site.mapUrl}
+            rel="noopener"
+            className="inline-flex min-h-12 w-fit items-center gap-2 rounded-full bg-ink px-6 font-semibold text-white hover:bg-chili"
+          >
+            <PinIcon /> Directions
+          </a>
         </div>
       </section>
 
-      <footer className="mt-10 bg-leaf text-white md:mt-16">
-        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 sm:px-6 md:flex-row md:items-center md:justify-between">
+      <footer className="mt-14 bg-leaf pb-24 text-white md:mt-20 md:pb-0">
+        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-9 sm:px-6 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="font-display text-[22px] font-bold">{site.name}</p>
-            <p className="text-[15px]">
+            <p className="font-display text-2xl font-extrabold">{site.name}</p>
+            <p className="mt-1 text-[15px]">
               {site.address.street}, {site.address.city} ·{" "}
               <a href={site.phone.href} className="underline-offset-2 hover:underline">
                 {site.phone.display}
               </a>
+              <br />
+              {site.hours[0].short} {site.hours[0].time} · Closed {site.hours[1].days}
             </p>
           </div>
           <ul className="flex gap-5 text-[15px]">

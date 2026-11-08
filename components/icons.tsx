@@ -38,3 +38,28 @@ export function PinIcon({ className = "size-5" }: IconProps) {
     </svg>
   );
 }
+
+export function BagIcon({ className = "size-5" }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M6 7h12l1 14H5L6 7z" />
+      <path d="M9 7a3 3 0 0 1 6 0" />
+    </svg>
+  );
+}
+
+export function StarIcon({ className = "size-5" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
+      <path d="M12 2.5l2.9 6 6.6.8-4.9 4.6 1.3 6.5L12 17.2l-5.9 3.2 1.3-6.5L2.5 9.3l6.6-.8z" />
+    </svg>
+  );
+}
+
+export function PlusIcon({ className = "size-5" }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M12 5v14M5 12h14" />
+    </svg>
+  );
+}

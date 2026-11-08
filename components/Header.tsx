@@ -1,41 +1,41 @@
 import { site } from "@/data/site";
 import { PhoneIcon } from "./icons";
 
+const links = [
+  { href: "#menu", label: "Menu" },
+  { href: "#reviews", label: "Reviews" },
+  { href: "#find-us", label: "Find us" },
+];
+
+/** The logo, big (R19), with a small menu. Phones: logo centred under the links; desktop: side by side. */
 export function Header() {
   return (
-    <header className="border-b border-line bg-white">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2 sm:px-6">
-        <a href="#top" className="shrink-0" aria-label="Indian Wok, back to top">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/logo-240.webp"
-            srcSet="/images/logo-240.webp 240w, /images/logo-480.webp 480w"
-            sizes="80px"
-            width={240}
-            height={191}
-            alt="Indian Wok"
-            className="h-auto w-[74px] sm:w-20"
-          />
+    <header className="mx-auto flex max-w-6xl flex-col items-center px-4 pt-2 pb-6 sm:px-6 md:flex-row md:items-center md:justify-between md:py-6">
+      <nav aria-label="Main" className="flex self-stretch justify-end gap-1 md:order-2 md:self-auto md:items-center">
+        {links.map((l) => (
+          <a key={l.href} href={l.href} className="inline-flex min-h-11 items-center px-3 font-semibold hover:text-chili">
+            {l.label}
+          </a>
+        ))}
+        <a
+          href={site.phone.href}
+          className="ml-2 hidden min-h-11 items-center gap-2 rounded-full bg-chili px-5 font-semibold text-white hover:bg-chili-dark md:inline-flex"
+        >
+          <PhoneIcon /> {site.phone.display}
         </a>
-        <nav aria-label="Main" className="flex items-center gap-1">
-          <a href="#menu" className="inline-flex min-h-11 items-center px-3 font-semibold hover:text-chili">
-            Menu
-          </a>
-          <a href="#order" className="hidden min-h-11 items-center px-3 font-semibold hover:text-chili sm:inline-flex">
-            Order
-          </a>
-          <a href="#find-us" className="hidden min-h-11 items-center px-3 font-semibold hover:text-chili sm:inline-flex">
-            Find us
-          </a>
-          <a
-            href={site.phone.href}
-            className="ml-1 inline-flex size-11 items-center justify-center gap-2 rounded-full bg-chili font-semibold text-white hover:bg-chili-dark sm:w-auto sm:px-5"
-          >
-            <PhoneIcon />
-            <span className="sr-only sm:not-sr-only">{site.phone.display}</span>
-          </a>
-        </nav>
-      </div>
+      </nav>
+      <a href="#top" className="md:order-1" aria-label="Indian Wok, back to top">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/logo-480.webp"
+          srcSet="/images/logo-480.webp 480w, /images/logo-720.webp 720w"
+          sizes="(min-width: 768px) 220px, 250px"
+          width={480}
+          height={383}
+          alt="Indian Wok"
+          className="h-auto w-[250px] md:w-[220px]"
+        />
+      </a>
     </header>
   );
 }

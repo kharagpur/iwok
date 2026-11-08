@@ -3,36 +3,44 @@ import localFont from "next/font/local";
 import { site } from "@/data/site";
 import "./globals.css";
 
-// Fraunces for headings, served from the site itself (no call to Google at visit time).
-const fraunces = localFont({
+// Bricolage Grotesque for headings, served from the site itself (no call to Google at visit time).
+const bricolage = localFont({
   src: [
-    { path: "../node_modules/@fontsource/fraunces/files/fraunces-latin-500-normal.woff2", weight: "500" },
-    { path: "../node_modules/@fontsource/fraunces/files/fraunces-latin-700-normal.woff2", weight: "700" },
+    { path: "../node_modules/@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-600-normal.woff2", weight: "600" },
+    { path: "../node_modules/@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-800-normal.woff2", weight: "800" },
   ],
-  variable: "--font-fraunces",
+  variable: "--font-bricolage",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: "Indian Wok | Indian-Chinese food in Burnaby",
+  title: site.title,
   description: site.description,
+  keywords: [
+    "Indian Chinese food Burnaby",
+    "Indian Chinese food Vancouver",
+    "Hakka food",
+    "Indo-Chinese restaurant",
+    "Indian Wok",
+  ],
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: site.url,
     siteName: site.name,
-    title: "Indian Wok | Indian-Chinese food in Burnaby",
+    title: site.title,
     description: site.description,
-    images: [{ url: "/images/og.jpg", width: 1200, height: 630, alt: "Dishes from Indian Wok" }],
+    images: [{ url: "/images/og.jpg", width: 1200, height: 630, alt: "Masala Chicken at Indian Wok" }],
     locale: "en_CA",
   },
+  twitter: { card: "summary_large_image", title: site.title, description: site.description, images: ["/images/og.jpg"] },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#2f4a14",
+  themeColor: "#b3131b",
 };
 
 export default function RootLayout({
@@ -41,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-CA" className={fraunces.variable}>
+    <html lang="en-CA" className={bricolage.variable}>
       <body className="font-sans antialiased">{children}</body>
     </html>
   );
