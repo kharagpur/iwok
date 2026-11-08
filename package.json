@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next build && serve out -l 4000",
+    "start": "next build && NO_UPDATE_CHECK=1 serve out -l 4000",
     "lint": "eslint",
     "photos": "node scripts/resize-photos.mjs"
   },
@@ -20,11 +20,23 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "eslint": "^9",
+    "eslint": "^10.14.0",
     "eslint-config-next": "16.4.5",
     "serve": "^14.2.7",
     "sharp": "^0.35.5",
     "tailwindcss": "^4.3.5",
     "typescript": "^5"
+  },
+  "overrides": {
+    "compression": "^1.8.2",
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "^11.0.5"
+    },
+    "@eslint/config-array": {
+      "minimatch": "^11.0.5"
+    },
+    "eslint": {
+      "minimatch": "^11.0.5"
+    }
   }
 }

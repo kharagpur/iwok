@@ -20,6 +20,7 @@ Static site for Indian Wok (an Indian-Chinese restaurant, Burnaby). Built with N
 - Photos come from the full-size 2021 originals in kharagpur/iwok's history: `npm run photos -- <clone>` (scripts/photo-sources.json).
 - Source code is in local Git only for now (no GitHub remote); the restaurant previews on the owner's laptop. Built files go to github.com/kharagpur/iwok only at launch, after her approval ([[2026-11-07 Local Git and Laptop Preview]] in the project notes).
 - Commit code here with `app: <summary>`. Code changes don't get project notes notes; requirements, decisions and milestones do.
+- `npm install` must stay clean (the owner, 2026-11-08): ESLint 10; patched `minimatch`/`compression` pinned under `overrides` in package.json; `.npmrc` has `legacy-peer-deps=true` because the Next.js lint plugins haven't declared ESLint 10 support. Run `npm audit` after adding packages.
 - This Next.js version (16) differs from older docs: read AGENTS.md and the guides in `node_modules/next/dist/docs/` before writing code.
 
 ## Commands
