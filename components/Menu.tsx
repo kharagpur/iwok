@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { menu, type MenuItem } from "@/data/menu";
 import { site } from "@/data/site";
 import { DishPhoto, Price, Spice } from "./Dish";
@@ -33,6 +33,10 @@ export function Menu() {
   const [active, setActive] = useState<string>(menu[0].id);
   const [photo, setPhoto] = useState<MenuItem | null>(null);
   const navRef = useRef<HTMLUListElement>(null);
+  const pillRef = useRef<HTMLDivElement>(null);
+  const tailRef = useRef<HTMLDivElement>(null);
+  // Before the browser measures the bar (first paint, or no JavaScript), the active button paints its own red.
+  const [measured, setMeasured] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const shown = menu
@@ -57,6 +61,46 @@ export function Menu() {
     sections.forEach((s) => s && observer.observe(s));
     return () => observer.disconnect();
   }, [shownIds]);
+
+  // The red "goo" pill behind the section bar (the owner, 2026-11-08: option 3, "Goo blob"). A pill and a slower
+  // tail blob share an SVG blur filter, so they stretch and melt together as the highlight moves to the next
+  // section. It moves to wherever `active` points; reduced-motion visitors get an instant switch.
+  const moved = useRef(false);
+  useLayoutEffect(() => {
+    const bar = navRef.current;
+    const chip = bar?.querySelector<HTMLElement>(`[data-section="${active}"]`);
+    if (!chip) return;
+    const animate = moved.current && !reducedMotion();
+    const place = (el: HTMLDivElement | null, transition: string) => {
+      if (!el) return;
+      el.style.transition = animate ? transition : "none";
+      el.style.transform = `translateX(${chip.offsetLeft}px)`;
+      el.style.width = `${chip.offsetWidth}px`;
+      el.style.top = `${chip.offsetTop}px`;
+      el.style.height = `${chip.offsetHeight}px`;
+    };
+    place(pillRef.current, "transform 320ms cubic-bezier(.5,0,.2,1), width 320ms ease");
+    place(tailRef.current, "transform 620ms cubic-bezier(.5,0,.2,1) 60ms, width 620ms ease 60ms");
+    moved.current = true;
+    setMeasured(true);
+  }, [active, shownIds]);
+
+  // Re-measure without animating when the bar's size changes (rotating a phone, fonts loading).
+  useEffect(() => {
+    const bar = navRef.current;
+    if (!bar) return;
+    const observer = new ResizeObserver(() => {
+      const chip = bar.querySelector<HTMLElement>("[aria-current]");
+      [pillRef.current, tailRef.current].forEach((el) => {
+        if (!el || !chip) return;
+        el.style.transition = "none";
+        el.style.transform = `translateX(${chip.offsetLeft}px)`;
+        el.style.width = `${chip.offsetWidth}px`;
+      });
+    });
+    observer.observe(bar);
+    return () => observer.disconnect();
+  }, []);
 
   // Keep the highlighted section's button in view in the scrolling bar.
   useEffect(() => {
@@ -115,7 +159,20 @@ export function Menu() {
       </div>
 
       <nav aria-label="Menu sections" className="sticky top-0 z-10 mt-3 border-b border-line bg-white/95 backdrop-blur">
-        <ul ref={navRef} className="no-scrollbar mx-auto flex max-w-6xl gap-1.5 overflow-x-auto px-5 py-2.5 sm:px-6">
+        <svg aria-hidden width="0" height="0" className="absolute">
+          <defs>
+            <filter id="menu-goo" x="-20%" y="-60%" width="140%" height="220%" colorInterpolationFilters="sRGB">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -12" result="goo" />
+              <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+            </filter>
+          </defs>
+        </svg>
+        <ul ref={navRef} className="no-scrollbar relative isolate mx-auto flex max-w-6xl gap-1.5 overflow-x-auto px-5 py-2.5 sm:px-6">
+          <li aria-hidden className="pointer-events-none absolute inset-0 z-[1] [filter:url(#menu-goo)]">
+            <div ref={tailRef} className="absolute left-0 rounded-full bg-chili motion-reduce:hidden" />
+            <div ref={pillRef} className="absolute left-0 rounded-full bg-chili" />
+          </li>
           {shown.map((c) => {
             const current = c.id === active;
             return (
@@ -124,11 +181,20 @@ export function Menu() {
                   href={`#${c.id}`}
                   data-section={c.id}
                   aria-current={current ? "true" : undefined}
-                  className={`inline-flex min-h-10 items-center rounded-full px-3.5 text-sm font-semibold whitespace-nowrap ${
-                    current ? "bg-chili text-white" : "bg-mist hover:bg-blush"
-                  }`}
+                  className="group relative inline-flex min-h-10 items-center rounded-full px-3.5 text-sm font-semibold whitespace-nowrap"
                 >
-                  {shortName[c.name] ?? c.name}
+                  {/* The button face sits under the pill (grey), or is the red highlight itself until the pill is measured. */}
+                  <span
+                    aria-hidden
+                    className={`absolute inset-0 z-0 rounded-full ${current && !measured ? "bg-chili" : "bg-mist group-hover:bg-blush"}`}
+                  />
+                  <span
+                    className={`relative z-[2] transition-colors delay-100 duration-200 motion-reduce:transition-none ${
+                      current ? "text-white" : "text-ink"
+                    }`}
+                  >
+                    {shortName[c.name] ?? c.name}
+                  </span>
                 </a>
               </li>
             );
