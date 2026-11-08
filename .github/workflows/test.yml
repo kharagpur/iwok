@@ -1,0 +1,30 @@
+# Runs the website's tests on every pull request (the owner's, the or Claude's), on iPhone/iPad
+# (Safari's engine), Android phones and tablets (Chrome's engine) and a laptop. A red ✗ on the pull
+# request means something broke; open "Details", then the playwright-report download, to see what.
+name: Test
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium webkit
+      - run: npx tsc --noEmit
+      - run: npm run lint
+      - run: npm test
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14
