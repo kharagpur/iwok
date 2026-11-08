@@ -1,5 +1,0 @@
-User-Agent: *
-Disallow: /IMAGE/DISH/
-
-Sitemap: sitemap.xml
-

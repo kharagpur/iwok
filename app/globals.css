@@ -1,0 +1,63 @@
+/* Tailwind CSS v4. Design: option A, "chili signboard" (vault: 2026-11-08 Modern Design – Option A).
+   White page, the logo big, a bold chili-red band; Bricolage Grotesque for headings, the phone's own font for body. */
+@import "tailwindcss";
+
+@theme {
+  --color-chili: #b3131b; /* the red band, buttons, prices, spice */
+  --color-chili-dark: #8a0e14;
+  --color-blush: #fbe9e7; /* mild/medium spice tags */
+  --color-leaf: #2f4a14; /* the logo's green: groups card, footer */
+  --color-leaf-soft: #eaf1e2; /* vegetarian tags, parking on the map */
+  --color-turmeric: #e9a23b;
+  --color-turmeric-soft: #fdf1d6; /* the pickup offer */
+  --color-ink: #1e1a17; /* text */
+  --color-stone: #6e625a; /* small print */
+  --color-mist: #f5f1ee; /* soft fills */
+  --color-line: #eee7e2; /* dividers */
+}
+
+@theme inline {
+  --font-display: var(--font-bricolage), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+}
+
+/* Clear keyboard focus on everything clickable. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid var(--color-turmeric);
+  outline-offset: 2px;
+}
+
+/* Hide scrollbars on the swipe rows; they still scroll by swipe, trackpad or keyboard. */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* FAQ: hide the default triangle; a plus sign rotates instead. */
+summary {
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .faq-plus {
+  transform: rotate(45deg);
+}
