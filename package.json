@@ -1,0 +1,42 @@
+{
+  "name": "indian-wok-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next build && NO_UPDATE_CHECK=1 serve out -l 4000",
+    "lint": "eslint",
+    "photos": "node scripts/resize-photos.mjs"
+  },
+  "dependencies": {
+    "@fontsource/bricolage-grotesque": "^5.3.0",
+    "next": "16.4.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.5",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^10.14.0",
+    "eslint-config-next": "16.4.5",
+    "serve": "^14.2.7",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^5"
+  },
+  "overrides": {
+    "compression": "^1.8.2",
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "^11.0.5"
+    },
+    "@eslint/config-array": {
+      "minimatch": "^11.0.5"
+    },
+    "eslint": {
+      "minimatch": "^11.0.5"
+    }
+  }
+}
