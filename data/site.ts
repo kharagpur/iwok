@@ -37,6 +37,13 @@ export const site = {
 
   pickupOffer: "10% off in-store pickup",
 
+  // Parking (the owner, 2026-11-08: "the parking is at the back"). Entrance from Royal Oak Ave, per Google Maps'
+  // "Public Parking – 6514 Royal Oak" behind the building (to confirm with the owner).
+  parking: {
+    text: "Parking is at the back of the building: drive in from Royal Oak Ave, just south of Kingsway.",
+    short: "Parking at the back, entrance on Royal Oak Ave",
+  },
+
   delivery: [
     {
       name: "DoorDash",

@@ -1,26 +1,16 @@
 import { site } from "@/data/site";
 import { PinIcon } from "./icons";
+import { LocationMap } from "./LocationMap";
 
-/** Map, address and contact (R7, R13), then the footer with social links. */
+/** Map (where we are, parking at the back), address and contact (R7, R13), then the footer with social links. */
 export function FindUs() {
   return (
     <>
       <section id="find-us" aria-labelledby="find-h" className="mx-auto grid max-w-6xl scroll-mt-4 gap-5 px-5 pt-12 sm:px-6 md:grid-cols-2 md:items-center md:gap-12 md:pt-16">
-        <a href={site.mapUrl} rel="noopener" className="block overflow-hidden rounded-3xl border border-line" aria-label="Open Indian Wok in Google Maps">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/map-640.webp"
-            srcSet="/images/map-640.webp 640w, /images/map-1280.webp 1280w"
-            sizes="(min-width: 768px) 50vw, 100vw"
-            width={640}
-            height={406}
-            alt="Map showing Indian Wok at Kingsway and Royal Oak"
-            loading="lazy"
-            decoding="async"
-            className="h-52 w-full object-cover md:h-80"
-          />
-        </a>
-        <div className="flex flex-col gap-3">
+        <div className="order-2 md:order-1">
+          <LocationMap />
+        </div>
+        <div className="order-1 flex flex-col gap-3 md:order-2">
           <h2 id="find-h" className="font-display text-[28px] font-extrabold md:text-4xl">
             Find us
           </h2>

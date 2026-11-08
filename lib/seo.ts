@@ -102,6 +102,7 @@ export function llmsTxt() {
 
 ## Key facts
 - Address: ${site.address.street}, ${site.address.city}, ${site.address.region}, Canada (${site.address.landmark}, ${site.address.area})
+- Parking: ${site.parking.short}
 - Phone: ${site.phone.display}
 - Email: ${site.email}
 - Hours: ${site.hours[0].days} ${site.hours[0].time}; closed ${site.hours[1].days}. Dinner only.

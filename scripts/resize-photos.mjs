@@ -88,14 +88,6 @@ await save(
   join(out, "og.jpg"),
 );
 
-// The static map, two widths.
-for (const width of [640, 1280]) {
-  await save(
-    sharp(fromRepo(sources.map)).resize({ width, withoutEnlargement: true }).webp({ quality: 70 }),
-    join(out, `map-${width}.webp`),
-  );
-}
-
 // Logo (transparent background), three widths: header on phones, header on desktop, sharp screens.
 const logo = git(["show", `${sources.logo.ref}:${sources.logo.path}`]);
 for (const width of [240, 480, 720]) {

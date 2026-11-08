@@ -17,6 +17,10 @@ export const faq: { q: string; a: string }[] = [
     a: `${site.address.street}, ${site.address.city}, ${site.address.region}, at the corner of Kingsway and Royal Oak in ${site.address.area}.`,
   },
   {
+    q: "Is there parking?",
+    a: `Yes. ${site.parking.text}`,
+  },
+  {
     q: "What is Indian-Chinese (Hakka) food?",
     a: "Chinese cooking adapted to Indian tastes by the Hakka Chinese community in Kolkata (Calcutta): bold, spicy and saucy dishes like chili chicken, Manchurian and Hakka chow mein.",
   },
