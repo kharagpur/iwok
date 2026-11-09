@@ -1,9 +1,9 @@
 // The one menu source for the whole site (R15): every section reads names, prices and photos from here.
 // Taken from the current site (github.com/kharagpur/iwok, index.html, full-menu section) on 2026-11-07;
 // spice levels, six new dishes and the most-ordered list checked against the delivery apps on 2026-11-08.
-// Prices, dish names, sizes and new entries supplied by the user on 2026-11-08.
+// Prices, dish names, sizes and new entries from the restaurant's current menu (2026-11-08).
 // Existing photos and spice levels retained; F8 was absent from the supplied list.
-// Items with a `check` note have an open question for Kenneth; they're listed in the vault too.
+// Items with a `check` note have an open question for the restaurant.
 
 export type Spice = "none" | "mild" | "medium" | "hot";
 
@@ -17,7 +17,7 @@ export type MenuItem = {
   /** For soups and plain rice, which come in sizes. */
   sizes?: { label: string; price: number }[];
   containsNuts?: boolean;
-  /** Vegetarian (no meat, fish or egg), from the dish names and sections; confirm with Sophia. */
+  /** Vegetarian (no meat, fish or egg), from the dish names and sections; to be confirmed by the restaurant. */
   vegetarian?: boolean;
   /** Base name of the dish photo: public/images/dishes/<photo>-320.webp and -640.webp (4:3, made by scripts/resize-photos.mjs). */
   photo?: string;
@@ -173,13 +173,13 @@ export const menu: MenuCategory[] = [
       { code: "N1", name: "Calcutta Vegetarian Hakka Chow Mein", spice: "none", vegetarian: true, price: 16.50, photo: "n1" },
       { code: "N2", name: "Vegetarian Shanghai Chow Mein", spice: "mild", vegetarian: true, price: 16.50 },
       { code: "N3", name: "Vegetarian Szechuan Chow Mein", spice: "medium", vegetarian: true, price: 17.50, photo: "n3" },
-      { code: "N4", name: "Vegetarian Manchurian Noodle", spice: "medium", vegetarian: true, price: 18.50, photo: "n4" },
+      { code: "N4", name: "Vegetarian Manchurian Noodle (With Sauce)", spice: "medium", vegetarian: true, price: 18.50, photo: "n4" },
       { code: "N5", name: "Vegetarian American Chop Suey", spice: "mild", vegetarian: true, price: 18.50, photo: "n5" },
       { code: "N6", name: "Pan-Fried Noodles with Vegetables", spice: "mild", vegetarian: true, price: 18.50, photo: "n6" },
       { code: "N7", name: "Calcutta Chicken Hakka Chow Mein", spice: "mild", price: 17.50, photo: "n7" },
       { code: "N8", name: "Chicken Shanghai Chow Mein", spice: "mild", price: 17.50, photo: "n8" },
       { code: "N9", name: "Chicken Szechuan Chow Mein", spice: "medium", price: 18.50, photo: "n9" },
-      { code: "N10", name: "Chicken Manchurian Noodle", spice: "medium", price: 19.50, photo: "n10" },
+      { code: "N10", name: "Chicken Manchurian Noodle (With Sauce)", spice: "medium", price: 19.50, photo: "n10" },
       { code: "N11", name: "Chicken American Chop Suey", spice: "mild", price: 19.50 },
       { code: "N12", name: "Crispy Noodles with Chicken and Vegetables", spice: "mild", price: 19.50 },
       { code: "N13", name: "Egg Calcutta Hakka Chow Mein", spice: "none", price: 18.25 },
@@ -193,11 +193,11 @@ export const menu: MenuCategory[] = [
       { code: "R1", name: "Vegetarian Fried Rice", spice: "mild", vegetarian: true, price: 15.50, photo: "r1" },
       { code: "R2", name: "Vegetarian Masala Rice", spice: "medium", vegetarian: true, price: 15.98 },
       { code: "R3", name: "Vegetarian Szechuan Rice", spice: "medium", vegetarian: true, price: 15.98, photo: "r3" },
-      { code: "R4", name: "Vegetarian Manchurian Rice", spice: "medium", vegetarian: true, price: 15.98, photo: "r4" },
+      { code: "R4", name: "Vegetarian Manchurian Rice (No Veg Balls Included)", spice: "medium", vegetarian: true, price: 15.98, photo: "r4" },
       { code: "R5", name: "Chicken Fried Rice", spice: "mild", price: 16.98, photo: "r5" },
       { code: "R6", name: "Chicken Masala Rice", spice: "medium", price: 17.50, photo: "r6" },
       { code: "R7", name: "Chicken Szechuan Rice", spice: "medium", price: 17.50, photo: "r7" },
-      { code: "R8", name: "Chicken Manchurian Rice", spice: "medium", price: 17.50, photo: "r8" },
+      { code: "R8", name: "Chicken Manchurian Rice (No Veg Balls Included)", spice: "medium", price: 17.50, photo: "r8" },
       { code: "R9", name: "Beef Fried Rice", spice: "mild", price: 18.50 },
       { code: "R10", name: "Egg Fried Rice", spice: "mild", price: 16.75 },
       { code: "R11", name: "Shrimp Fried Rice", spice: "none", price: 18.75 },

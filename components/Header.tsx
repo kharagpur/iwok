@@ -7,8 +7,7 @@ const links = [
   { href: "#find-us", label: "Find us" },
 ];
 
-/** The logo with a small menu. Phones: logo big (R19), centred under the links; desktop: side by side, at half
- *  the earlier size (Kenneth, 2026-11-08: "on desktop, the logo size is quite big… shrink that to 50%"). */
+/** The logo with a small menu. Phones: logo big, centred under the links; desktop: side by side, at half size. */
 export function Header() {
   return (
     <header className="mx-auto flex max-w-6xl flex-col items-center px-4 pt-2 pb-6 sm:px-6 md:flex-row md:items-center md:justify-between md:py-6">

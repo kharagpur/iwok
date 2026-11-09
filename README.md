@@ -63,7 +63,7 @@ To undo a merged change, open its pull request on GitHub and click **Revert**.
 | To change | Edit |
 | --- | --- |
 | Menu: dishes, prices, sizes, spice, vegetarian marks, most-ordered list | `data/menu.ts` |
-| Hours, phone, address, delivery and social links, reviews, family story | `data/site.ts` (hours are in two places there: `hours` and `openingHours`) |
+| Hours, phone, address, delivery and social links, reviews, our story | `data/site.ts` (hours are in two places there: `hours` and `openingHours`) |
 | FAQ | `data/faq.ts` |
 | Page sections | `components/` |
 | Colours and fonts | `app/globals.css` |
