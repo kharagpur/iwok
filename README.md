@@ -2,8 +2,6 @@
 
 The website for Indian Wok, Sophia and Ian Chung's Indian-Chinese restaurant in Burnaby, live at **[indianwok.ca](https://indianwok.ca)**. It's built with Next.js as a static export and published by GitHub Pages.
 
-Kenneth's full notes (requirements, decisions, history) live in his Second Brain vault: `20 Areas/Home & Life Admin/Indian Wok.md`. This README covers what anyone working on the code needs day to day.
-
 ## Getting started
 
 1. Install [Node.js](https://nodejs.org) 20.9 or newer (`node -v` to check).
