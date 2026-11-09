@@ -6,7 +6,8 @@ import { OpenNow } from "./OpenNow";
 export function Hero() {
   return (
     <>
-      <section className="bg-chili text-white">
+      {/* The round photo bleeds off the right edge on phones: clip it sideways (not downwards) so the page never scrolls left-right. */}
+      <section className="overflow-x-clip bg-chili text-white">
         <div className="relative mx-auto max-w-6xl px-5 pt-8 pb-[150px] sm:px-6 md:grid md:grid-cols-[1.25fr_1fr] md:gap-10 md:pt-16 md:pb-20">
           <div className="relative z-10">
             <h1 className="font-display text-[46px] leading-[0.98] font-extrabold tracking-[-0.02em] md:text-7xl">

@@ -7,7 +7,8 @@ const links = [
   { href: "#find-us", label: "Find us" },
 ];
 
-/** The logo, big (R19), with a small menu. Phones: logo centred under the links; desktop: side by side. */
+/** The logo with a small menu. Phones: logo big (R19), centred under the links; desktop: side by side, at half
+ *  the earlier size (Kenneth, 2026-11-08: "on desktop, the logo size is quite big… shrink that to 50%"). */
 export function Header() {
   return (
     <header className="mx-auto flex max-w-6xl flex-col items-center px-4 pt-2 pb-6 sm:px-6 md:flex-row md:items-center md:justify-between md:py-6">
@@ -29,11 +30,11 @@ export function Header() {
         <img
           src="/images/logo-480.webp"
           srcSet="/images/logo-480.webp 480w, /images/logo-720.webp 720w"
-          sizes="(min-width: 768px) 220px, 250px"
+          sizes="(min-width: 768px) 110px, 250px"
           width={480}
           height={383}
           alt="Indian Wok"
-          className="h-auto w-[250px] md:w-[220px]"
+          className="h-auto w-[250px] md:w-[110px]"
         />
       </a>
     </header>

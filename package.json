@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next build && NO_UPDATE_CHECK=1 serve out -l 4000",
     "lint": "eslint",
-    "photos": "node scripts/resize-photos.mjs"
+    "photos": "node scripts/resize-photos.mjs",
+    "test": "next build && playwright test",
+    "test:setup": "playwright install chromium webkit",
+    "test:report": "playwright show-report"
   },
   "dependencies": {
     "@fontsource/bricolage-grotesque": "^5.3.0",
@@ -16,6 +19,7 @@
     "react-dom": "19.3.0"
   },
   "devDependencies": {
+    "@playwright/test": "1.63.0",
     "@tailwindcss/postcss": "^4.3.5",
     "@types/node": "^20",
     "@types/react": "^19",

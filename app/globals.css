@@ -35,6 +35,21 @@ body {
   color: var(--color-ink);
 }
 
+/* Phones scroll up and down only: nothing may push the page wider than the screen (Kenneth, 2026-11-08).
+   `clip`, not `hidden`, so the sticky menu bar keeps working. */
+html,
+body {
+  overflow-x: clip;
+}
+
+/* Older iPhones (iOS 15 and earlier) don't know `clip`; `hidden` on body alone passes to the
+   window, so the sticky bar still works there. */
+@supports not (overflow-x: clip) {
+  body {
+    overflow-x: hidden;
+  }
+}
+
 /* Clear keyboard focus on everything clickable. */
 a:focus-visible,
 button:focus-visible,
