@@ -216,16 +216,6 @@ export const menu: MenuCategory[] = [
     ],
   },
   {
-    id: "special-combos",
-    name: "Special Combos",
-    items: [
-      { code: "CMB1", name: "Veg Rice with Veg Manchurian (8 pcs)", spice: "medium", vegetarian: true, price: 13.99 },
-      { code: "CMB2", name: "Veg Rice with Chicken Manchurian", spice: "medium", price: 14.99 },
-      { code: "CMB3", name: "Veg Chow Mein with Veg Manchurian (8 pcs)", spice: "medium", vegetarian: true, price: 13.99 },
-      { code: "CMB4", name: "Veg Chow Mein with Chicken Manchurian", spice: "medium", price: 14.99 },
-    ],
-  },
-  {
     id: "sides",
     name: "Side Orders",
     items: [
