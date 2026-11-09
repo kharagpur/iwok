@@ -225,6 +225,19 @@ test("text is large enough to read", async ({ page }) => {
   expect(tiny).toEqual([]);
 });
 
+test("the logo is big on phones and compact on wider screens", async ({ page }) => {
+  await open(page);
+  // A product decision (CLAUDE.md): strong branding on phones, a compact header from 768 px up.
+  const header = page.getByRole("banner");
+  const logo = (await header.getByRole("img", { name: "Indian Wok" }).boundingBox())!;
+  if (page.viewportSize()!.width >= 768) {
+    expect(Math.round(logo.width), "compact logo").toBe(72);
+    expect((await header.boundingBox())!.height, "compact header").toBeLessThanOrEqual(100);
+  } else {
+    expect(Math.round(logo.width), "big logo on phones").toBe(250);
+  }
+});
+
 test("the open-now badge shows today's status", async ({ page }) => {
   await open(page);
   await expect(page.locator("#top p[aria-live]").first()).toHaveText(/^(Open now|Closing soon|Closed)/);

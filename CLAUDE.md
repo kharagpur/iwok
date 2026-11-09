@@ -22,6 +22,33 @@ Static site for Indian Wok, an Indian-Chinese restaurant in Burnaby, British Col
 - Tests: `tests/` with Playwright — `data.spec.ts` (menu, hours, FAQ, search text), `devices.spec.ts` (every test on 4 iPhone/iPad and 5 Android/Fold screens plus a laptop), `site.spec.ts` (links, images, Google data, 404), `theme.spec.ts` (light/night themes and text contrast in both, on every device). Run `npm test` before every commit and add or update a test with each change; when a test fails because the site rightly changed, update the test in the same commit. GitHub runs them on every pull request (`.github/workflows/test.yml`).
 - This Next.js version (16) differs from older docs: read AGENTS.md and the guides in `node_modules/next/dist/docs/` before writing code.
 
+## Product decisions
+Why the site is the way it is. Several of these look like bugs or gaps but are deliberate: don't "fix" them, and ask before changing one.
+
+**Goals**
+- Small, fast and simple, with high Lighthouse scores (performance, accessibility, SEO). Most visitors are on phones, so design for the phone first.
+- Homely and family-run, not a big-chain look. Keep the existing logo; it's big and centred on phones on purpose (strong branding) and compact on desktop.
+
+**Content rules**
+- Menu prices come from the restaurant's own menu, never from the delivery apps (their prices are marked up). Spice levels follow the delivery apps.
+- Never invent a price, dish, review, rating or quote. A dish without a confirmed price shows "Call for price" with a `check` note in `data/menu.ts`. Reviews are the real Google rating and count plus a summary in our own words; no placeholder or made-up reviews.
+- Dinner only, Tuesday to Sunday: no lunch deals or daily specials.
+- Menu changes are confirmed by the restaurant; changes to the look go to the repo owner.
+
+**Must keep**
+- Order buttons for DoorDash, Uber Eats and SkipTheDishes, and the 10% off in-store pickup offer.
+- Tap-to-call phone number, opening hours, and the open-now badge.
+- The drawn map (`components/LocationMap.tsx`): exactly where the restaurant is (Kingsway at Royal Oak) and that parking is at the back. It stays a light drawing in the night theme.
+- Menu filters (vegetarian, gluten-free, no spice), dish photos one tap away, and the section bar showing where you are.
+- The files for search engines and AI assistants (structured data, `llms.txt`, `llms-full.txt`, sitemap, robots).
+
+**Deliberate choices that can look odd**
+- F8 Dry Chili Fish shows "Call for price": it isn't on the restaurant's current menu, and it stays listed for now.
+- Plain Rice (J1) is one line with Small / Medium / Large prices.
+- The section bar's highlight ("Pop") is CSS only: the current chip fills red with a small bounce. An earlier JavaScript and SVG-filter "gooey" pill was removed because it was janky; don't bring back script-driven or filter-based animation.
+- The night theme's page is a deep forest green from the logo, not black. The logo sits on a cream plate at night because its green letters vanish on a dark page.
+- The compact header applies from 768 px wide up; phones keep the big logo (`tests/devices.spec.ts` checks both).
+
 ## Common tasks
 - **Change a price, name, size or spice level:** edit the dish in `data/menu.ts`. Every part of the page (full menu, *Most ordered*, Google's data, llms.txt) reads from it. Then `npm test -- --project=data`, and `npm start` to look at it on http://localhost:4000.
 - **Add or remove a dish:** same file; every code (A1, C4…) must be unique. Dishes with no price need a `check` note (shown as "Call for price").
