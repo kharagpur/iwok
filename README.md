@@ -55,7 +55,9 @@ The live site is `master`: **merging into `master` publishes indianwok.ca** (Git
 1. Start a branch from an up-to-date `master`: `git switch master && git pull && git switch -c feature/<short-name>` (or `fix/<short-name>` for a bug fix).
 2. Make the change, preview it (`npm run dev`), run `npm test`, commit.
 3. Push the branch (`git push -u origin <branch-name>`) and open a pull request into `master` on GitHub.
-4. Wait for the **Test** check to turn green, then merge. Check indianwok.ca on your phone.
+4. Wait for the **Test** check to turn green. The repo owner reviews and merges; then check indianwok.ca on your phone.
+
+**Using Claude Code here:** it reads `CLAUDE.md` (the project rules and common tasks) on its own, so there's nothing to set up. `.claude/settings.json` lets it run the tests without asking, asks before any push, and blocks force-pushes, pushes to `master` and merges. Keep personal Claude settings in `CLAUDE.local.md` or `.claude/settings.local.json`; Git ignores both.
 
 To undo a merged change, open its pull request on GitHub and click **Revert**.
 
