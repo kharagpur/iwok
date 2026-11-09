@@ -9,7 +9,7 @@ import { defineConfig, devices } from "@playwright/test";
 
 const port = 4173;
 
-// Popular screens (the owner, 2026-11-08: "mobile-friendly based on all popular devices… behaviors are all the same").
+// Popular phones and tablets; every test runs on each.
 const iphones = ["iPhone SE", "iPhone 15 Pro", "iPhone 15 Pro Max landscape", "iPad Mini"] as const;
 const androids = ["Pixel 7", "Galaxy S24", "Galaxy S9+", "Galaxy Tab S9"] as const;
 

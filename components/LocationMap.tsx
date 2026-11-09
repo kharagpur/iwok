@@ -34,7 +34,7 @@ export function LocationMap() {
           Indian Wok is on the south side of Kingsway, the second building east of Royal Oak Avenue. {site.parking.text}
         </desc>
 
-        {/* Parking: only behind Indian Wok and the bank, driven into from Royal Oak (the owner, 2026-11-08) */}
+        {/* Parking: only behind Indian Wok and the bank, driven into from Royal Oak */}
         <path d="M186,342 L272,342 L272,296 L378,296 L378,404 L186,404 Z" fill="var(--color-leaf-soft)" />
         <g stroke="#c9d8b8" strokeWidth="2">
           {[292, 316].map((x) => (

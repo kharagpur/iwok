@@ -23,7 +23,7 @@ export const faq: { q: string; a: string }[] = [
   },
   {
     q: "Who runs Indian Wok?",
-    a: `The owners, a family of Chinese descent born and raised in India. It's a second-generation family restaurant: the family's first was ${site.heritage.first}, over 50 years ago. The owners then ran their own Indian-Chinese restaurant in Austria for about thirty years before opening Indian Wok in Burnaby.`,
+    a: `A family of Chinese descent, born and raised in India. It's a second-generation family restaurant: the family's first was ${site.heritage.first}, over 50 years ago. The owners then ran their own Indian-Chinese restaurant in Austria for about thirty years before opening Indian Wok in Burnaby.`,
   },
   {
     q: "What is Indian-Chinese (Hakka) food?",

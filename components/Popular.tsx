@@ -41,7 +41,7 @@ export function Popular() {
         <h2 id="order-h" className="font-display text-[28px] font-extrabold md:text-4xl">
           Delivery
         </h2>
-        {/* Each app's own button artwork, so the brand is recognized at a glance (the owner, 2026-11-08). */}
+        {/* Each app's own button artwork, so the brand is recognized at a glance. */}
         <ul className="mt-3 grid max-w-3xl gap-2.5 sm:grid-cols-3">
           {site.delivery.map((d) => (
             <li key={d.name}>

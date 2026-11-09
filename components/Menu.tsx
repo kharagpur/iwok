@@ -13,7 +13,7 @@ const shortName: Record<string, string> = {
   "Side Orders": "Sides",
 };
 
-// Filters (the owner, 2026-11-08). Gluten-free means the gluten-free section; vegetarian comes from data/menu.ts.
+// Filters. Gluten-free means the gluten-free section; vegetarian comes from data/menu.ts.
 const filters = [
   { id: "veg", label: "Vegetarian", test: (i: MenuItem) => !!i.vegetarian },
   { id: "gf", label: "Gluten-free", test: (_: MenuItem, cat: string) => cat === "gluten-free" },
@@ -66,7 +66,7 @@ export function Menu() {
     return () => observer.disconnect();
   }, [shownIds]);
 
-  // The red "goo" pill behind the section bar (the owner, 2026-11-08: option 3, "Goo blob"). A pill and a slower
+  // The red "goo" pill behind the section bar. A pill and a slower
   // tail blob share an SVG blur filter, so they stretch and melt together as the highlight moves to the next
   // section. It moves to wherever `active` points; reduced-motion visitors get an instant switch.
   const moved = useRef(false);
@@ -98,8 +98,8 @@ export function Menu() {
       el.style.top = `${chip.offsetTop}px`;
       el.style.height = `${chip.offsetHeight}px`;
     };
-    // Moves start at once and slow into place (ease-out); far moves take a little longer, capped
-    // (the owner, 2026-11-08: "as soon as I click it, the animation starts moving"). The blob trails just behind.
+    // Moves start at once and slow into place (ease-out); far moves take a little longer, capped.
+    // The blob trails just behind.
     const distance = Math.abs(chip.offsetLeft - lastX.current);
     const pill = Math.round(Math.min(420, 220 + distance * 0.25));
     const tail = pill + 100;
