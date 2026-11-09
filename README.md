@@ -1,7 +1,71 @@
 # Indian Wok website
 
-The new website for Indian Wok, an Indian-Chinese restaurant in Burnaby. It's built with Next.js as a static export, for GitHub Pages at indianwok.ca.
+The website for Indian Wok, an Indian-Chinese restaurant in Burnaby, live at **[indianwok.ca](https://indianwok.ca)**. It's built with Next.js as a static export and published by GitHub Pages.
 
-**All project documentation lives in the project notes, not here.** That includes setup, how to run and build, how to publish, requirements and decisions. Find it in the note the project notes, in the *Setup & developer info* section.
+the owner's full notes (requirements, decisions, history) live in his project notes: the project notes. This README covers what anyone working on the code needs day to day.
 
-Quick commands: `npm install` · `npm start` (builds, then serves the finished site at http://localhost:4000) · `npm run dev` (live-reload preview at http://localhost:3000) · `npm run build` (writes the site to `out/`) · `npm test` (builds, then runs the tests on phones, tablets and a laptop; first time run `npm run test:setup`).
+## Getting started
+
+1. Install [Node.js](https://nodejs.org) 20.9 or newer (`node -v` to check).
+2. In Terminal: `cd` into this folder, then run `npm install`.
+3. Once per computer, for the tests: `npm run test:setup`.
+
+## Commands
+
+Run these in Terminal from this folder.
+
+| Command | What it does | When |
+| --- | --- | --- |
+| `npm install` | Downloads the packages in `package.json` into `node_modules/` | First time; after a pull or branch switch that changed `package.json`; when a command says *not found* or *Cannot find module* |
+| `npm run dev` | Live preview at http://localhost:3000; reloads as code changes | While changing code |
+| `npm start` | Builds the site, then serves the finished copy at http://localhost:4000 (also on your Wi-Fi, for a phone) | To see exactly what will go live |
+| `npm run build` | Builds the finished site into `out/` (also checks the code for type errors) | Rarely on its own: `npm start` and `npm test` both build first |
+| `npm test` | Builds, then runs every test (phones, tablets, laptop, menu data, links): a few minutes | Before every push |
+| `npm test -- --project=data` | Builds, then only the menu, hours and FAQ checks: seconds | After a menu, price or hours change |
+| `npm test -- --project="iPhone SE"` | Builds, then the tests on one device (names in `playwright.config.ts`) | To recheck one device that failed |
+| `npm run test:report` | Opens the last test results in the browser, with a recording of any failed test | After a red test |
+| `npm run test:setup` | Downloads the test browsers (Chrome's and Safari's engines) | Once per computer, and again if a test says a browser is missing |
+| `npm run lint` | Checks the code for common mistakes | Before a push |
+| `npm run photos` | Re-makes the dish photos and icons in `public/images/` | After adding or swapping a dish photo |
+
+Press **Ctrl + C** to stop `npm run dev` or `npm start`.
+
+## Tests
+
+The tests in `tests/` check the site on popular screens: iPhone SE, iPhone 15 Pro, iPhone 15 Pro Max held sideways and iPad Mini (Safari's engine); Pixel 7, Galaxy S24, Galaxy S9+, Galaxy Tab S9 and the 280 px Galaxy Fold cover screen (Chrome's engine); and a laptop.
+
+- **Devices** (`devices.spec.ts`): no sideways scrolling, sticky section bar, tapping a section, filters, dish photo popup with the Call button on screen, the Call / Order / Directions bar, tap and text sizes.
+- **Menu and data** (`data.spec.ts`): every dish priced or noted, sane prices, no vegetarian mark on a meat, fish or egg dish, photos exist, opening hours, FAQ and Google data match the menu.
+- **Whole site** (`site.spec.ts`): every link, picture and script loads, Google data, robots, sitemap and llms files, the 404 page.
+
+**When to run them:**
+
+1. **Before every push** of a branch: `npm test`. Green here means GitHub's check will almost certainly be green too.
+2. **After a menu, price or hours change:** `npm test -- --project=data` catches a missing price, a duplicate code or a meat dish marked vegetarian in seconds. Then the full `npm test` before pushing.
+3. **After pulling someone else's changes** or switching branches: `npm install`, then `npm test`.
+4. **Not needed** just to look at the site: use `npm run dev` or `npm start`.
+
+GitHub also runs every test on every pull request (the **Test** check), so anything missed locally is still caught before it goes live. When a test fails because the site rightly changed (say a new menu section), update the test in the same change.
+
+**`npm run build` fails with `Cannot find module '@playwright/test'` and `Failed to type check`?** The test tools aren't installed yet: run `npm install`, then build again.
+
+## Making a change
+
+The live site is `master`: **merging into `master` publishes indianwok.ca** (GitHub Actions, about 2 minutes). Nobody commits to `master` directly.
+
+1. Start a branch from an up-to-date `master`: `git switch master && git pull && git switch -c feature/<short-name>` (or `fix/<short-name>` for a bug fix).
+2. Make the change, preview it (`npm run dev`), run `npm test`, commit.
+3. Push the branch (`git push -u origin <branch-name>`) and open a pull request into `master` on GitHub.
+4. Wait for the **Test** check to turn green, then merge. Check indianwok.ca on your phone.
+
+To undo a merged change, open its pull request on GitHub and click **Revert**.
+
+## Where things are
+
+| To change | Edit |
+| --- | --- |
+| Menu: dishes, prices, sizes, spice, vegetarian marks, most-ordered list | `data/menu.ts` |
+| Hours, phone, address, delivery and social links, reviews, family story | `data/site.ts` (hours are in two places there: `hours` and `openingHours`) |
+| FAQ | `data/faq.ts` |
+| Page sections | `components/` |
+| Colours and fonts | `app/globals.css` |
