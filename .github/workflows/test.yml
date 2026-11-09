@@ -1,4 +1,4 @@
-# Runs the website's tests on every pull request (Kenneth's, Leo's or Claude's), on iPhone/iPad
+# Runs the website's tests on every pull request, on iPhone/iPad
 # (Safari's engine), Android phones and tablets (Chrome's engine) and a laptop. A red ✗ on the pull
 # request means something broke; open "Details", then the playwright-report download, to see what.
 name: Test

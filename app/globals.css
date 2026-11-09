@@ -1,4 +1,4 @@
-/* Tailwind CSS v4. Design: option A, "chili signboard" (vault: 2026-11-08 Modern Design – Option A).
+/* Tailwind CSS v4. Design: option A, "chili signboard".
    White page, the logo big, a bold chili-red band; Bricolage Grotesque for headings, the phone's own font for body. */
 @import "tailwindcss";
 
@@ -35,7 +35,7 @@ body {
   color: var(--color-ink);
 }
 
-/* Phones scroll up and down only: nothing may push the page wider than the screen (Kenneth, 2026-11-08).
+/* Phones scroll up and down only: nothing may push the page wider than the screen.
    `clip`, not `hidden`, so the sticky menu bar keeps working. */
 html,
 body {

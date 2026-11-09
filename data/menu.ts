@@ -1,9 +1,9 @@
 // The one menu source for the whole site (R15): every section reads names, prices and photos from here.
 // Taken from the current site (github.com/kharagpur/iwok, index.html, full-menu section) on 2026-11-07;
 // spice levels, six new dishes and the most-ordered list checked against the delivery apps on 2026-11-08.
-// Prices, dish names, sizes and new entries supplied by the user on 2026-11-08.
+// Prices, dish names, sizes and new entries from the restaurant's current menu (2026-11-08).
 // Existing photos and spice levels retained; F8 was absent from the supplied list.
-// Items with a `check` note have an open question for Kenneth; they're listed in the vault too.
+// Items with a `check` note have an open question for the restaurant.
 
 export type Spice = "none" | "mild" | "medium" | "hot";
 
@@ -17,7 +17,7 @@ export type MenuItem = {
   /** For soups and plain rice, which come in sizes. */
   sizes?: { label: string; price: number }[];
   containsNuts?: boolean;
-  /** Vegetarian (no meat, fish or egg), from the dish names and sections; confirm with Sophia. */
+  /** Vegetarian (no meat, fish or egg), from the dish names and sections; to be confirmed by the restaurant. */
   vegetarian?: boolean;
   /** Base name of the dish photo: public/images/dishes/<photo>-320.webp and -640.webp (4:3, made by scripts/resize-photos.mjs). */
   photo?: string;

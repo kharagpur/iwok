@@ -1,5 +1,5 @@
 // Restaurant facts used across the page, the structured data and llms.txt. The menu lives in data/menu.ts.
-// Source: the current site (kharagpur/iwok), Google Maps, and the vault's Indian Wok – Requirements note.
+// Source: the 2021 site, Google Maps and the restaurant.
 
 export const site = {
   name: "Indian Wok",
@@ -40,13 +40,13 @@ export const site = {
   // Google Analytics 4 measurement ID, carried over from the 2021 site (index.html, "Adding Google Analytics").
   analytics: { googleId: "G-133PP3446J" },
 
-  // Parking (Kenneth, 2026-11-08): only behind Indian Wok and the bank on the corner; entrance from Royal Oak Ave.
+  // Parking: only behind Indian Wok and the bank on the corner; entrance from Royal Oak Ave.
   parking: {
     text: "Parking is at the back, behind Indian Wok and the bank on the corner: drive in from Royal Oak Ave, just south of Kingsway.",
     short: "Parking at the back, behind Indian Wok and the corner bank; entrance on Royal Oak Ave",
   },
 
-  // Order buttons use each app's own official artwork (Kenneth, 2026-11-08: "easier to recognize the brand"):
+  // Order buttons use each app's own official artwork:
   // DoorDash's merchant button (cdn.doordash.com/media/button/button_red_l.svg), the Uber Eats media button
   // and the Skip logo from the 2021 site. Files in public/images/delivery/; `logoHeight` is how much of the button the logo fills.
   delivery: [
@@ -86,15 +86,14 @@ export const site = {
     url: "https://www.burnabynow.com/local-business/fusing-flavours-in-burnaby-2985598",
   },
 
-  // Family history (Kenneth, 2026-11-08): over 50 years in the restaurant business; Indian Wok is the second
-  // generation. The first was the parents' restaurant, the Waldorf in Kharagpur, India. No founding year
-  // found online, so the site says "over 50 years" until Sophia confirms one.
+  // Restaurant history: over 50 years in the restaurant business; Indian Wok is the second generation.
+  // No founding year is published, so the site says "over 50 years".
   heritage: {
     line: "Two generations and over 50 years of family cooking.",
     first: "the Waldorf in Kharagpur, India",
   },
   story:
-    "Indian Wok is a second-generation family restaurant. It began over 50 years ago with the family’s first restaurant, the Waldorf in Kharagpur, India. Sophia and Ian, of Chinese descent and born and raised in India, then cooked Indian-Chinese food in their own restaurant in Austria for about thirty years before bringing those recipes to Burnaby.",
+    "Indian Wok is a second-generation family restaurant. It began over 50 years ago with the family’s first restaurant, the Waldorf in Kharagpur, India. The owners, of Chinese descent and born and raised in India, then cooked Indian-Chinese food in their own restaurant in Austria for about thirty years before bringing those recipes to Burnaby.",
 };
 
 // Google reviews (R12): rating, count and what guests say, written in our own words.
