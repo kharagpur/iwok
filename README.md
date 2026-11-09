@@ -1,6 +1,6 @@
 # Indian Wok website
 
-The website for Indian Wok, Sophia and Ian Chung's Indian-Chinese restaurant in Burnaby, live at **[indianwok.ca](https://indianwok.ca)**. It's built with Next.js as a static export and published by GitHub Pages.
+The official website for Indian Wok, an Indian-Chinese restaurant in Burnaby, British Columbia, live at **[indianwok.ca](https://indianwok.ca)**. It's built with Next.js as a static export and published with GitHub Pages.
 
 ## Getting started
 
