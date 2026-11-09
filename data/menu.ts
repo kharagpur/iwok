@@ -229,9 +229,7 @@ export const menu: MenuCategory[] = [
     id: "sides",
     name: "Side Orders",
     items: [
-      { code: "J1", name: "Plain Rice - Small", spice: "none", vegetarian: true, price: 3.74 },
-      { code: "J2", name: "Plain Rice - Medium", spice: "none", vegetarian: true, price: 6.24 },
-      { code: "J3", name: "Plain Rice - Large", spice: "none", vegetarian: true, price: 7.45 },
+      { code: "J1", name: "Plain Rice", spice: "none", vegetarian: true, sizes: [{ label: "Small", price: 3.74 }, { label: "Medium", price: 6.24 }, { label: "Large", price: 7.45 }] },
       { code: "J4", name: "Naan", spice: "none", vegetarian: true, price: 4.49, photo: "naan" },
       { code: "J5", name: "Chicken & Fries", spice: "none", price: 8.74 },
       { code: "J6", name: "Fries", spice: "none", vegetarian: true, price: 5.74 },
