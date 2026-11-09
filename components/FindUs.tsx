@@ -1,6 +1,7 @@
 import { site } from "@/data/site";
 import { PinIcon } from "./icons";
 import { LocationMap } from "./LocationMap";
+import { ThemeSwitch } from "./Theme";
 
 /** Map (where we are, parking at the back), address and contact (R7, R13), then the footer with social links. */
 export function FindUs() {
@@ -20,25 +21,25 @@ export function FindUs() {
             {site.address.landmark}
           </address>
           <p>
-            <a href={site.phone.href} className="font-semibold text-chili hover:underline">
+            <a href={site.phone.href} className="font-semibold text-ember hover:underline">
               {site.phone.display}
             </a>
             {" · "}
-            <a href={`mailto:${site.email}`} className="text-chili hover:underline">
+            <a href={`mailto:${site.email}`} className="text-ember hover:underline">
               {site.email}
             </a>
           </p>
           <a
             href={site.mapUrl}
             rel="noopener"
-            className="inline-flex min-h-12 w-fit items-center gap-2 rounded-full bg-ink px-6 font-semibold text-white hover:bg-chili"
+            className="inline-flex min-h-12 w-fit items-center gap-2 rounded-full bg-ink px-6 font-semibold text-paper hover:bg-chili hover:text-white"
           >
             <PinIcon /> Directions
           </a>
         </div>
       </section>
 
-      <footer className="mt-14 bg-leaf pb-24 text-white md:mt-20 md:pb-0">
+      <footer className="mt-14 bg-forest pb-24 text-white md:mt-20 md:pb-0">
         <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-9 sm:px-6 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="font-display text-2xl font-extrabold">{site.name}</p>
@@ -51,6 +52,7 @@ export function FindUs() {
               {site.hours[0].short} {site.hours[0].time} · Closed {site.hours[1].days}
             </p>
           </div>
+          <div className="flex flex-col gap-3 md:items-end">
           <ul className="flex gap-5 text-[15px]">
             {site.social.map((s) => (
               <li key={s.name}>
@@ -60,6 +62,8 @@ export function FindUs() {
               </li>
             ))}
           </ul>
+          <ThemeSwitch />
+          </div>
         </div>
       </footer>
     </>

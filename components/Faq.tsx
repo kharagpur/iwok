@@ -13,7 +13,7 @@ export function Faq() {
           <details key={f.q} className="border-b border-line">
             <summary className="flex min-h-14 cursor-pointer items-center justify-between gap-4 py-3 text-[17px] font-semibold">
               {f.q}
-              <PlusIcon className="faq-plus size-5 shrink-0 text-chili transition-transform motion-reduce:transition-none" />
+              <PlusIcon className="faq-plus size-5 shrink-0 text-ember transition-transform motion-reduce:transition-none" />
             </summary>
             <p className="pb-4 leading-relaxed text-stone">{f.a}</p>
           </details>

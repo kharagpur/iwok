@@ -14,7 +14,42 @@
   --color-stone: #6e625a; /* small print */
   --color-mist: #f5f1ee; /* soft fills */
   --color-line: #eee7e2; /* dividers */
+  /* Roles that change at night (values below, under [data-theme="dark"]). */
+  --color-paper: #ffffff; /* the page and its panels */
+  --color-ember: #b3131b; /* red text: prices, links */
+  --color-band: #b3131b; /* the red band at the top */
+  --color-cream: #ffffff; /* white buttons on the red band */
+  --color-forest: #2f4a14; /* green panels: footer, groups card */
+  --color-chili-press: #8a0e14; /* red buttons, pressed or hovered */
 }
+
+/* Night ("forest night"): a deep green page from the logo's green, a deeper ember band, lighter ember red for
+   text. Every text colour here passes WCAG AA (4.5:1) on the background it sits on; the tests check it. */
+html {
+  color-scheme: light;
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --color-paper: #16231a;
+  --color-ink: #f4ede7;
+  --color-stone: #a9bba9;
+  --color-mist: #22332a;
+  --color-line: #2f4437;
+  --color-blush: #3a1c18;
+  --color-chili: #d6312a;
+  --color-chili-dark: #ffa497;
+  --color-chili-press: #b1241e;
+  --color-ember: #ff8a7a;
+  --color-band: #7c1016;
+  --color-cream: #f4ede7;
+  --color-leaf: #a9d07e;
+  --color-leaf-soft: #25392a;
+  --color-forest: #0e1912;
+  --color-turmeric-soft: #33300f;
+}
+
+/* `dark:` classes apply when the night theme is on (set on <html> by lib/theme.ts). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 @theme inline {
   --font-display: var(--font-bricolage), system-ui, sans-serif;
@@ -31,7 +66,7 @@ html {
 }
 
 body {
-  background: #ffffff;
+  background: var(--color-paper);
   color: var(--color-ink);
 }
 
@@ -47,6 +82,42 @@ body {
 @supports not (overflow-x: clip) {
   body {
     overflow-x: hidden;
+  }
+}
+
+/* Menu section bar, option C "Pop": the current section's red face fades in and springs to full size;
+   the one it leaves shrinks and fades. Only opacity and transform change, so it stays smooth on phones. */
+.menu-chip {
+  isolation: isolate;
+  transition: color 160ms ease;
+}
+.menu-chip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--color-chili);
+  opacity: 0;
+  transform: scale(0.6);
+  transition:
+    opacity 150ms ease,
+    transform 150ms ease;
+}
+.menu-chip[aria-current] {
+  color: #ffffff;
+}
+.menu-chip[aria-current]::before {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 140ms ease,
+    transform 380ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .menu-chip,
+  .menu-chip::before {
+    transition: none;
   }
 }
 

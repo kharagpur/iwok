@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { site } from "@/data/site";
 import { Analytics } from "@/components/Analytics";
 import "./globals.css";
+import { themeScript } from "@/lib/theme";
 
 // Bricolage Grotesque for headings, served from the site itself (no call to Google at visit time).
 const bricolage = localFont({
@@ -41,7 +42,10 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#b3131b",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#b3131b" },
+    { media: "(prefers-color-scheme: dark)", color: "#16231a" },
+  ],
 };
 
 export default function RootLayout({
@@ -50,7 +54,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-CA" className={bricolage.variable}>
+    <html lang="en-CA" className={bricolage.variable} suppressHydrationWarning>
+      <head>
+        {/* Sets light or dark before the first paint (see lib/theme.ts). */}
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="font-sans antialiased">
         {children}
         <Analytics />

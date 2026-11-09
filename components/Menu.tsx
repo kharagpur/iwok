@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { menu, type MenuItem } from "@/data/menu";
 import { site } from "@/data/site";
 import { DishPhoto, Price, Spice } from "./Dish";
@@ -33,14 +33,9 @@ export function Menu() {
   const [active, setActive] = useState<string>(menu[0].id);
   const [photo, setPhoto] = useState<MenuItem | null>(null);
   const navRef = useRef<HTMLUListElement>(null);
-  const pillRef = useRef<HTMLDivElement>(null);
-  const tailRef = useRef<HTMLDivElement>(null);
-  const layerRef = useRef<HTMLLIElement>(null);
   // Set while the page scrolls to a section that was tapped in the bar; cleared once scrolling stops,
-  // so the pill goes straight to the tapped section instead of visiting every section on the way.
+  // so the highlight goes straight to the tapped section instead of visiting every section on the way.
   const tapped = useRef<string | null>(null);
-  // Before the browser measures the bar (first paint, or no JavaScript), the active button paints its own red.
-  const [measured, setMeasured] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const shown = menu
@@ -66,11 +61,8 @@ export function Menu() {
     return () => observer.disconnect();
   }, [shownIds]);
 
-  // The red "goo" pill behind the section bar. A pill and a slower
-  // tail blob share an SVG blur filter, so they stretch and melt together as the highlight moves to the next
-  // section. It moves to wherever `active` points; reduced-motion visitors get an instant switch.
-  const moved = useRef(false);
-  const lastX = useRef(0);
+  // The highlighted section "pops": its red face springs in and the old one fades (CSS only, see
+  // .menu-chip in app/globals.css). A tap moves the highlight straight to the tapped section.
   const goTo = (id: string) => {
     tapped.current = id;
     setActive(id);
@@ -85,56 +77,6 @@ export function Menu() {
     }
     window.addEventListener("scroll", onScroll, { passive: true });
   };
-  useLayoutEffect(() => {
-    const bar = navRef.current;
-    const chip = bar?.querySelector<HTMLElement>(`[data-section="${active}"]`);
-    if (!chip) return;
-    const animate = moved.current && !reducedMotion();
-    const place = (el: HTMLDivElement | null, transition: string) => {
-      if (!el) return;
-      el.style.transition = animate ? transition : "none";
-      el.style.transform = `translateX(${chip.offsetLeft}px)`;
-      el.style.width = `${chip.offsetWidth}px`;
-      el.style.top = `${chip.offsetTop}px`;
-      el.style.height = `${chip.offsetHeight}px`;
-    };
-    // Moves start at once and slow into place (ease-out); far moves take a little longer, capped.
-    // The blob trails just behind.
-    const distance = Math.abs(chip.offsetLeft - lastX.current);
-    const pill = Math.round(Math.min(420, 220 + distance * 0.25));
-    const tail = pill + 100;
-    place(pillRef.current, `transform ${pill}ms cubic-bezier(.2,.8,.2,1), width ${pill}ms cubic-bezier(.2,.8,.2,1)`);
-    place(tailRef.current, `transform ${tail}ms cubic-bezier(.3,.7,.2,1), width ${tail}ms cubic-bezier(.3,.7,.2,1)`);
-    // The new section's label turns white as the pill arrives; the old one turns dark as the pill leaves.
-    bar?.querySelectorAll<HTMLElement>("[data-label]").forEach((label) => {
-      label.style.transitionDelay = animate && label.parentElement === chip ? `${Math.round(pill * 0.45)}ms` : "0ms";
-      label.style.transitionDuration = animate ? `${Math.round(pill * 0.4)}ms` : "0ms";
-    });
-    // The goo layer spans the whole scrolling bar, so the filter never clips the pill near the far end.
-    if (layerRef.current && bar) layerRef.current.style.width = `${bar.scrollWidth}px`;
-    lastX.current = chip.offsetLeft;
-    moved.current = true;
-    setMeasured(true);
-  }, [active, shownIds]);
-
-  // Re-measure without animating when the bar's size changes (rotating a phone, fonts loading).
-  useEffect(() => {
-    const bar = navRef.current;
-    if (!bar) return;
-    const observer = new ResizeObserver(() => {
-      if (layerRef.current) layerRef.current.style.width = `${bar.scrollWidth}px`;
-      const chip = bar.querySelector<HTMLElement>("[aria-current]");
-      [pillRef.current, tailRef.current].forEach((el) => {
-        if (!el || !chip) return;
-        el.style.transition = "none";
-        el.style.transform = `translateX(${chip.offsetLeft}px)`;
-        el.style.width = `${chip.offsetWidth}px`;
-      });
-    });
-    observer.observe(bar);
-    return () => observer.disconnect();
-  }, []);
-
   // Keep the highlighted section's button in view in the scrolling bar.
   useEffect(() => {
     const bar = navRef.current;
@@ -162,7 +104,7 @@ export function Menu() {
           <span className="text-[13px] text-stone">
             <span aria-live="polite">{on.length ? `${shownCount} of ${dishCount} dishes` : `${dishCount} dishes · prices may change`}</span>
             {on.length > 0 && (
-              <button type="button" onClick={() => setOn([])} className="ml-2 min-h-10 font-semibold text-chili underline underline-offset-2">
+              <button type="button" onClick={() => setOn([])} className="ml-2 min-h-10 font-semibold text-ember underline underline-offset-2">
                 Clear filters
               </button>
             )}
@@ -180,7 +122,7 @@ export function Menu() {
                 aria-pressed={pressed}
                 onClick={() => toggle(f.id)}
                 className={`inline-flex min-h-10 items-center gap-1.5 rounded-full border-2 px-3 text-sm font-semibold sm:px-3.5 ${
-                  pressed ? "border-ink bg-ink text-white" : "border-line bg-white hover:border-ink"
+                  pressed ? "border-ink bg-ink text-paper" : "border-line bg-paper hover:border-ink"
                 }`}
               >
                 {f.id === "veg" && <LeafIcon />}
@@ -191,21 +133,8 @@ export function Menu() {
         </div>
       </div>
 
-      <nav aria-label="Menu sections" className="sticky top-0 z-10 mt-3 border-b border-line bg-white/95 backdrop-blur">
-        <svg aria-hidden width="0" height="0" className="absolute">
-          <defs>
-            <filter id="menu-goo" x="-20%" y="-60%" width="140%" height="220%" colorInterpolationFilters="sRGB">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
-              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 24 -12" result="goo" />
-              <feComposite in="SourceGraphic" in2="goo" operator="atop" />
-            </filter>
-          </defs>
-        </svg>
-        <ul ref={navRef} className="no-scrollbar relative isolate mx-auto flex max-w-6xl gap-1.5 overflow-x-auto px-5 py-2.5 sm:px-6">
-          <li ref={layerRef} aria-hidden className="pointer-events-none absolute inset-y-0 left-0 z-[1] w-full [filter:url(#menu-goo)]">
-            <div ref={tailRef} className="absolute left-0 rounded-full bg-chili motion-reduce:hidden" />
-            <div ref={pillRef} className="absolute left-0 rounded-full bg-chili" />
-          </li>
+      <nav aria-label="Menu sections" className="sticky top-0 z-10 mt-3 border-b border-line bg-paper/95 backdrop-blur">
+        <ul ref={navRef} className="no-scrollbar mx-auto flex max-w-6xl gap-1.5 overflow-x-auto px-5 py-2.5 sm:px-6">
           {shown.map((c) => {
             const current = c.id === active;
             return (
@@ -215,21 +144,9 @@ export function Menu() {
                   onClick={() => goTo(c.id)}
                   data-section={c.id}
                   aria-current={current ? "true" : undefined}
-                  className="group relative inline-flex min-h-10 items-center rounded-full px-3.5 text-sm font-semibold whitespace-nowrap"
+                  className="menu-chip relative inline-flex min-h-10 items-center rounded-full bg-mist px-3.5 text-sm font-semibold whitespace-nowrap hover:bg-blush"
                 >
-                  {/* The button face sits under the pill (grey), or is the red highlight itself until the pill is measured. */}
-                  <span
-                    aria-hidden
-                    className={`absolute inset-0 z-0 rounded-full ${current && !measured ? "bg-chili" : "bg-mist group-hover:bg-blush"}`}
-                  />
-                  <span
-                    data-label
-                    className={`relative z-[2] transition-colors motion-reduce:transition-none ${
-                      current ? "text-white" : "text-ink"
-                    }`}
-                  >
-                    {shortName[c.name] ?? c.name}
-                  </span>
+                  {shortName[c.name] ?? c.name}
                 </a>
               </li>
             );
@@ -241,7 +158,7 @@ export function Menu() {
         {shown.length === 0 && (
           <p className="pt-8 text-stone">
             No dishes match all of those.{" "}
-            <button type="button" onClick={() => setOn([])} className="font-semibold text-chili underline underline-offset-2">
+            <button type="button" onClick={() => setOn([])} className="font-semibold text-ember underline underline-offset-2">
               Clear the filters
             </button>
           </p>
@@ -294,7 +211,7 @@ export function Menu() {
         aria-labelledby="photo-h"
         onClose={() => setPhoto(null)}
         onClick={(e) => e.target === dialogRef.current && dialogRef.current?.close()}
-        className="m-auto max-h-[calc(100dvh-1.5rem)] w-[min(92vw,440px)] overflow-y-auto rounded-3xl bg-white p-0 text-ink backdrop:bg-ink/70 [@media(max-height:520px)]:w-[min(92vw,640px)]"
+        className="m-auto max-h-[calc(100dvh-1.5rem)] w-[min(92vw,440px)] overflow-y-auto rounded-3xl bg-paper p-0 text-ink backdrop:bg-black/70 [@media(max-height:520px)]:w-[min(92vw,640px)]"
       >
         {/* Phones held sideways: photo on the left, name and Call button on the right, so nothing is cut off. */}
         {photo && (
@@ -304,7 +221,7 @@ export function Menu() {
               <button
                 type="button"
                 onClick={() => dialogRef.current?.close()}
-                className="absolute top-3 right-3 inline-flex size-11 items-center justify-center rounded-full bg-white text-ink shadow"
+                className="absolute top-3 right-3 inline-flex size-11 items-center justify-center rounded-full bg-paper text-ink shadow"
               >
                 <CloseIcon />
                 <span className="sr-only">Close</span>
@@ -315,7 +232,7 @@ export function Menu() {
                 <h3 id="photo-h" className="font-display text-xl leading-tight font-extrabold">
                   {photo.name}
                 </h3>
-                <Price item={photo} className="shrink-0 text-chili" />
+                <Price item={photo} className="shrink-0 text-ember" />
               </div>
               <span className="flex flex-wrap gap-1.5">
                 {photo.vegetarian && <VegTag />}
@@ -323,7 +240,7 @@ export function Menu() {
               </span>
               <a
                 href={site.phone.href}
-                className="mt-2 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-chili px-6 font-bold text-white hover:bg-chili-dark"
+                className="mt-2 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-chili px-6 font-bold text-white hover:bg-chili-press"
               >
                 <PhoneIcon /> Call to order
               </a>
@@ -348,11 +265,11 @@ function VegTag() {
 function PhotoLabel({ name }: { name: string }) {
   const cut = name.lastIndexOf(" ");
   return (
-    <span className="decoration-chili/40 underline-offset-4 group-hover:underline">
+    <span className="decoration-ember/40 underline-offset-4 group-hover:underline">
       {name.slice(0, cut + 1)}
       <span className="whitespace-nowrap">
         {name.slice(cut + 1)}
-        <CameraIcon className="ml-1.5 inline size-4 align-[-2px] text-chili" />
+        <CameraIcon className="ml-1.5 inline size-4 align-[-2px] text-ember" />
       </span>
       <span className="sr-only">: see photo</span>
     </span>
