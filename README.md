@@ -2,8 +2,6 @@
 
 The website for Indian Wok, an Indian-Chinese restaurant in Burnaby, live at **[indianwok.ca](https://indianwok.ca)**. It's built with Next.js as a static export and published by GitHub Pages.
 
-the owner's full notes (requirements, decisions, history) live in his project notes: the project notes. This README covers what anyone working on the code needs day to day.
-
 ## Getting started
 
 1. Install [Node.js](https://nodejs.org) 20.9 or newer (`node -v` to check).
