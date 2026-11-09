@@ -35,7 +35,7 @@ body {
   color: var(--color-ink);
 }
 
-/* Phones scroll up and down only: nothing may push the page wider than the screen (the owner, 2026-11-08).
+/* Phones scroll up and down only: nothing may push the page wider than the screen.
    `clip`, not `hidden`, so the sticky menu bar keeps working. */
 html,
 body {

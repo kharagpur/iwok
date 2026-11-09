@@ -2,7 +2,7 @@ import { expect, test, type Page } from "@playwright/test";
 import { menu } from "@/data/menu";
 
 // The page on popular phones, tablets and a laptop (projects in playwright.config.ts). Every test runs on
-// every device, so the site behaves the same everywhere (the owner, 2026-11-08).
+// every device, so the site behaves the same everywhere.
 
 const dishCount = menu.reduce((n, c) => n + c.items.length, 0);
 const countOf = (keep: (i: (typeof menu)[number]["items"][number], section: string) => boolean) =>

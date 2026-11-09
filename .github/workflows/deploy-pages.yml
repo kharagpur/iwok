@@ -1,6 +1,6 @@
 # Builds the site and publishes it to GitHub Pages (indianwok.ca) whenever master changes.
 # Needs: Settings → Pages → Source: "GitHub Actions" (one-time switch, done at launch).
-# The custom domain stays in Settings → Pages; DNS at the domain registrar doesn't change.
+# The custom domain stays in Settings → Pages; DNS doesn't change.
 name: Deploy to GitHub Pages
 
 on:
