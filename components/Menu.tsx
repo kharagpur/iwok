@@ -104,7 +104,7 @@ export function Menu() {
           <span className="text-[13px] text-stone">
             <span aria-live="polite">{on.length ? `${shownCount} of ${dishCount} dishes` : `${dishCount} dishes · prices may change`}</span>
             {on.length > 0 && (
-              <button type="button" onClick={() => setOn([])} className="ml-2 min-h-10 font-semibold text-chili underline underline-offset-2">
+              <button type="button" onClick={() => setOn([])} className="ml-2 min-h-10 font-semibold text-ember underline underline-offset-2">
                 Clear filters
               </button>
             )}
@@ -122,7 +122,7 @@ export function Menu() {
                 aria-pressed={pressed}
                 onClick={() => toggle(f.id)}
                 className={`inline-flex min-h-10 items-center gap-1.5 rounded-full border-2 px-3 text-sm font-semibold sm:px-3.5 ${
-                  pressed ? "border-ink bg-ink text-white" : "border-line bg-white hover:border-ink"
+                  pressed ? "border-ink bg-ink text-paper" : "border-line bg-paper hover:border-ink"
                 }`}
               >
                 {f.id === "veg" && <LeafIcon />}
@@ -133,7 +133,7 @@ export function Menu() {
         </div>
       </div>
 
-      <nav aria-label="Menu sections" className="sticky top-0 z-10 mt-3 border-b border-line bg-white/95 backdrop-blur">
+      <nav aria-label="Menu sections" className="sticky top-0 z-10 mt-3 border-b border-line bg-paper/95 backdrop-blur">
         <ul ref={navRef} className="no-scrollbar mx-auto flex max-w-6xl gap-1.5 overflow-x-auto px-5 py-2.5 sm:px-6">
           {shown.map((c) => {
             const current = c.id === active;
@@ -158,7 +158,7 @@ export function Menu() {
         {shown.length === 0 && (
           <p className="pt-8 text-stone">
             No dishes match all of those.{" "}
-            <button type="button" onClick={() => setOn([])} className="font-semibold text-chili underline underline-offset-2">
+            <button type="button" onClick={() => setOn([])} className="font-semibold text-ember underline underline-offset-2">
               Clear the filters
             </button>
           </p>
@@ -211,7 +211,7 @@ export function Menu() {
         aria-labelledby="photo-h"
         onClose={() => setPhoto(null)}
         onClick={(e) => e.target === dialogRef.current && dialogRef.current?.close()}
-        className="m-auto max-h-[calc(100dvh-1.5rem)] w-[min(92vw,440px)] overflow-y-auto rounded-3xl bg-white p-0 text-ink backdrop:bg-ink/70 [@media(max-height:520px)]:w-[min(92vw,640px)]"
+        className="m-auto max-h-[calc(100dvh-1.5rem)] w-[min(92vw,440px)] overflow-y-auto rounded-3xl bg-paper p-0 text-ink backdrop:bg-black/70 [@media(max-height:520px)]:w-[min(92vw,640px)]"
       >
         {/* Phones held sideways: photo on the left, name and Call button on the right, so nothing is cut off. */}
         {photo && (
@@ -221,7 +221,7 @@ export function Menu() {
               <button
                 type="button"
                 onClick={() => dialogRef.current?.close()}
-                className="absolute top-3 right-3 inline-flex size-11 items-center justify-center rounded-full bg-white text-ink shadow"
+                className="absolute top-3 right-3 inline-flex size-11 items-center justify-center rounded-full bg-paper text-ink shadow"
               >
                 <CloseIcon />
                 <span className="sr-only">Close</span>
@@ -232,7 +232,7 @@ export function Menu() {
                 <h3 id="photo-h" className="font-display text-xl leading-tight font-extrabold">
                   {photo.name}
                 </h3>
-                <Price item={photo} className="shrink-0 text-chili" />
+                <Price item={photo} className="shrink-0 text-ember" />
               </div>
               <span className="flex flex-wrap gap-1.5">
                 {photo.vegetarian && <VegTag />}
@@ -240,7 +240,7 @@ export function Menu() {
               </span>
               <a
                 href={site.phone.href}
-                className="mt-2 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-chili px-6 font-bold text-white hover:bg-chili-dark"
+                className="mt-2 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-chili px-6 font-bold text-white hover:bg-chili-press"
               >
                 <PhoneIcon /> Call to order
               </a>
@@ -265,11 +265,11 @@ function VegTag() {
 function PhotoLabel({ name }: { name: string }) {
   const cut = name.lastIndexOf(" ");
   return (
-    <span className="decoration-chili/40 underline-offset-4 group-hover:underline">
+    <span className="decoration-ember/40 underline-offset-4 group-hover:underline">
       {name.slice(0, cut + 1)}
       <span className="whitespace-nowrap">
         {name.slice(cut + 1)}
-        <CameraIcon className="ml-1.5 inline size-4 align-[-2px] text-chili" />
+        <CameraIcon className="ml-1.5 inline size-4 align-[-2px] text-ember" />
       </span>
       <span className="sr-only">: see photo</span>
     </span>

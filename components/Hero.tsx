@@ -7,7 +7,7 @@ export function Hero() {
   return (
     <>
       {/* The round photo bleeds off the right edge on phones: clip it sideways (not downwards) so the page never scrolls left-right. */}
-      <section className="overflow-x-clip bg-chili text-white">
+      <section className="overflow-x-clip bg-band text-white">
         <div className="relative mx-auto max-w-6xl px-5 pt-8 pb-[150px] sm:px-6 md:grid md:grid-cols-[1.25fr_1fr] md:gap-10 md:pt-16 md:pb-20">
           <div className="relative z-10">
             <h1 className="font-display text-[46px] leading-[0.98] font-extrabold tracking-[-0.02em] md:text-7xl">
@@ -19,13 +19,13 @@ export function Hero() {
             <div className="mt-6 flex flex-wrap gap-2.5">
               <a
                 href={site.phone.href}
-                className="inline-flex min-h-[50px] items-center gap-2 rounded-full bg-white px-6 font-bold text-chili hover:bg-turmeric-soft"
+                className="inline-flex min-h-[50px] items-center gap-2 rounded-full bg-cream px-6 font-bold text-band hover:bg-[#fdf1d6]"
               >
                 <PhoneIcon /> Call to order
               </a>
               <a
                 href="#order"
-                className="inline-flex min-h-[50px] items-center gap-2 rounded-full border-2 border-white px-6 font-bold text-white hover:bg-white hover:text-chili"
+                className="inline-flex min-h-[50px] items-center gap-2 rounded-full border-2 border-white px-6 font-bold text-white hover:bg-cream hover:text-band"
               >
                 <BagIcon /> Order delivery
               </a>
@@ -40,7 +40,7 @@ export function Hero() {
             height={640}
             alt="Masala Chicken"
             fetchPriority="high"
-            className="absolute right-[-24px] bottom-[-110px] size-[250px] rounded-full border-8 border-white object-cover md:right-6 md:bottom-[-120px] md:size-[440px]"
+            className="absolute right-[-24px] bottom-[-110px] size-[250px] rounded-full border-8 border-cream object-cover md:right-6 md:bottom-[-120px] md:size-[440px]"
           />
         </div>
       </section>

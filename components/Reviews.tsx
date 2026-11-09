@@ -27,7 +27,7 @@ export function Reviews() {
           <a
             href={googleReviews.url}
             rel="noopener"
-            className="mt-4 inline-flex min-h-12 items-center rounded-full border-2 border-ink px-5 font-semibold hover:bg-ink hover:text-white"
+            className="mt-4 inline-flex min-h-12 items-center rounded-full border-2 border-ink px-5 font-semibold hover:bg-ink hover:text-paper"
           >
             Read the reviews on Google
           </a>

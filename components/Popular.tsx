@@ -21,7 +21,7 @@ export function Popular() {
               {item.photo ? (
                 <DishPhoto item={item} sizes="(min-width: 1024px) 220px, (min-width: 768px) 33vw, 200px" className="aspect-square w-full rounded-[20px]" />
               ) : (
-                <div aria-hidden="true" className="flex aspect-square w-full items-center justify-center rounded-[20px] bg-mist text-chili">
+                <div aria-hidden="true" className="flex aspect-square w-full items-center justify-center rounded-[20px] bg-mist text-ember">
                   <ChiliIcon className="size-12" />
                 </div>
               )}
@@ -30,7 +30,7 @@ export function Popular() {
               </h3>
               <div className="mt-1 flex items-center justify-between gap-2">
                 <Spice item={item} />
-                <Price item={item} className="ml-auto text-chili" />
+                <Price item={item} className="ml-auto text-ember" />
               </div>
             </li>
           ))}
@@ -59,7 +59,7 @@ export function Popular() {
         </ul>
         <p className="mt-2 text-sm text-stone">
           Or call{" "}
-          <a href={site.phone.href} className="font-semibold text-chili hover:underline">
+          <a href={site.phone.href} className="font-semibold text-ember hover:underline">
             {site.phone.display}
           </a>{" "}
           and pick up: {site.pickupOffer.toLowerCase()}.

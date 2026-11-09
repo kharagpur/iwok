@@ -9,7 +9,7 @@ Static site for Indian Wok, an Indian-Chinese restaurant in Burnaby, British Col
 - Photos: resized ahead of time (WebP, the sizes shown); never ship the original 2021 files as-is.
 - `public/CNAME` = indianwok.ca; the published folder must contain an empty `.nojekyll`.
 - The menu is one data file; every section reads prices from it.
-- Styling: Tailwind CSS v4 (utility classes; brand colours and fonts in `@theme` in `app/globals.css`).
+- Styling: Tailwind CSS v4 (utility classes; brand colours and fonts in `@theme` in `app/globals.css`). Night theme: the same colour names are redefined under `html[data-theme="dark"]` in `globals.css`; use colour names (`text-ember`, `bg-paper`, …), not fixed hex values, so both themes work. Theme switch code: `components/Theme.tsx` and `lib/theme.ts`.
 - Design: white page, big logo on phones, red hero band, Bricolage Grotesque headings, text-first menu, sticky Call/Order/Directions bar on phones.
 - Restaurant facts live in `data/site.ts`, questions in `data/faq.ts`; `lib/seo.ts` builds the structured data and llms.txt from them. Never hand-write a fact in a component.
 - Photos come from the full-size 2021 originals in this repo's own history: `npm run photos` (scripts/photo-sources.json).
@@ -17,7 +17,7 @@ Static site for Indian Wok, an Indian-Chinese restaurant in Burnaby, British Col
 - **Never commit to `master`.** For every task, start a branch from an up-to-date `master`: `feature/<short-name>` for something new, `fix/<short-name>` for a bug fix. Commit only there (one branch per task). Check lint, build and tests before each commit. The repo owner pushes the branch, opens a pull request and merges it on GitHub; merging is what publishes the site. Never merge, push or delete a branch unless the owner says so in those words ("merge it", "delete the branch").
 - Commit messages: a short plain summary of the change.
 - `npm install` must stay clean: ESLint 10; patched `minimatch`/`compression` pinned under `overrides` in package.json; `.npmrc` has `legacy-peer-deps=true` because the Next.js lint plugins haven't declared ESLint 10 support. Run `npm audit` after adding packages.
-- Tests: `tests/` with Playwright — `data.spec.ts` (menu, hours, FAQ, search text), `devices.spec.ts` (every test on 4 iPhone/iPad and 5 Android/Fold screens plus a laptop), `site.spec.ts` (links, images, Google data, 404). Run `npm test` before every commit and add or update a test with each change; when a test fails because the site rightly changed, update the test in the same commit. GitHub runs them on every pull request (`.github/workflows/test.yml`).
+- Tests: `tests/` with Playwright — `data.spec.ts` (menu, hours, FAQ, search text), `devices.spec.ts` (every test on 4 iPhone/iPad and 5 Android/Fold screens plus a laptop), `site.spec.ts` (links, images, Google data, 404), `theme.spec.ts` (light/night themes and text contrast in both, on every device). Run `npm test` before every commit and add or update a test with each change; when a test fails because the site rightly changed, update the test in the same commit. GitHub runs them on every pull request (`.github/workflows/test.yml`).
 - This Next.js version (16) differs from older docs: read AGENTS.md and the guides in `node_modules/next/dist/docs/` before writing code.
 
 ## Commands

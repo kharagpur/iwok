@@ -76,8 +76,8 @@ export function LocationMap() {
           <path
             key={i}
             d={shopPath(s)}
-            fill={s.us ? "var(--color-chili)" : "#f5f1ee"}
-            stroke={s.us ? "var(--color-chili-dark)" : "#d9d0c9"}
+            fill={s.us ? "#b3131b" : "#f5f1ee"}
+            stroke={s.us ? "#8a0e14" : "#d9d0c9"}
             strokeWidth="2"
           />
         ))}
@@ -106,7 +106,7 @@ export function LocationMap() {
           y="0"
           fontSize="22"
           fontWeight="800"
-          fill="var(--color-ink)"
+          fill="#1e1a17"
           transform={`translate(456 ${curb(456) - 15}) rotate(19.3)`}
         >
           Kingsway
@@ -116,7 +116,7 @@ export function LocationMap() {
           y="0"
           fontSize="20"
           fontWeight="800"
-          fill="var(--color-ink)"
+          fill="#1e1a17"
           transform="translate(175 290) rotate(-90)"
           textAnchor="middle"
         >
@@ -125,21 +125,21 @@ export function LocationMap() {
 
         {/* Address label with a pointer to the restaurant */}
         <g>
-          <rect x="252" y="14" width="232" height="68" rx="16" fill="var(--color-ink)" />
+          <rect x="252" y="14" width="232" height="68" rx="16" fill="#1e1a17" />
           <text x="368" y="43" textAnchor="middle" fontSize="22" fontWeight="800" fill="#fff">
             Indian Wok
           </text>
           <text x="368" y="69" textAnchor="middle" fontSize="19" fill="#e9e4e0">
             {site.address.street}
           </text>
-          <path d={`M330,82 L${(us.x1 + us.x2) / 2},${usTop + 14}`} stroke="var(--color-ink)" strokeWidth="3" />
-          <circle cx={(us.x1 + us.x2) / 2} cy={usTop + 14} r="6" fill="var(--color-ink)" stroke="#fff" strokeWidth="2" />
+          <path d={`M330,82 L${(us.x1 + us.x2) / 2},${usTop + 14}`} stroke="#1e1a17" strokeWidth="3" />
+          <circle cx={(us.x1 + us.x2) / 2} cy={usTop + 14} r="6" fill="#1e1a17" stroke="#fff" strokeWidth="2" />
         </g>
 
         {/* North arrow */}
         <g transform="translate(596 54)">
-          <path d="M0,-26 L12,10 L0,3 L-12,10 Z" fill="var(--color-ink)" />
-          <text x="0" y="32" textAnchor="middle" fontSize="19" fontWeight="800" fill="var(--color-ink)">
+          <path d="M0,-26 L12,10 L0,3 L-12,10 Z" fill="#1e1a17" />
+          <text x="0" y="32" textAnchor="middle" fontSize="19" fontWeight="800" fill="#1e1a17">
             N
           </text>
         </g>

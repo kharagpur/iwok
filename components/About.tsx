@@ -12,13 +12,13 @@ export function About() {
         <p className="mt-3 max-w-prose text-lg leading-relaxed">{site.story}</p>
         <p className="mt-3 text-stone">
           As featured in {site.press.outlet}:{" "}
-          <a href={site.press.url} rel="noopener" className="font-semibold text-chili underline underline-offset-2 hover:text-chili-dark">
+          <a href={site.press.url} rel="noopener" className="font-semibold text-ember underline underline-offset-2 hover:text-chili-dark">
             {site.press.title}
           </a>
         </p>
       </section>
 
-      <section aria-labelledby="groups-h" className="rounded-3xl bg-leaf p-5 text-white sm:p-7">
+      <section aria-labelledby="groups-h" className="rounded-3xl bg-forest p-5 text-white sm:p-7">
         <h2 id="groups-h" className="font-display text-2xl font-extrabold">
           Groups &amp; catering
         </h2>
@@ -28,7 +28,7 @@ export function About() {
         </p>
         <a
           href={site.phone.href}
-          className="mt-4 inline-flex min-h-12 items-center gap-2 rounded-full bg-white px-6 font-bold text-leaf hover:bg-turmeric-soft"
+          className="mt-4 inline-flex min-h-12 items-center gap-2 rounded-full bg-cream px-6 font-bold text-forest hover:bg-[#fdf1d6]"
         >
           <PhoneIcon /> Call {site.phone.display}
         </a>
