@@ -10,7 +10,7 @@ test("follows the phone's light or dark setting", async ({ page }) => {
   await page.emulateMedia({ colorScheme: "dark" });
   await page.goto("/");
   expect(await theme(page)).toBe("dark");
-  expect(await pageColour(page)).toBe("rgb(22, 17, 14)");
+  expect(await pageColour(page)).toBe("rgb(22, 35, 26)");
 
   await page.emulateMedia({ colorScheme: "light" });
   await expect.poll(() => theme(page), { message: "switches live when the phone changes" }).toBe("light");

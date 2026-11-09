@@ -23,19 +23,19 @@
   --color-chili-press: #8a0e14; /* red buttons, pressed or hovered */
 }
 
-/* Night ("wok iron and embers"): a warm near-black page, a deeper ember band, lighter ember red for
+/* Night ("forest night"): a deep green page from the logo's green, a deeper ember band, lighter ember red for
    text. Every text colour here passes WCAG AA (4.5:1) on the background it sits on; the tests check it. */
 html {
   color-scheme: light;
 }
 html[data-theme="dark"] {
   color-scheme: dark;
-  --color-paper: #16110e;
+  --color-paper: #16231a;
   --color-ink: #f4ede7;
-  --color-stone: #b5a79c;
-  --color-mist: #2b221d;
-  --color-line: #3a2f29;
-  --color-blush: #3a1714;
+  --color-stone: #a9bba9;
+  --color-mist: #22332a;
+  --color-line: #2f4437;
+  --color-blush: #3a1c18;
   --color-chili: #d6312a;
   --color-chili-dark: #ffa497;
   --color-chili-press: #b1241e;
@@ -43,9 +43,9 @@ html[data-theme="dark"] {
   --color-band: #7c1016;
   --color-cream: #f4ede7;
   --color-leaf: #a9d07e;
-  --color-leaf-soft: #1e2b14;
-  --color-forest: #1e2b14;
-  --color-turmeric-soft: #33260e;
+  --color-leaf-soft: #25392a;
+  --color-forest: #0e1912;
+  --color-turmeric-soft: #33300f;
 }
 
 /* `dark:` classes apply when the night theme is on (set on <html> by lib/theme.ts). */
