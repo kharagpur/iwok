@@ -2,7 +2,7 @@
 
 import type { MenuItem } from "@/data/menu";
 import { change, dishName, pickSize, useList } from "@/lib/list";
-import { MinusIcon, PlusIcon } from "./icons";
+import { MinusIcon, PlusIcon, TrashIcon } from "./icons";
 
 /**
  * Order list controls on a dish (see lib/list.ts). Sized to sit quietly in the text-first menu: a 28 px ring (+)
@@ -39,6 +39,15 @@ export function AddButton({ item, wide = false, className = "" }: { item: MenuIt
   );
 }
 
+/** The − button; at 1 it's a trash can that takes the dish off the list (as in the delivery apps). */
+function LessButton({ name, qty, onClick, className, face, icon }: { name: string; qty: number; onClick: () => void; className: string; face: string; icon: string }) {
+  return (
+    <button type="button" onClick={onClick} aria-label={qty === 1 ? `Remove ${name}` : `One less ${name}`} className={className}>
+      <span className={face}>{qty === 1 ? <TrashIcon className={icon} /> : <MinusIcon className={icon} />}</span>
+    </button>
+  );
+}
+
 /** − quantity + for one line of the list: a 28 px pill whose buttons reach 40 px tall for tapping. */
 export function Stepper({ code, size, qty, className = "" }: { code: string; size?: string; qty: number; className?: string }) {
   const name = size ? `${dishName(code)}, ${size}` : dishName(code);
@@ -46,11 +55,7 @@ export function Stepper({ code, size, qty, className = "" }: { code: string; siz
   const face = "inline-flex size-7 items-center justify-center rounded-full group-hover:bg-chili-press";
   return (
     <span role="group" aria-label={`${name} in order list`} className={`inline-flex h-7 shrink-0 items-center rounded-full bg-chili text-white ${className}`}>
-      <button type="button" onClick={() => change(code, -1, size)} aria-label={`One less ${name}`} className={button}>
-        <span className={face}>
-          <MinusIcon className="size-3.5" />
-        </span>
-      </button>
+      <LessButton name={name} qty={qty} onClick={() => change(code, -1, size)} className={button} face={face} icon="size-3.5" />
       <span className="min-w-4 text-center text-sm font-bold tabular-nums">{qty}</span>
       <button type="button" onClick={() => change(code, 1, size)} aria-label={`One more ${name}`} className={button}>
         <span className={face}>
@@ -93,11 +98,7 @@ export function WideStepper({ code, qty, tall = false }: { code: string; qty: nu
   const face = "inline-flex size-8 items-center justify-center rounded-full group-hover:bg-chili-press";
   return (
     <span role="group" aria-label={`${name} in order list`} className={`flex w-full items-center justify-between rounded-full bg-chili text-white ${tall ? "h-12" : "h-10"}`}>
-      <button type="button" onClick={() => change(code, -1)} aria-label={`One less ${name}`} className={button}>
-        <span className={face}>
-          <MinusIcon className="size-4" />
-        </span>
-      </button>
+      <LessButton name={name} qty={qty} onClick={() => change(code, -1)} className={button} face={face} icon="size-4" />
       <span className="text-sm font-semibold whitespace-nowrap">
         <span className="font-bold tabular-nums">{qty}</span> in order list
       </span>

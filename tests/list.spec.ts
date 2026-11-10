@@ -49,7 +49,9 @@ test("+ adds a dish; the bar shows how many and the estimated total; − takes i
   await expect(bar(page)).toContainText(formatPrice(first.price! * 2));
 
   await tapOrClick(page, page.getByRole("button", { name: `One less ${label(first)}`, exact: true }));
-  await tapOrClick(page, page.getByRole("button", { name: `One less ${label(first)}`, exact: true }));
+  // At 1 the − is a trash can that takes the dish off the list.
+  await expect(page.getByRole("button", { name: `One less ${label(first)}`, exact: true })).toHaveCount(0);
+  await tapOrClick(page, page.getByRole("button", { name: `Remove ${label(first)}`, exact: true }));
   await expect(bar(page)).toBeHidden();
   await expect(page.getByRole("button", { name: `Add ${label(first)} to order list`, exact: true })).toBeVisible();
 });

@@ -133,13 +133,16 @@ export function OrderList() {
                           </div>
                           <div className="mt-2 flex items-center justify-between gap-3">
                             <Stepper code={l.code} size={l.size} qty={l.qty} />
-                            <button
-                              type="button"
-                              onClick={() => remove(l.code, l.size)}
-                              className="relative min-h-10 px-2 text-sm font-semibold text-ember underline underline-offset-2"
-                            >
-                              Remove<span className="sr-only"> {dishName(l.code)}{l.size ? `, ${l.size}` : ""}</span>
-                            </button>
+                            {/* At 1, the pill's trash can removes the dish, so this link only shows from 2 up. */}
+                            {l.qty > 1 && (
+                              <button
+                                type="button"
+                                onClick={() => remove(l.code, l.size)}
+                                className="relative min-h-10 px-2 text-sm font-semibold text-ember underline underline-offset-2"
+                              >
+                                Remove<span className="sr-only"> {dishName(l.code)}{l.size ? `, ${l.size}` : ""}</span>
+                              </button>
+                            )}
                           </div>
                         </li>
                       );
