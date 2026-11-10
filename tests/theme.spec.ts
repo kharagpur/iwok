@@ -42,16 +42,21 @@ test("the header button switches the theme", async ({ page }) => {
   await expect(page.getByRole("button", { name: "Switch to light theme" })).toBeVisible();
 });
 
-for (const scheme of ["light", "dark"] as const) {
-  test(`every text is readable in the ${scheme} theme`, async ({ page }) => {
+for (const [scheme, withList] of [["light", false], ["dark", false], ["light", true], ["dark", true]] as const) {
+  test(`every text is readable in the ${scheme} theme${withList ? ", with My list open" : ""}`, async ({ page }) => {
     await page.emulateMedia({ colorScheme: scheme });
+    if (withList) {
+      // A list with a plain dish and a dish with sizes (lib/list.ts keeps it in localStorage).
+      await page.addInitScript(() => localStorage.setItem("iwok-my-list", JSON.stringify([{ code: "A1", qty: 2 }, { code: "S1", size: "Large", qty: 1 }])));
+    }
     await page.goto("/");
+    if (withList) await page.getByRole("button", { name: /^My list/ }).click();
     // Open the FAQ answers so their text is checked too.
     await page.evaluate(() => document.querySelectorAll("details").forEach((d) => (d.open = true)));
     expect(await contrastFailures(page)).toEqual([]);
   });
 
-  test(`pressed menu filters are readable in the ${scheme} theme`, async ({ page }) => {
+  if (!withList) test(`pressed menu filters are readable in the ${scheme} theme`, async ({ page }) => {
     await page.emulateMedia({ colorScheme: scheme });
     await page.goto("/");
     const filters = page.getByRole("group", { name: "Show only" });

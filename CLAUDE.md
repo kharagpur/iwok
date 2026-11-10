@@ -19,7 +19,7 @@ Static site for Indian Wok, an Indian-Chinese restaurant in Burnaby, British Col
 - Personal preferences for Claude belong in your own `~/.claude/CLAUDE.md`, `CLAUDE.local.md` or `.claude/settings.local.json` (the last two are ignored by Git), never in this file.
 - Commit messages: a short plain summary of the change.
 - `npm install` must stay clean: ESLint 10; patched `minimatch`/`compression` pinned under `overrides` in package.json; `.npmrc` has `legacy-peer-deps=true` because the Next.js lint plugins haven't declared ESLint 10 support. Run `npm audit` after adding packages.
-- Tests: `tests/` with Playwright — `data.spec.ts` (menu, hours, FAQ, search text), `devices.spec.ts` (every test on 4 iPhone/iPad and 5 Android/Fold screens plus a laptop), `site.spec.ts` (links, images, Google data, 404), `theme.spec.ts` (light/night themes and text contrast in both, on every device). Run `npm test` before every commit and add or update a test with each change; when a test fails because the site rightly changed, update the test in the same commit. GitHub runs them on every pull request (`.github/workflows/test.yml`).
+- Tests: `tests/` with Playwright — `data.spec.ts` (menu, hours, FAQ, search text), `devices.spec.ts` (every test on 4 iPhone/iPad and 5 Android/Fold screens plus a laptop), `site.spec.ts` (links, images, Google data, 404), `theme.spec.ts` (light/night themes and text contrast in both, on every device), `list.spec.ts` (*My list*, on every device). Run `npm test` before every commit and add or update a test with each change; when a test fails because the site rightly changed, update the test in the same commit. GitHub runs them on every pull request (`.github/workflows/test.yml`).
 - This Next.js version (16) differs from older docs: read AGENTS.md and the guides in `node_modules/next/dist/docs/` before writing code.
 
 ## Product decisions
@@ -40,6 +40,7 @@ Why the site is the way it is. Several of these look like bugs or gaps but are d
 - Tap-to-call phone number, opening hours, and the open-now badge.
 - The drawn map (`components/LocationMap.tsx`): exactly where the restaurant is (Kingsway at Royal Oak) and that parking is at the back. It stays a light drawing in the night theme.
 - Menu filters in two rows: Diet (vegetarian, gluten-free) and Spice (no spice, mild, medium, hot); dish photos one tap away; and the section bar showing where you are.
+- *My list* (`lib/list.ts`, `components/MyList.tsx`, `components/AddToList.tsx`): diners tap + on dishes, then read the list to the server or call it in. It is **not online ordering**: nothing is sent anywhere, it says so on the list screen, and it's called "My list", never "order" or "cart". The list stays in the browser (localStorage), holding only codes, sizes and quantities, so names and prices always come from `data/menu.ts`.
 - The files for search engines and AI assistants (structured data, `llms.txt`, `llms-full.txt`, sitemap, robots).
 
 **Deliberate choices that can look odd**

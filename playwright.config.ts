@@ -4,6 +4,7 @@ import { defineConfig, devices } from "@playwright/test";
 // - data:     menu, hours, FAQ and search-engine text — no browser needed.
 // - desktop:  the whole page on a laptop-sized Chrome (links, images, Google data, 404 page).
 // - theme:    light and night themes, the theme switch and text contrast in both (with the devices).
+// - list:     "My list", the dishes a diner picks to read out to the server (with the devices).
 // - phones and tablets: the same checks on popular devices, in Safari's engine (WebKit) for
 //   iPhones and iPads and Chrome's engine for Android. One-time setup: `npm run test:setup`.
 // The site under test is the built copy in out/, served the way GitHub Pages serves it.
@@ -32,13 +33,13 @@ export default defineConfig({
   },
   projects: [
     { name: "data", testMatch: /data\.spec\.ts/ },
-    { name: "desktop", testMatch: /(site|devices|theme)\.spec\.ts/, use: { ...devices["Desktop Chrome"] } },
-    ...iphones.map((name) => ({ name, testMatch: /(devices|theme)\.spec\.ts/, use: { ...devices[name] } })),
-    ...androids.map((name) => ({ name, testMatch: /(devices|theme)\.spec\.ts/, use: { ...devices[name] } })),
+    { name: "desktop", testMatch: /(site|devices|theme|list)\.spec\.ts/, use: { ...devices["Desktop Chrome"] } },
+    ...iphones.map((name) => ({ name, testMatch: /(devices|theme|list)\.spec\.ts/, use: { ...devices[name] } })),
+    ...androids.map((name) => ({ name, testMatch: /(devices|theme|list)\.spec\.ts/, use: { ...devices[name] } })),
     {
       // The narrowest phone screen in use: the Galaxy Fold's cover screen, 280 px wide.
       name: "Galaxy Fold cover",
-      testMatch: /(devices|theme)\.spec\.ts/,
+      testMatch: /(devices|theme|list)\.spec\.ts/,
       use: { ...devices["Pixel 7"], viewport: { width: 280, height: 653 } },
     },
   ],

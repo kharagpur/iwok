@@ -1,5 +1,6 @@
 import { popularItems } from "@/data/menu";
 import { site } from "@/data/site";
+import { DishControl } from "./AddToList";
 import { DishPhoto, Price, Spice } from "./Dish";
 import { ChiliIcon } from "./icons";
 
@@ -31,6 +32,9 @@ export function Popular() {
               <div className="mt-1 flex items-center justify-between gap-2">
                 <Spice item={item} />
                 <Price item={item} className="ml-auto text-ember" />
+              </div>
+              <div className="mt-2">
+                <DishControl item={item} layout="card" />
               </div>
             </li>
           ))}

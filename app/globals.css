@@ -147,3 +147,21 @@ summary::-webkit-details-marker {
 details[open] .faq-plus {
   transform: rotate(45deg);
 }
+
+/* "My list" bar (components/MyList.tsx): on phones it sits just above the Call / Order / Directions bar
+   (that bar: 1 px border + 10 px + 48 px button + its bottom padding); from 768 px it floats bottom-right.
+   While it shows, the footer gets room so the bar never covers the page's last lines. */
+.list-bar {
+  bottom: calc(4.2rem + max(0.75rem, env(safe-area-inset-bottom)));
+}
+html[data-list] footer {
+  padding-bottom: 10.5rem;
+}
+@media (min-width: 768px) {
+  .list-bar {
+    bottom: 1.25rem;
+  }
+  html[data-list] footer {
+    padding-bottom: 5.5rem;
+  }
+}

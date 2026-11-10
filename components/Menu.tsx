@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { menu, type MenuItem, type Spice as SpiceLevel } from "@/data/menu";
 import { site } from "@/data/site";
+import { useList } from "@/lib/list";
+import { AddButton, DishControl } from "./AddToList";
 import { DishPhoto, Price, Spice } from "./Dish";
 import { CameraIcon, ChiliIcon, CloseIcon, LeafIcon, PhoneIcon } from "./icons";
 
@@ -51,6 +53,9 @@ export function Menu() {
   // so the highlight goes straight to the tapped section instead of visiting every section on the way.
   const tapped = useRef<string | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
+  // Dishes in "My list" show their − 2 + control under the name instead of the + button (lib/list.ts).
+  const { lines } = useList();
+  const listed = new Set(lines.map((l) => l.code));
 
   const shown = menu
     .map((c) => ({
@@ -220,7 +225,7 @@ export function Menu() {
             </h3>
             <ul className="mt-1 grid lg:grid-cols-2 lg:gap-x-12">
               {c.items.map((item) => (
-                <li key={item.code ?? item.name} className="flex items-baseline gap-2.5 border-b border-line py-3">
+                <li key={item.code ?? item.name} className="flex min-w-0 items-baseline gap-2.5 border-b border-line py-3">
                   <span className="w-8 shrink-0 text-xs font-bold text-stone">{item.code}</span>
                   <div className="flex min-w-0 grow flex-col gap-1">
                     {item.photo ? (
@@ -244,8 +249,13 @@ export function Menu() {
                         )}
                       </span>
                     )}
+                    {item.code && listed.has(item.code) && <DishControl item={item} layout="row" />}
                   </div>
-                  <Price item={item} className="shrink-0" />
+                  {/* Price, then the + for My list; on the narrowest phones (under 360 px) the + sits under the price. */}
+                  <div className="flex shrink-0 items-baseline gap-2.5 max-[359px]:flex-col max-[359px]:items-end max-[359px]:gap-1.5">
+                    <Price item={item} />
+                    {item.code && !listed.has(item.code) && <AddButton item={item} className="-my-2 self-center max-[359px]:my-0 max-[359px]:self-end" />}
+                  </div>
                 </li>
               ))}
             </ul>
@@ -286,12 +296,17 @@ export function Menu() {
                 {photo.vegetarian && <VegTag />}
                 <Spice item={photo} />
               </span>
-              <a
-                href={site.phone.href}
-                className="mt-2 inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-chili px-6 font-bold text-white hover:bg-chili-press"
-              >
-                <PhoneIcon /> Call to order
-              </a>
+              <div className="mt-2 flex flex-wrap gap-2">
+                <div className="min-w-0 grow basis-40 [&>*]:min-h-12">
+                  <DishControl item={photo} layout="popup" />
+                </div>
+                <a
+                  href={site.phone.href}
+                  className="inline-flex min-h-12 grow basis-40 items-center justify-center gap-2 rounded-full bg-chili px-6 font-bold text-white hover:bg-chili-press"
+                >
+                  <PhoneIcon /> Call to order
+                </a>
+              </div>
             </div>
           </div>
         )}
