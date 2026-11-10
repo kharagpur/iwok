@@ -10,10 +10,10 @@ import { CloseIcon, ListIcon, PhoneIcon, ShareIcon } from "./icons";
 const dishes = (n: number) => `${n} ${n === 1 ? "dish" : "dishes"}`;
 
 /**
- * "My list" (lib/list.ts): the bar that appears once a dish is added, the list screen to read out to the
+ * The order list (lib/list.ts): the bar that appears once a dish is added, the list screen to read out to the
  * server or over the phone, and the size picker for soups and plain rice. Nothing here is sent anywhere.
  */
-export function MyList() {
+export function OrderList() {
   const { lines, note, picking, open } = useList();
   const listRef = useRef<HTMLDialogElement>(null);
   const sizeRef = useRef<HTMLDialogElement>(null);
@@ -42,7 +42,7 @@ export function MyList() {
     const text = listText(lines);
     try {
       if (navigator.share) {
-        await navigator.share({ title: `My ${site.name} list`, text });
+        await navigator.share({ title: `${site.name} order list`, text });
         return;
       }
       await navigator.clipboard.writeText(text);
@@ -72,7 +72,7 @@ export function MyList() {
               <ListIcon className="size-5" />
             </span>
             <span className="grow">
-              My list<span className="font-semibold"> · {dishes(t.dishes)}</span>
+              Order list<span className="font-semibold"> · {dishes(t.dishes)}</span>
             </span>
             <span className="tabular-nums">{formatPrice(t.sum)}</span>
           </button>
@@ -92,7 +92,7 @@ export function MyList() {
       >
         <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-line bg-paper px-5 py-3">
           <h2 id="list-h" className="font-display text-2xl font-extrabold">
-            My list
+            Order list
           </h2>
           <button
             type="button"
@@ -110,7 +110,7 @@ export function MyList() {
           </p>
 
           {lines.length === 0 ? (
-            <p className="py-8 text-center text-stone">Your list is empty. Tap + next to a dish to add it.</p>
+            <p className="py-8 text-center text-stone">Your order list is empty. Tap + next to a dish to add it.</p>
           ) : (
             <>
               {bySection(lines).map((g) => (

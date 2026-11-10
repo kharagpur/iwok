@@ -4,7 +4,7 @@ import { defineConfig, devices } from "@playwright/test";
 // - data:     menu, hours, FAQ and search-engine text — no browser needed.
 // - desktop:  the whole page on a laptop-sized Chrome (links, images, Google data, 404 page).
 // - theme:    light and night themes, the theme switch and text contrast in both (with the devices).
-// - list:     "My list", the dishes a diner picks to read out to the server (with the devices).
+// - list:     the order list, the dishes a diner picks to read out to the server (with the devices).
 // - phones and tablets: the same checks on popular devices, in Safari's engine (WebKit) for
 //   iPhones and iPads and Chrome's engine for Android. One-time setup: `npm run test:setup`.
 // The site under test is the built copy in out/, served the way GitHub Pages serves it.

@@ -1,4 +1,4 @@
-// "My list": dishes a diner picks while reading the menu, to read out to the server or over the phone.
+// The order list: dishes a diner picks while reading the menu, to read out to the server or over the phone.
 // Not an order: nothing is sent anywhere. The list lives in this browser only (localStorage) and keeps
 // just codes, sizes and quantities, so names and prices always come from data/menu.ts.
 
@@ -103,7 +103,7 @@ export function change(code: string, by: number, size?: string) {
       : state.lines;
   const total = count(lines);
   const what = by > 0 ? (current ? `${lineName(code, size)}: ${qty}` : `Added ${lineName(code, size)}`) : qty ? `${lineName(code, size)}: ${qty}` : `Removed ${lineName(code, size)}`;
-  set({ lines, note: `${what}. ${total} ${total === 1 ? "dish" : "dishes"} in your list.` });
+  set({ lines, note: `${what}. ${total} ${total === 1 ? "dish" : "dishes"} in your order list.` });
 }
 
 export function remove(code: string, size?: string) {
@@ -112,10 +112,10 @@ export function remove(code: string, size?: string) {
 }
 
 export function clear() {
-  set({ lines: [], note: "Your list is cleared." });
+  set({ lines: [], note: "Your order list is cleared." });
 }
 
-/** For a dish with sizes: asks which size (the size picker in components/MyList.tsx). */
+/** For a dish with sizes: asks which size (the size picker in components/OrderList.tsx). */
 export function pickSize(code: string | null) {
   set({ picking: code });
 }
@@ -167,7 +167,7 @@ export function listText(lines: Line[]) {
     }),
   );
   return [
-    `My ${site.name} list`,
+    `${site.name} order list`,
     ...rows,
     `Estimated total: ${formatPrice(t.sum)} before tax${t.unpriced ? ` (+ ${t.unpriced} to confirm)` : ""}.`,
     `${site.name} · ${site.phone.display}`,

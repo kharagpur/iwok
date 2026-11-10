@@ -4,7 +4,7 @@ import { FindUs } from "@/components/FindUs";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Menu } from "@/components/Menu";
-import { MyList } from "@/components/MyList";
+import { OrderList } from "@/components/OrderList";
 import { Popular } from "@/components/Popular";
 import { Reviews } from "@/components/Reviews";
 import { StickyBar } from "@/components/StickyBar";
@@ -28,7 +28,7 @@ export default function Home() {
           <Faq />
           <FindUs />
         </main>
-        <MyList />
+        <OrderList />
         <StickyBar />
       </div>
     </>

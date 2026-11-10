@@ -1,7 +1,7 @@
 import { expect, test, type Locator, type Page } from "@playwright/test";
 import { formatPrice, menu, popularCodes } from "@/data/menu";
 
-// "My list" (lib/list.ts, components/MyList.tsx): diners pick dishes on their phone, then read the list out to the
+// The order list (lib/list.ts, components/OrderList.tsx): diners pick dishes on their phone, then read the list out to the
 // server or over the phone. Nothing is ordered online. Runs on every device, like devices.spec.ts.
 
 const popular = new Set<string>(popularCodes);
@@ -13,8 +13,8 @@ const later = plain[plain.length - 1];
 const sized = all.find((i) => i.sizes && !popular.has(i.code!))!;
 const label = (i: (typeof all)[number]) => `${i.code} ${i.name}`;
 
-const bar = (page: Page) => page.getByRole("button", { name: /^My list/ });
-const listScreen = (page: Page) => page.getByRole("dialog", { name: "My list" });
+const bar = (page: Page) => page.getByRole("button", { name: /^Order list/ });
+const listScreen = (page: Page) => page.getByRole("dialog", { name: "Order list" });
 
 async function tapOrClick(page: Page, locator: Locator) {
   await locator.scrollIntoViewIfNeeded();
@@ -23,7 +23,7 @@ async function tapOrClick(page: Page, locator: Locator) {
 }
 
 async function add(page: Page, item: (typeof all)[number]) {
-  await tapOrClick(page, page.getByRole("button", { name: `Add ${label(item)} to my list`, exact: true }));
+  await tapOrClick(page, page.getByRole("button", { name: `Add ${label(item)} to order list`, exact: true }));
 }
 
 test.beforeEach(async ({ page }) => {
@@ -43,7 +43,7 @@ test("+ adds a dish; the bar shows how many and the estimated total; − takes i
   await expect(bar(page)).toBeInViewport({ ratio: 1 });
 
   // The + turns into − 1 + right on the dish.
-  await expect(page.getByRole("button", { name: `Add ${label(first)} to my list`, exact: true })).toHaveCount(0);
+  await expect(page.getByRole("button", { name: `Add ${label(first)} to order list`, exact: true })).toHaveCount(0);
   await tapOrClick(page, page.getByRole("button", { name: `One more ${label(first)}`, exact: true }));
   await expect(bar(page)).toContainText("2 dishes");
   await expect(bar(page)).toContainText(formatPrice(first.price! * 2));
@@ -51,7 +51,7 @@ test("+ adds a dish; the bar shows how many and the estimated total; − takes i
   await tapOrClick(page, page.getByRole("button", { name: `One less ${label(first)}`, exact: true }));
   await tapOrClick(page, page.getByRole("button", { name: `One less ${label(first)}`, exact: true }));
   await expect(bar(page)).toBeHidden();
-  await expect(page.getByRole("button", { name: `Add ${label(first)} to my list`, exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: `Add ${label(first)} to order list`, exact: true })).toBeVisible();
 });
 
 test("a dish with sizes asks which size, and each size is its own line", async ({ page }) => {
@@ -63,10 +63,11 @@ test("a dish with sizes asks which size, and each size is its own line", async (
   await tapOrClick(page, picker.getByRole("button", { name: new RegExp(`^${size.label}`) }));
   await expect(picker).toBeHidden();
   await expect(bar(page)).toContainText(formatPrice(size.price));
-  await expect(page.getByRole("group", { name: `${label(sized)}, ${size.label} in my list` })).toBeVisible();
+  await expect(page.getByRole("group", { name: `${label(sized)}, ${size.label} in order list` })).toBeVisible();
 
   // Another size of the same dish.
-  await tapOrClick(page, page.getByRole("button", { name: `Size of ${label(sized)}` }));
+  // The + stays on dishes with sizes, for adding another size.
+  await add(page, sized);
   await tapOrClick(page, picker.getByRole("button", { name: new RegExp(`^${sized.sizes![0].label}`) }));
   await expect(bar(page)).toContainText("2 dishes");
   await expect(bar(page)).toContainText(formatPrice(size.price + sized.sizes![0].price));
@@ -97,7 +98,7 @@ test("the list screen fits on screen, reads in menu order, and says it isn't an 
   await expect(lines).toHaveCount(1);
   await tapOrClick(page, screen.getByRole("button", { name: "Back to the menu" }));
   await expect(screen).toBeHidden();
-  await expect(page.getByRole("button", { name: `Add ${label(later)} to my list`, exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: `Add ${label(later)} to order list`, exact: true })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBe(0);
 });
 
@@ -111,7 +112,7 @@ test("the list is still there after a reload; Clear list asks once more", async 
   await tapOrClick(page, screen.getByRole("button", { name: "Clear list" }));
   await expect(screen.locator("li p")).toHaveCount(1);
   await tapOrClick(page, screen.getByRole("button", { name: "Tap again to clear" }));
-  await expect(screen).toContainText("Your list is empty");
+  await expect(screen).toContainText("Your order list is empty");
   await page.keyboard.press("Escape");
   await expect(bar(page)).toBeHidden();
   await page.reload();
@@ -119,17 +120,17 @@ test("the list is still there after a reload; Clear list asks once more", async 
   await expect(bar(page)).toBeHidden();
 });
 
-test("Add to my list from the dish photo, and from Most ordered", async ({ page }) => {
+test("Add to order list from the dish photo, and from Most ordered", async ({ page }) => {
   const photoDish = all.find((i) => i.photo && !i.sizes && i.price !== undefined && !popular.has(i.code!))!;
   await tapOrClick(page, page.locator("#menu button[aria-haspopup='dialog']", { hasText: photoDish.name }).first());
   const popup = page.getByRole("dialog", { name: photoDish.name });
-  await tapOrClick(page, popup.getByRole("button", { name: /Add to my list/ }));
-  await expect(popup.getByRole("group", { name: `${label(photoDish)} in my list` })).toBeVisible();
+  await tapOrClick(page, popup.getByRole("button", { name: /Add to order list/ }));
+  await expect(popup.getByRole("group", { name: `${label(photoDish)} in order list` })).toBeVisible();
   await expect(popup.getByRole("link", { name: /Call to order/ })).toBeInViewport({ ratio: 1 });
   await page.keyboard.press("Escape");
 
   const top = all.find((i) => i.code === popularCodes[0])!;
-  await tapOrClick(page, page.getByRole("button", { name: `Add to my list: ${label(top)}` }));
+  await tapOrClick(page, page.getByRole("button", { name: `Add to order list: ${label(top)}` }));
   await expect(bar(page)).toContainText("2 dishes");
 });
 
@@ -158,5 +159,5 @@ test("the bar never hides the end of the page", async ({ page }) => {
     );
     return Math.max(...texts.map((el) => el.getBoundingClientRect().bottom));
   });
-  expect(lowest, "last text hidden behind the My list bar").toBeLessThanOrEqual(barTop);
+  expect(lowest, "last text hidden behind the order list bar").toBeLessThanOrEqual(barTop);
 });

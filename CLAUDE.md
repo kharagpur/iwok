@@ -40,7 +40,7 @@ Why the site is the way it is. Several of these look like bugs or gaps but are d
 - Tap-to-call phone number, opening hours, and the open-now badge.
 - The drawn map (`components/LocationMap.tsx`): exactly where the restaurant is (Kingsway at Royal Oak) and that parking is at the back. It stays a light drawing in the night theme.
 - Menu filters in two rows: Diet (vegetarian, gluten-free) and Spice (no spice, mild, medium, hot); dish photos one tap away; and the section bar showing where you are.
-- *My list* (`lib/list.ts`, `components/MyList.tsx`, `components/AddToList.tsx`): diners tap + on dishes, then read the list to the server or call it in. It is **not online ordering**: nothing is sent anywhere, it says so on the list screen, and it's called "My list", never "order" or "cart". The list stays in the browser (localStorage), holding only codes, sizes and quantities, so names and prices always come from `data/menu.ts`.
+- The *order list* (`lib/list.ts`, `components/OrderList.tsx`, `components/AddToList.tsx`): diners tap + on dishes, then read the list to the server or call it in. It is **not online ordering**: nothing is sent anywhere, and the list screen says so at the top ("This isn't sent to the restaurant"); keep that line. Named "Order list" by the repo owner. The list stays in the browser (localStorage), holding only codes, sizes and quantities, so names and prices always come from `data/menu.ts`.
 - The files for search engines and AI assistants (structured data, `llms.txt`, `llms-full.txt`, sitemap, robots).
 
 **Deliberate choices that can look odd**
@@ -51,6 +51,7 @@ Why the site is the way it is. Several of these look like bugs or gaps but are d
 - The compact header applies from 768 px wide up; phones keep the big logo (`tests/devices.spec.ts` checks both).
 - The spice filter is one joined bar that reads as a heat scale, yet several levels can be on at once: a dish shows if it matches any level that's on (Mild + Medium shows both). Diet buttons narrow instead: a dish must match all of them. Pressed spice levels fill chili red; pressed diet buttons fill dark.
 - On phones the footer leaves out the "Hungry?" band's Call / Order buttons (the sticky bar has them) and the Visit column (Find us, just above, has the address and Directions). Laptops and tablets from 768 px wide show both.
+- The order list's + is a small 28 px ring and, once tapped, a 28 px red − 1 + pill in the same spot, sized to the menu's tags and prices. Each button still has a 40 px tap area (the visible shape sits inside a 40 px button); don't enlarge the shapes, and don't shrink the tap areas.
 - On phones the round dish photo in the red band runs 24 px past the right edge on purpose, so the plate looks bigger than the phone. From 768 px wide up it sits fully inside the band.
 
 ## Common tasks

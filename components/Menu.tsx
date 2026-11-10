@@ -3,8 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { menu, type MenuItem, type Spice as SpiceLevel } from "@/data/menu";
 import { site } from "@/data/site";
-import { useList } from "@/lib/list";
-import { AddButton, DishControl } from "./AddToList";
+import { DishControl, SizePills } from "./AddToList";
 import { DishPhoto, Price, Spice } from "./Dish";
 import { CameraIcon, ChiliIcon, CloseIcon, LeafIcon, PhoneIcon } from "./icons";
 
@@ -53,9 +52,6 @@ export function Menu() {
   // so the highlight goes straight to the tapped section instead of visiting every section on the way.
   const tapped = useRef<string | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
-  // Dishes in "My list" show their − 2 + control under the name instead of the + button (lib/list.ts).
-  const { lines } = useList();
-  const listed = new Set(lines.map((l) => l.code));
 
   const shown = menu
     .map((c) => ({
@@ -249,12 +245,12 @@ export function Menu() {
                         )}
                       </span>
                     )}
-                    {item.code && listed.has(item.code) && <DishControl item={item} layout="row" />}
+                    <SizePills item={item} />
                   </div>
-                  {/* Price, then the + for My list; on the narrowest phones (under 360 px) the + sits under the price. */}
+                  {/* Price, then the order list's + (or − 1 +); on the narrowest phones (under 360 px) it sits under the price. */}
                   <div className="flex shrink-0 items-baseline gap-2.5 max-[359px]:flex-col max-[359px]:items-end max-[359px]:gap-1.5">
                     <Price item={item} />
-                    {item.code && !listed.has(item.code) && <AddButton item={item} className="-my-2 self-center max-[359px]:my-0 max-[359px]:self-end" />}
+                    <DishControl item={item} layout="row" className="self-center max-[359px]:self-end" />
                   </div>
                 </li>
               ))}
@@ -297,7 +293,7 @@ export function Menu() {
                 <Spice item={photo} />
               </span>
               <div className="mt-2 flex flex-wrap gap-2">
-                <div className="min-w-0 grow basis-40 [&>*]:min-h-12">
+                <div className="min-w-0 grow basis-40">
                   <DishControl item={photo} layout="popup" />
                 </div>
                 <a
