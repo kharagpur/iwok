@@ -10,7 +10,7 @@ Static site for Indian Wok, an Indian-Chinese restaurant in Burnaby, British Col
 - `public/CNAME` = indianwok.ca; the published folder must contain an empty `.nojekyll`.
 - The menu is one data file; every section reads prices from it.
 - Styling: Tailwind CSS v4 (utility classes; brand colours and fonts in `@theme` in `app/globals.css`). Night theme: the same colour names are redefined under `html[data-theme="dark"]` in `globals.css`; use colour names (`text-ember`, `bg-paper`, …), not fixed hex values, so both themes work. Theme switch code: `components/Theme.tsx` and `lib/theme.ts`.
-- Design: white page, big logo on phones, red hero band, Bricolage Grotesque headings, text-first menu, sticky Call/Order/Directions bar on phones.
+- Design: white page, big logo on phones, red hero band, Bricolage Grotesque headings, text-first menu, sticky Call/Order/Directions bar on phones, and a red "Hungry?" band over a green footer at the end (`components/Footer.tsx`).
 - Restaurant facts live in `data/site.ts`, questions in `data/faq.ts`; `lib/seo.ts` builds the structured data and llms.txt from them. Never hand-write a fact in a component.
 - Photos come from the full-size 2021 originals in this repo's own history: `npm run photos` (scripts/photo-sources.json).
 - **Live:** every merge into `master` builds and publishes indianwok.ca through GitHub Actions (`.github/workflows/deploy-pages.yml`). `Old_Website_CheckPoint` is the 2021 site, kept for rollback.
@@ -49,6 +49,7 @@ Why the site is the way it is. Several of these look like bugs or gaps but are d
 - The night theme's page is a deep forest green from the logo, not black. The logo sits on a cream plate at night because its green letters vanish on a dark page.
 - The compact header applies from 768 px wide up; phones keep the big logo (`tests/devices.spec.ts` checks both).
 - The spice filter is one joined bar that reads as a heat scale, yet several levels can be on at once: a dish shows if it matches any level that's on (Mild + Medium shows both). Diet buttons narrow instead: a dish must match all of them. Pressed spice levels fill chili red; pressed diet buttons fill dark.
+- On phones the footer leaves out the "Hungry?" band's Call / Order buttons (the sticky bar has them) and the Visit column (Find us, just above, has the address and Directions). Laptops and tablets from 768 px wide show both.
 - On phones the round dish photo in the red band runs 24 px past the right edge on purpose, so the plate looks bigger than the phone. From 768 px wide up it sits fully inside the band.
 
 ## Common tasks
