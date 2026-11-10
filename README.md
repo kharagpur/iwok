@@ -35,6 +35,7 @@ The tests in `tests/` check the site on popular screens: iPhone SE, iPhone 15 Pr
 - **Devices** (`devices.spec.ts`): no sideways scrolling, sticky section bar, tapping a section, filters (diet and spice), size prices on the right, dish photo popup with the Call button on screen, the Call / Order / Directions bar, the footer (trimmed on phones), tap and text sizes.
 - **Menu and data** (`data.spec.ts`): every dish priced or noted, sane prices, no vegetarian mark on a meat, fish or egg dish, photos exist, opening hours, FAQ and Google data match the menu.
 - **Light and night themes** (`theme.spec.ts`, on every device): follows the phone's setting, the Light / Dark / Auto choice in the footer is remembered, the header button switches, and every piece of text is readable in both themes.
+- **Order list** (`list.spec.ts`, on every device): + adds a dish and − takes it off, sizes for soups and rice, the list screen in menu order with the estimated total, kept after a reload, Clear list, Share list, the photo popup and Most ordered buttons, and the bar never covering the page.
 - **Whole site** (`site.spec.ts`): every link, picture and script loads, Google data, robots, sitemap and llms files, the 404 page.
 
 **When to run them:**
