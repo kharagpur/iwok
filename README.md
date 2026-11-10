@@ -32,7 +32,7 @@ Press **Ctrl + C** to stop `npm run dev` or `npm start`.
 
 The tests in `tests/` check the site on popular screens: iPhone SE, iPhone 15 Pro, iPhone 15 Pro Max held sideways and iPad Mini (Safari's engine); Pixel 7, Galaxy S24, Galaxy S9+, Galaxy Tab S9 and the 280 px Galaxy Fold cover screen (Chrome's engine); and a laptop.
 
-- **Devices** (`devices.spec.ts`): no sideways scrolling, sticky section bar, tapping a section, filters, dish photo popup with the Call button on screen, the Call / Order / Directions bar, tap and text sizes.
+- **Devices** (`devices.spec.ts`): no sideways scrolling, sticky section bar, tapping a section, filters (diet and spice), size prices on the right, dish photo popup with the Call button on screen, the Call / Order / Directions bar, tap and text sizes.
 - **Menu and data** (`data.spec.ts`): every dish priced or noted, sane prices, no vegetarian mark on a meat, fish or egg dish, photos exist, opening hours, FAQ and Google data match the menu.
 - **Light and night themes** (`theme.spec.ts`, on every device): follows the phone's setting, the Light / Dark / Auto choice in the footer is remembered, the header button switches, and every piece of text is readable in both themes.
 - **Whole site** (`site.spec.ts`): every link, picture and script loads, Google data, robots, sitemap and llms files, the 404 page.

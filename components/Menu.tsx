@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { menu, type MenuItem } from "@/data/menu";
+import { menu, type MenuItem, type Spice as SpiceLevel } from "@/data/menu";
 import { site } from "@/data/site";
 import { DishPhoto, Price, Spice } from "./Dish";
-import { CameraIcon, CloseIcon, LeafIcon, PhoneIcon } from "./icons";
+import { CameraIcon, ChiliIcon, CloseIcon, LeafIcon, PhoneIcon } from "./icons";
 
 const shortName: Record<string, string> = {
   "Tofu and Paneer": "Tofu & Paneer",
@@ -13,13 +13,21 @@ const shortName: Record<string, string> = {
   "Side Orders": "Sides",
 };
 
-// Filters. Gluten-free means the gluten-free section; vegetarian comes from data/menu.ts.
-const filters = [
+// Filters, in two groups. Diet: a dish must match every button that's on (gluten-free means the
+// gluten-free section; vegetarian comes from data/menu.ts). Spice: a dish matches if its level is any
+// of the levels that are on, so Mild + Medium shows both. The two groups combine: Vegetarian + Hot =
+// vegetarian dishes that are hot.
+const diet = [
   { id: "veg", label: "Vegetarian", test: (i: MenuItem) => !!i.vegetarian },
   { id: "gf", label: "Gluten-free", test: (_: MenuItem, cat: string) => cat === "gluten-free" },
-  { id: "nospice", label: "No spice", test: (i: MenuItem) => i.spice === "none" },
 ] as const;
-type FilterId = (typeof filters)[number]["id"];
+type DietId = (typeof diet)[number]["id"];
+const levels: { id: SpiceLevel; label: string; chilies: number }[] = [
+  { id: "none", label: "No spice", chilies: 0 },
+  { id: "mild", label: "Mild", chilies: 1 },
+  { id: "medium", label: "Medium", chilies: 2 },
+  { id: "hot", label: "Hot", chilies: 3 },
+];
 
 const dishCount = menu.reduce((n, c) => n + c.items.length, 0);
 const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -29,7 +37,13 @@ const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)"
  * in the browser it adds filters, highlights the section you're reading, and opens dish photos.
  */
 export function Menu() {
-  const [on, setOn] = useState<FilterId[]>([]);
+  const [dietOn, setDietOn] = useState<DietId[]>([]);
+  const [spiceOn, setSpiceOn] = useState<SpiceLevel[]>([]);
+  const filtered = dietOn.length + spiceOn.length > 0;
+  const clear = () => {
+    setDietOn([]);
+    setSpiceOn([]);
+  };
   const [active, setActive] = useState<string>(menu[0].id);
   const [photo, setPhoto] = useState<MenuItem | null>(null);
   const navRef = useRef<HTMLUListElement>(null);
@@ -41,7 +55,9 @@ export function Menu() {
   const shown = menu
     .map((c) => ({
       ...c,
-      items: c.items.filter((i) => filters.every((f) => !on.includes(f.id) || f.test(i, c.id))),
+      items: c.items.filter(
+        (i) => diet.every((f) => !dietOn.includes(f.id) || f.test(i, c.id)) && (spiceOn.length === 0 || spiceOn.includes(i.spice)),
+      ),
     }))
     .filter((c) => c.items.length > 0);
   const shownCount = shown.reduce((n, c) => n + c.items.length, 0);
@@ -92,44 +108,78 @@ export function Menu() {
     if (photo) dialogRef.current?.showModal();
   }, [photo]);
 
-  const toggle = (id: FilterId) => setOn((cur) => (cur.includes(id) ? cur.filter((f) => f !== id) : [...cur, id]));
+  const toggle = <T,>(id: T) => (cur: T[]) => (cur.includes(id) ? cur.filter((f) => f !== id) : [...cur, id]);
 
   return (
     <section id="menu" aria-labelledby="menu-h" className="pt-12 md:pt-16">
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
-        <div className="flex items-baseline justify-between">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-3">
           <h2 id="menu-h" className="font-display text-[28px] font-extrabold md:text-4xl">
             Menu
           </h2>
           <span className="text-[13px] text-stone">
-            <span aria-live="polite">{on.length ? `${shownCount} of ${dishCount} dishes` : `${dishCount} dishes · prices may change`}</span>
-            {on.length > 0 && (
-              <button type="button" onClick={() => setOn([])} className="ml-2 min-h-10 font-semibold text-ember underline underline-offset-2">
+            <span aria-live="polite">{filtered ? `${shownCount} of ${dishCount} dishes` : `${dishCount} dishes`}</span>
+            {filtered && (
+              <button type="button" onClick={clear} className="ml-2 min-h-10 font-semibold text-ember underline underline-offset-2">
                 Clear filters
               </button>
             )}
           </span>
         </div>
 
-        <div role="group" aria-label="Show only" className="mt-3 flex flex-wrap items-center gap-2">
-          <span aria-hidden className="hidden text-sm text-stone sm:inline">Show only</span>
-          {filters.map((f) => {
-            const pressed = on.includes(f.id);
-            return (
-              <button
-                key={f.id}
-                type="button"
-                aria-pressed={pressed}
-                onClick={() => toggle(f.id)}
-                className={`inline-flex min-h-10 items-center gap-1.5 rounded-full border-2 px-3 text-sm font-semibold sm:px-3.5 ${
-                  pressed ? "border-ink bg-ink text-paper" : "border-line bg-paper hover:border-ink"
-                }`}
-              >
-                {f.id === "veg" && <LeafIcon />}
-                {f.label}
-              </button>
-            );
-          })}
+        {/* Two labelled rows: Diet (buttons as before) and Spice, one joined bar that reads as a heat scale.
+            Phones under 360 px put each label above its row so the bar keeps the full width. */}
+        <div
+          role="group"
+          aria-label="Show only"
+          className="mt-3 grid grid-cols-1 items-center gap-x-2 gap-y-1.5 min-[360px]:grid-cols-[3.25rem_1fr] min-[360px]:gap-y-2.5"
+        >
+          <span aria-hidden className="text-sm text-stone">
+            Diet
+          </span>
+          <div role="group" aria-label="Diet" className="flex flex-wrap gap-2">
+            {diet.map((f) => {
+              const pressed = dietOn.includes(f.id);
+              return (
+                <button
+                  key={f.id}
+                  type="button"
+                  aria-pressed={pressed}
+                  onClick={() => setDietOn(toggle(f.id))}
+                  className={`inline-flex min-h-10 items-center gap-1.5 rounded-full border-2 px-3 text-sm font-semibold sm:px-3.5 ${
+                    pressed ? "border-ink bg-ink text-paper" : "border-line bg-paper hover:border-ink"
+                  }`}
+                >
+                  {f.id === "veg" && <LeafIcon />}
+                  {f.label}
+                </button>
+              );
+            })}
+          </div>
+          <span aria-hidden className="text-sm text-stone">
+            Spice
+          </span>
+          <div role="group" aria-label="Spice level" className="flex w-full max-w-sm overflow-hidden rounded-2xl border-2 border-line">
+            {levels.map((l, n) => {
+              const pressed = spiceOn.includes(l.id);
+              return (
+                <button
+                  key={l.id}
+                  type="button"
+                  aria-pressed={pressed}
+                  onClick={() => setSpiceOn(toggle(l.id))}
+                  className={`flex min-h-12 flex-1 flex-col items-center justify-center gap-0.5 px-1 text-[13px] leading-tight font-semibold max-[359px]:text-xs ${
+                    n > 0 ? "border-l-2 border-line" : ""
+                  } ${pressed ? "bg-chili text-white" : "bg-paper hover:bg-mist"}`}
+                >
+                  <span aria-hidden className={`flex h-3.5 items-center -space-x-0.5 ${pressed ? "" : l.chilies ? "text-ember" : "text-stone"}`}>
+                    {l.chilies ? Array.from({ length: l.chilies }, (_, k) => <ChiliIcon key={k} />) : "–"}
+                  </span>
+                  <span className="whitespace-nowrap">{l.label}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 
@@ -158,7 +208,7 @@ export function Menu() {
         {shown.length === 0 && (
           <p className="pt-8 text-stone">
             No dishes match all of those.{" "}
-            <button type="button" onClick={() => setOn([])} className="font-semibold text-ember underline underline-offset-2">
+            <button type="button" onClick={clear} className="font-semibold text-ember underline underline-offset-2">
               Clear the filters
             </button>
           </p>
@@ -194,10 +244,8 @@ export function Menu() {
                         )}
                       </span>
                     )}
-                    {/* Dishes with sizes (soups, plain rice) show their prices under the name. */}
-                    {item.sizes && <Price item={item} />}
                   </div>
-                  {!item.sizes && <Price item={item} className="shrink-0" />}
+                  <Price item={item} className="shrink-0" />
                 </li>
               ))}
             </ul>

@@ -1,5 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
-import { menu } from "@/data/menu";
+import { findItem, formatPrice, menu } from "@/data/menu";
 
 // The page on popular phones, tablets and a laptop (projects in playwright.config.ts). Every test runs on
 // every device, so the site behaves the same everywhere.
@@ -144,26 +144,84 @@ test("filters show the right dishes and clear again", async ({ page }) => {
   await jumpTo(page, "#menu", 0);
   const filters = page.getByRole("group", { name: "Show only" });
   const count = page.locator("#menu [aria-live]").first();
-  await expect(count).toContainText(`${dishCount} dishes`);
+  await expect(count).toHaveText(`${dishCount} dishes`);
 
   const cases = [
-    { name: "Vegetarian", n: countOf((i) => !!i.vegetarian) },
-    { name: "Gluten-free", n: countOf((_, s) => s === "gluten-free") },
-    { name: "No spice", n: countOf((i) => i.spice === "none") },
+    { names: ["Vegetarian"], n: countOf((i) => !!i.vegetarian) },
+    { names: ["Gluten-free"], n: countOf((_, s) => s === "gluten-free") },
+    { names: ["No spice"], n: countOf((i) => i.spice === "none") },
+    { names: ["Mild"], n: countOf((i) => i.spice === "mild") },
+    { names: ["Medium"], n: countOf((i) => i.spice === "medium") },
+    { names: ["Hot"], n: countOf((i) => i.spice === "hot") },
+    // Spice levels add up (any of them); diet and spice narrow each other (both).
+    { names: ["Mild", "Medium"], n: countOf((i) => i.spice === "mild" || i.spice === "medium") },
+    { names: ["Vegetarian", "Hot"], n: countOf((i) => !!i.vegetarian && i.spice === "hot") },
   ];
-  for (const { name, n } of cases) {
-    const button = filters.getByRole("button", { name });
-    await tapOrClick(page, button);
-    await expect(button).toHaveAttribute("aria-pressed", "true");
-    await expect(count).toHaveText(`${n} of ${dishCount} dishes`);
+  for (const { names, n } of cases) {
+    expect(n, `${names.join(" + ")} matches some dishes`).toBeGreaterThan(0);
+    const buttons = names.map((name) => filters.getByRole("button", { name, exact: true }));
+    for (const button of buttons) {
+      await tapOrClick(page, button);
+      await expect(button).toHaveAttribute("aria-pressed", "true");
+    }
+    await expect(count, names.join(" + ")).toHaveText(`${n} of ${dishCount} dishes`);
     expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBe(0);
-    await tapOrClick(page, button);
-    await expect(button).toHaveAttribute("aria-pressed", "false");
+    for (const button of buttons) {
+      await tapOrClick(page, button);
+      await expect(button).toHaveAttribute("aria-pressed", "false");
+    }
   }
+  await expect(count, "no filter on: the count alone").toHaveText(`${dishCount} dishes`);
 
   await tapOrClick(page, filters.getByRole("button", { name: "Vegetarian" }));
+  await tapOrClick(page, filters.getByRole("button", { name: "Hot", exact: true }));
   await tapOrClick(page, page.getByRole("button", { name: "Clear filters" }));
-  await expect(count).toContainText(`${dishCount} dishes`);
+  await expect(count).toHaveText(`${dishCount} dishes`);
+  await expect(filters.locator("[aria-pressed=true]")).toHaveCount(0);
+});
+
+test("the spice bar fits on one line and the dish count never runs into the heading", async ({ page }) => {
+  await open(page);
+  await jumpTo(page, "#menu", 0);
+  const width = page.viewportSize()!.width;
+  const levels = page.getByRole("group", { name: "Spice level" }).getByRole("button");
+  await expect(levels).toHaveCount(4);
+  const boxes = await Promise.all((await levels.all()).map((b) => b.boundingBox()));
+  for (const box of boxes) {
+    expect(box!.y, "all four on one line").toBeCloseTo(boxes[0]!.y, 0);
+    expect(box!.x + box!.width, "inside the screen").toBeLessThanOrEqual(width);
+    expect(box!.height, "easy to tap").toBeGreaterThanOrEqual(44);
+  }
+
+  await tapOrClick(page, page.getByRole("group", { name: "Show only" }).getByRole("button", { name: "Vegetarian" }));
+  const heading = (await page.locator("#menu-h").boundingBox())!;
+  const count = (await page.locator("#menu [aria-live]").first().boundingBox())!;
+  const apart = count.x >= heading.x + heading.width || count.y >= heading.y + heading.height - 2;
+  expect(apart, "the count sits beside or below the heading, never on it").toBe(true);
+});
+
+test("dishes with sizes show their prices on the right, one size per line", async ({ page }) => {
+  await open(page);
+  await jumpTo(page, "#soups");
+  const width = page.viewportSize()!.width;
+  for (const code of ["S1", "S5", "J1"]) {
+    const row = page.locator("#menu li").filter({ has: page.getByText(code, { exact: true }) }).first();
+    const name = (await row.locator("div > :first-child").first().boundingBox())!;
+    const prices = row.locator("span.tabular-nums");
+    const n = await prices.count();
+    expect(n, `${code} lists its sizes`).toBeGreaterThanOrEqual(2);
+    let lastY = -1;
+    for (let i = 0; i < n; i++) {
+      const box = (await prices.nth(i).boundingBox())!;
+      expect(box.y, `${code}: one size per line`).toBeGreaterThan(lastY);
+      lastY = box.y + box.height - 1;
+      expect(box.x, `${code}: prices right of the name`).toBeGreaterThanOrEqual(name.x + name.width);
+      expect(box.x + box.width, `${code}: inside the screen`).toBeLessThanOrEqual(width);
+    }
+    // Screen readers hear the whole size name ("Small $4.90"), not just the letter.
+    const text = await row.textContent();
+    for (const size of findItem(code)!.sizes!) expect(text, `${code}: says ${size.label}`).toContain(`${size.label}${formatPrice(size.price)}`);
+  }
 });
 
 test("a dish photo opens fully on screen, with the Call button in reach, and closes", async ({ page }) => {

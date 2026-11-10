@@ -138,7 +138,7 @@ ${site.social.map((s) => `- [${s.name}](${s.href})`).join("\n")}
 export function llmsFullTxt() {
   return `# ${site.name}: full menu
 
-> ${site.address.street}, ${site.address.city} (${site.address.area}) · ${site.phone.display} · ${site.hours[0].days} ${site.hours[0].time}, closed ${site.hours[1].days}. Prices in Canadian dollars; prices may change, call to confirm.
+> ${site.address.street}, ${site.address.city} (${site.address.area}) · ${site.phone.display} · ${site.hours[0].days} ${site.hours[0].time}, closed ${site.hours[1].days}. Prices in Canadian dollars. For any dish listed as "call for price", call the restaurant.
 
 ${menu.map((c) => `## ${c.name}\n${c.items.map(itemLine).join("\n")}`).join("\n\n")}
 `;
