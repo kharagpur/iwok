@@ -2,7 +2,7 @@
 // Taken from the current site (github.com/kharagpur/iwok, index.html, full-menu section) on 2026-11-07;
 // spice levels, six new dishes and the most-ordered list checked against the delivery apps on 2026-11-08.
 // Prices, dish names, sizes and new entries from the restaurant's current menu (2026-11-08).
-// Existing photos and spice levels retained; F8 was absent from the supplied list.
+// Existing photos and spice levels retained.
 // Items with a `check` note have an open question for the restaurant.
 
 export type Spice = "none" | "mild" | "medium" | "hot";
@@ -85,7 +85,7 @@ export const menu: MenuCategory[] = [
       { code: "F5", name: "Fish with Black Bean Sauce", spice: "mild", price: 19.98, photo: "f5" },
       { code: "F6", name: "Masala Fish (Dry)", spice: "medium", price: 21.98, photo: "f6" },
       { code: "F7", name: "Hot and Spicy Squid (Dry)", spice: "medium", price: 21.99, photo: "f7" },
-      { code: "F8", name: "Dry Chili Fish", spice: "hot", check: "Absent from the supplied menu (2026-11-08); confirm availability and price." },
+      { code: "F8", name: "Dry Chili Fish", spice: "hot", price: 21.25},
     ],
   },
   {
