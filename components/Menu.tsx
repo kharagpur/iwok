@@ -277,7 +277,7 @@ export function Menu() {
         aria-labelledby="photo-h"
         onClose={() => setPhoto(null)}
         onClick={(e) => e.target === dialogRef.current && dialogRef.current?.close()}
-        className="m-auto max-h-[calc(100dvh-1.5rem)] w-[min(92vw,440px)] overflow-y-auto rounded-3xl bg-paper p-0 text-ink backdrop:bg-black/70 [@media(max-height:520px)]:w-[min(92vw,640px)]"
+        className="m-auto max-h-[calc(100dvh-1.5rem)] w-[min(92vw,440px)] no-scrollbar overflow-y-auto rounded-3xl bg-paper p-0 text-ink backdrop:bg-black/70 [@media(max-height:520px)]:w-[min(92vw,640px)]"
       >
         {/* Phones held sideways: photo on the left, name and Call button on the right, so nothing is cut off. */}
         {photo && (

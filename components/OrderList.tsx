@@ -88,7 +88,7 @@ export function OrderList() {
           setShared("");
         }}
         onClick={(e) => e.target === listRef.current && listRef.current?.close()}
-        className="m-auto max-h-[calc(100dvh-1.5rem)] w-[min(94vw,520px)] overflow-y-auto overscroll-contain rounded-3xl bg-paper p-0 text-ink backdrop:bg-black/70"
+        className="m-auto max-h-[calc(100dvh-1.5rem)] w-[min(94vw,520px)] no-scrollbar overflow-y-auto overscroll-contain rounded-3xl bg-paper p-0 text-ink backdrop:bg-black/70"
       >
         <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-line bg-paper px-5 py-3">
           <h2 id="list-h" className="font-display text-2xl font-extrabold">
@@ -209,7 +209,7 @@ export function OrderList() {
         aria-labelledby="size-h"
         onClose={() => pickSize(null)}
         onClick={(e) => e.target === sizeRef.current && sizeRef.current?.close()}
-        className="m-auto max-h-[calc(100dvh-1.5rem)] w-[min(92vw,380px)] overflow-y-auto rounded-3xl bg-paper p-5 text-ink backdrop:bg-black/70"
+        className="m-auto max-h-[calc(100dvh-1.5rem)] w-[min(92vw,380px)] no-scrollbar overflow-y-auto rounded-3xl bg-paper p-5 text-ink backdrop:bg-black/70"
       >
         {pickingItem?.sizes && (
           <>

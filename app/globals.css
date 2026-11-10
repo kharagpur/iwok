@@ -131,7 +131,8 @@ summary:focus-visible {
   outline-offset: 2px;
 }
 
-/* Hide scrollbars on the swipe rows; they still scroll by swipe, trackpad or keyboard. */
+/* Hide scrollbars on the swipe rows and the popups (order list, size picker, dish photo); they still scroll by
+   swipe, trackpad, wheel or keyboard. */
 .no-scrollbar {
   scrollbar-width: none;
 }
