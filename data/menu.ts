@@ -2,7 +2,7 @@
 // Taken from the current site (github.com/kharagpur/iwok, index.html, full-menu section) on 2026-11-07;
 // spice levels, six new dishes and the most-ordered list checked against the delivery apps on 2026-11-08.
 // Prices, dish names, sizes and new entries from the restaurant's current menu (2026-11-08).
-// Existing photos and spice levels retained; F8 was absent from the supplied list.
+// Existing photos and spice levels retained.
 // Items with a `check` note have an open question for the restaurant.
 
 export type Spice = "none" | "mild" | "medium" | "hot";
