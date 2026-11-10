@@ -12,26 +12,24 @@ export type MenuItem = {
   code?: string;
   name: string;
   spice: Spice;
-  /** Price in dollars. Missing when the current site shows none. */
+  /** Price in dollars. Leave it out only while the restaurant hasn't confirmed one (shown as "Call for price", with a `check`). */
   price?: number;
   /** For soups and plain rice, which come in sizes. */
   sizes?: { label: string; price: number }[];
   containsNuts?: boolean;
   /** Vegetarian (no meat, fish or egg), from the dish names and sections; to be confirmed by the restaurant. */
   vegetarian?: boolean;
-  /** Base name of the dish photo: public/images/dishes/<photo>-320.webp and -640.webp (4:3, made by scripts/resize-photos.mjs). */
+  /** Base name of the dish photo: public/images/dishes/<photo>-320.webp and -640.webp (square, made by scripts/resize-photos.mjs). */
   photo?: string;
-  /** Open question to settle before launch. */
+  /** An open question for the restaurant about this dish (none at the moment). */
   check?: string;
 };
 
-export type MenuCategory = {
+type MenuCategory = {
   id: string;
   name: string;
   items: MenuItem[];
 };
-
-export const pricesArePlaceholders = false;
 
 export const spiceLabel: Record<Spice, string> = {
   none: "",

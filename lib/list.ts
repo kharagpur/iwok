@@ -6,7 +6,7 @@ import { useSyncExternalStore } from "react";
 import { formatPrice, menu, type MenuItem } from "@/data/menu";
 import { site } from "@/data/site";
 
-export type Line = { code: string; size?: string; qty: number };
+type Line = { code: string; size?: string; qty: number };
 
 type State = {
   lines: Line[];
@@ -18,6 +18,7 @@ type State = {
   open: number;
 };
 
+// Named before the list became the "order list"; kept, since renaming it would empty the lists people already have.
 const KEY = "iwok-my-list";
 const MAX = 99;
 
@@ -124,7 +125,7 @@ export function openList() {
   set({ open: state.open + 1 });
 }
 
-export const count = (lines: Line[]) => lines.reduce((n, l) => n + l.qty, 0);
+const count = (lines: Line[]) => lines.reduce((n, l) => n + l.qty, 0);
 
 /** Price of one of this line's dish; undefined when the menu says "Call for price". */
 export function unitPrice(l: Line) {
