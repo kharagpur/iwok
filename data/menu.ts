@@ -85,7 +85,7 @@ export const menu: MenuCategory[] = [
       { code: "F5", name: "Fish with Black Bean Sauce", spice: "mild", price: 19.98, photo: "f5" },
       { code: "F6", name: "Masala Fish (Dry)", spice: "medium", price: 21.98, photo: "f6" },
       { code: "F7", name: "Hot and Spicy Squid (Dry)", spice: "medium", price: 21.99, photo: "f7" },
-      { code: "F8", name: "Dry Chili Fish", spice: "hot", check: "Absent from the supplied menu (2026-11-08); confirm availability and price." },
+      { code: "F8", name: "Dry Chili Fish", spice: "hot", price: 21.25},
     ],
   },
   {
