@@ -117,6 +117,29 @@ test("a long list scrolls without a visible scrollbar", async ({ page }) => {
   expect(box.scrolls && box.top > 0, "still scrolls").toBe(true);
 });
 
+test("opening a popup focuses its title, not Close: no amber ring on a tap; Tab still reaches Close", async ({ page }) => {
+  const focused = () => page.evaluate(() => ({ id: document.activeElement?.id, ring: document.activeElement?.matches(":focus-visible") }));
+
+  // The order list, opened with a tap or click.
+  await add(page, first);
+  await tapOrClick(page, bar(page));
+  await expect.poll(focused).toEqual({ id: "list-h", ring: expect.anything() });
+  const close = listScreen(page).getByRole("button", { name: "Close" });
+  expect(await close.evaluate((b) => b.matches(":focus-visible")), "no ring on Close after a tap").toBe(false);
+  // Keyboard users: Tab goes to Close, and there the amber ring shows.
+  await page.keyboard.press("Tab");
+  await expect(close).toBeFocused();
+  expect(await close.evaluate((b) => getComputedStyle(b).outlineStyle)).toBe("solid");
+  await page.keyboard.press("Escape");
+
+  // The size picker and the dish photo do the same.
+  await add(page, sized);
+  await expect.poll(focused).toMatchObject({ id: "size-h" });
+  await page.keyboard.press("Escape");
+  await tapOrClick(page, page.locator("#menu button[aria-haspopup='dialog']").first());
+  await expect.poll(focused).toMatchObject({ id: "photo-h" });
+});
+
 test("the list is still there after a reload; Clear list asks once more", async ({ page }) => {
   await add(page, first);
   await page.reload();

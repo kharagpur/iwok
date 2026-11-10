@@ -21,11 +21,17 @@ export function OrderList() {
   const [shared, setShared] = useState("");
   const t = totals(lines);
 
+  // Opening a popup puts focus on its title, not its first button: screen readers start by reading the title, a
+  // keyboard user presses Tab to reach Close, and a tap doesn't light up the amber focus ring on Close.
   useEffect(() => {
-    if (open) listRef.current?.showModal();
+    if (!open) return;
+    listRef.current?.showModal();
+    listRef.current?.querySelector<HTMLElement>("#list-h")?.focus({ preventScroll: true });
   }, [open]);
   useEffect(() => {
-    if (picking) sizeRef.current?.showModal();
+    if (!picking) return;
+    sizeRef.current?.showModal();
+    sizeRef.current?.querySelector<HTMLElement>("#size-h")?.focus({ preventScroll: true });
   }, [picking]);
   // Room at the end of the page for the bar (app/globals.css).
   useEffect(() => {
@@ -91,7 +97,7 @@ export function OrderList() {
         className="m-auto max-h-[calc(100dvh-1.5rem)] w-[min(94vw,520px)] no-scrollbar overflow-y-auto overscroll-contain rounded-3xl bg-paper p-0 text-ink backdrop:bg-black/70"
       >
         <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-line bg-paper px-5 py-3">
-          <h2 id="list-h" className="font-display text-2xl font-extrabold">
+          <h2 id="list-h" tabIndex={-1} className="font-display text-2xl font-extrabold outline-none">
             Order list
           </h2>
           <button
@@ -213,7 +219,7 @@ export function OrderList() {
       >
         {pickingItem?.sizes && (
           <>
-            <h2 id="size-h" className="font-display text-xl leading-tight font-extrabold">
+            <h2 id="size-h" tabIndex={-1} className="font-display text-xl leading-tight font-extrabold outline-none">
               Which size?
             </h2>
             <p className="mt-1 text-[15px]">
