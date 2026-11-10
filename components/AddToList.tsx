@@ -84,8 +84,36 @@ export function SizePills({ item }: { item: MenuItem }) {
 }
 
 /**
+ * A full-width − 1 in order list + bar: what the "Add to order list" button turns into on a Most ordered card (40 px)
+ * and in the photo popup (48 px, as tall as Call to order). The menu's red pill, at the button's size and in its place.
+ */
+export function WideStepper({ code, qty, tall = false }: { code: string; qty: number; tall?: boolean }) {
+  const name = dishName(code);
+  const button = `group inline-flex ${tall ? "size-12" : "size-10"} shrink-0 items-center justify-center`;
+  const face = "inline-flex size-8 items-center justify-center rounded-full group-hover:bg-chili-press";
+  return (
+    <span role="group" aria-label={`${name} in order list`} className={`flex w-full items-center justify-between rounded-full bg-chili text-white ${tall ? "h-12" : "h-10"}`}>
+      <button type="button" onClick={() => change(code, -1)} aria-label={`One less ${name}`} className={button}>
+        <span className={face}>
+          <MinusIcon className="size-4" />
+        </span>
+      </button>
+      <span className="text-sm font-semibold whitespace-nowrap">
+        <span className="font-bold tabular-nums">{qty}</span> in order list
+      </span>
+      <button type="button" onClick={() => change(code, 1)} aria-label={`One more ${name}`} className={button}>
+        <span className={face}>
+          <PlusIcon className="size-4" />
+        </span>
+      </button>
+    </span>
+  );
+}
+
+/**
  * The dish's control. In a menu row (`row`): the + or the pill, in the same spot (dishes with sizes always show the +).
- * On a Most ordered card (`card`) and in the photo popup (`popup`): the labelled button, or the pill once added.
+ * On a Most ordered card (`card`) and in the photo popup (`popup`): the full-width "Add to order list" button, which
+ * turns into the full-width − 1 + bar. Dishes with sizes keep the button (for another size), with their size pills under it.
  */
 export function DishControl({ item, layout, className = "" }: { item: MenuItem; layout: "row" | "card" | "popup"; className?: string }) {
   const { lines } = useList();
@@ -95,11 +123,12 @@ export function DishControl({ item, layout, className = "" }: { item: MenuItem; 
     if (item.sizes || mine.length === 0) return <AddButton item={item} className={className} />;
     return <Stepper code={item.code} qty={mine[0].qty} className={className} />;
   }
-  if (mine.length === 0) return <AddButton item={item} wide className={`w-full ${layout === "popup" ? "min-h-12" : ""}`} />;
+  const tall = layout === "popup";
+  if (!item.sizes && mine.length) return <WideStepper code={item.code} qty={mine[0].qty} tall={tall} />;
   return (
-    <span className={`flex items-center gap-2 ${layout === "popup" ? "min-h-12 justify-center" : "min-h-10"}`}>
+    <span className="flex flex-col gap-2">
+      <AddButton item={item} wide className={`w-full ${tall ? "min-h-12" : ""}`} />
       <Pills item={item} />
-      {layout === "popup" && <span className="text-sm text-stone">in your order list</span>}
     </span>
   );
 }

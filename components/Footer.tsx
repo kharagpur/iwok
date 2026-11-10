@@ -1,5 +1,5 @@
 import { site } from "@/data/site";
-import { BagIcon, PhoneIcon, PinIcon } from "./icons";
+import { BagIcon, BrandIcon, PhoneIcon, PinIcon } from "./icons";
 import { ThemeSwitch } from "./Theme";
 
 const year = new Date().getFullYear();
@@ -78,15 +78,18 @@ export function Footer() {
               <a href={`mailto:${site.email}`} className="inline-flex min-h-10 w-fit items-center break-all text-sage hover:underline">
                 {site.email}
               </a>
-              <ul className="mt-2 flex flex-wrap gap-2">
+              {/* Each site's own logo in a round button: all three fit on one line, even in the narrowest column. */}
+              <ul className="mt-2 flex gap-2.5">
                 {site.social.map((s) => (
                   <li key={s.name}>
                     <a
                       href={s.href}
                       rel="noopener"
-                      className="inline-flex min-h-11 items-center rounded-full border-2 border-white/30 px-4 text-sm font-semibold hover:border-white"
+                      aria-label={s.name}
+                      title={s.name}
+                      className="inline-flex size-11 items-center justify-center rounded-full border-2 border-white/30 hover:border-white hover:bg-white/10"
                     >
-                      {s.name}
+                      <BrandIcon name={s.name} />
                     </a>
                   </li>
                 ))}

@@ -18,7 +18,7 @@ export function Popular() {
           aria-label="Most ordered dishes"
         >
           {popularItems.map((item) => (
-            <li key={item.code} className="w-[200px] shrink-0 snap-start md:w-auto">
+            <li key={item.code} className="flex w-[200px] shrink-0 snap-start flex-col md:w-auto">
               {item.photo ? (
                 <DishPhoto item={item} sizes="(min-width: 1024px) 220px, (min-width: 768px) 33vw, 200px" className="aspect-square w-full rounded-[20px]" />
               ) : (
@@ -26,14 +26,15 @@ export function Popular() {
                   <ChiliIcon className="size-12" />
                 </div>
               )}
-              <h3 className="mt-2 text-[15px] leading-snug font-semibold">
+              {/* The name takes the spare height, so prices and buttons line up across cards whatever the name's length. */}
+              <h3 className="mt-2 grow text-[15px] leading-snug font-semibold">
                 <span className="text-stone">{item.code}</span> {item.name}
               </h3>
               <div className="mt-1 flex items-center justify-between gap-2">
                 <Spice item={item} />
                 <Price item={item} className="ml-auto text-ember" />
               </div>
-              <div className="mt-2">
+              <div className="mt-2.5">
                 <DishControl item={item} layout="card" />
               </div>
             </li>

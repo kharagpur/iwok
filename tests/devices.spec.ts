@@ -112,6 +112,9 @@ test("the footer: the Hungry band, hours and contact, trimmed on phones", async 
   await expect(footer.getByRole("link", { name: site.phone.display })).toHaveAttribute("href", site.phone.href);
   await expect(footer.getByRole("link", { name: site.email })).toHaveAttribute("href", `mailto:${site.email}`);
   for (const s of site.social) await expect(footer.getByRole("link", { name: s.name, exact: true })).toHaveAttribute("href", s.href);
+  // Instagram, Facebook and Yelp are logo buttons on one line, never wrapping to a second.
+  const socialTops = await Promise.all(site.social.map(async (s) => Math.round((await footer.getByRole("link", { name: s.name, exact: true }).boundingBox())!.y)));
+  expect(new Set(socialTops).size, "social buttons on one line").toBe(1);
   await expect(footer.getByRole("link", { name: "Indian Wok, back to top" })).toHaveAttribute("href", "#top");
   await expect(footer.getByRole("radiogroup", { name: "Theme" })).toBeVisible();
 

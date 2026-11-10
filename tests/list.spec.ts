@@ -134,6 +134,25 @@ test("Add to order list from the dish photo, and from Most ordered", async ({ pa
   await expect(bar(page)).toContainText("2 dishes");
 });
 
+test("Most ordered: the add buttons line up across cards, and turn into a full-width − 1 + bar", async ({ page }) => {
+  const cards = page.getByRole("list", { name: "Most ordered dishes" }).getByRole("listitem");
+  // The first three cards sit side by side on every screen (a swipe row on phones, a grid from 768 px up).
+  const tops = [];
+  for (let i = 0; i < 3; i++) tops.push(Math.round((await cards.nth(i).getByRole("button", { name: /^Add to order list/ }).boundingBox())!.y));
+  expect(new Set(tops).size, "add buttons at the same height, whatever the dish name's length").toBe(1);
+
+  const top = all.find((i) => i.code === popularCodes[1])!;
+  const button = cards.nth(1).getByRole("button", { name: /^Add to order list/ });
+  const before = (await button.boundingBox())!;
+  await tapOrClick(page, button);
+  const bar = cards.nth(1).getByRole("group", { name: `${label(top)} in order list` });
+  await expect(bar).toContainText("1 in order list");
+  const after = (await bar.boundingBox())!;
+  const neighbour = (await cards.nth(0).getByRole("button", { name: /^Add to order list/ }).boundingBox())!;
+  expect(Math.round(after.y), "in line with the next card's button").toBe(Math.round(neighbour.y));
+  expect(Math.round(after.width), "same width as the button").toBe(Math.round(before.width));
+});
+
 test("Share list copies the list as text when the phone can't share", async ({ page }) => {
   await page.addInitScript(() => {
     Object.defineProperty(navigator, "share", { value: undefined });
