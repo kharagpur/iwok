@@ -148,7 +148,7 @@ test("Most ordered: the add buttons line up across cards, and turn into a full-w
   const before = (await button.boundingBox())!;
   await tapOrClick(page, button);
   const bar = cards.nth(1).getByRole("group", { name: `${label(top)} in order list` });
-  await expect(bar).toContainText("1 in order list");
+  await expect(bar).toHaveText("1");
   const after = (await bar.boundingBox())!;
   const neighbour = (await cards.nth(0).getByRole("button", { name: /^Add to order list/ }).boundingBox())!;
   expect(Math.round(after.y), "in line with the next card's button").toBe(Math.round(neighbour.y));

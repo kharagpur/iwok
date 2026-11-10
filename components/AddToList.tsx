@@ -89,7 +89,7 @@ export function SizePills({ item }: { item: MenuItem }) {
 }
 
 /**
- * A full-width − 1 in order list + bar: what the "Add to order list" button turns into on a Most ordered card (40 px)
+ * A full-width − 1 + bar (just the number, like the menu's pill and the delivery apps): what the "Add to order list" button turns into on a Most ordered card (40 px)
  * and in the photo popup (48 px, as tall as Call to order). The menu's red pill, at the button's size and in its place.
  */
 export function WideStepper({ code, qty, tall = false }: { code: string; qty: number; tall?: boolean }) {
@@ -99,9 +99,7 @@ export function WideStepper({ code, qty, tall = false }: { code: string; qty: nu
   return (
     <span role="group" aria-label={`${name} in order list`} className={`flex w-full items-center justify-between rounded-full bg-chili text-white ${tall ? "h-12" : "h-10"}`}>
       <LessButton name={name} qty={qty} onClick={() => change(code, -1)} className={button} face={face} icon="size-4" />
-      <span className="text-sm font-semibold whitespace-nowrap">
-        <span className="font-bold tabular-nums">{qty}</span> in order list
-      </span>
+      <span className="text-base font-bold tabular-nums">{qty}</span>
       <button type="button" onClick={() => change(code, 1)} aria-label={`One more ${name}`} className={button}>
         <span className={face}>
           <PlusIcon className="size-4" />
