@@ -1,9 +1,9 @@
 import { site } from "@/data/site";
 import { PinIcon } from "./icons";
 import { LocationMap } from "./LocationMap";
-import { ThemeSwitch } from "./Theme";
+import { Footer } from "./Footer";
 
-/** Map (where we are, parking at the back), address and contact (R7, R13), then the footer with social links. */
+/** Map (where we are, parking at the back), address and contact (R7, R13), then the footer (components/Footer.tsx). */
 export function FindUs() {
   return (
     <>
@@ -39,33 +39,7 @@ export function FindUs() {
         </div>
       </section>
 
-      <footer className="mt-14 bg-forest pb-24 text-white md:mt-20 md:pb-0">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-9 sm:px-6 md:flex-row md:items-center md:justify-between">
-          <div>
-            <p className="font-display text-2xl font-extrabold">{site.name}</p>
-            <p className="mt-1 text-[15px]">
-              {site.address.street}, {site.address.city} ·{" "}
-              <a href={site.phone.href} className="underline-offset-2 hover:underline">
-                {site.phone.display}
-              </a>
-              <br />
-              {site.hours[0].short} {site.hours[0].time} · Closed {site.hours[1].days}
-            </p>
-          </div>
-          <div className="flex flex-col gap-3 md:items-end">
-          <ul className="flex gap-5 text-[15px]">
-            {site.social.map((s) => (
-              <li key={s.name}>
-                <a href={s.href} rel="noopener" className="inline-flex min-h-11 items-center underline underline-offset-2">
-                  {s.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <ThemeSwitch />
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }
