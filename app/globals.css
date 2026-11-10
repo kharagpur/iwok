@@ -20,6 +20,7 @@
   --color-band: #b3131b; /* the red band at the top */
   --color-cream: #ffffff; /* white buttons on the red band */
   --color-forest: #2f4a14; /* green panels: footer, groups card */
+  --color-sage: #d3dcc8; /* softer text on the green footer */
   --color-chili-press: #8a0e14; /* red buttons, pressed or hovered */
 }
 
@@ -45,6 +46,7 @@ html[data-theme="dark"] {
   --color-leaf: #a9d07e;
   --color-leaf-soft: #25392a;
   --color-forest: #0e1912;
+  --color-sage: #b5c2b0;
   --color-turmeric-soft: #33300f;
 }
 

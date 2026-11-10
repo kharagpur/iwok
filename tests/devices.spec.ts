@@ -1,5 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 import { findItem, formatPrice, menu } from "@/data/menu";
+import { site } from "@/data/site";
 
 // The page on popular phones, tablets and a laptop (projects in playwright.config.ts). Every test runs on
 // every device, so the site behaves the same everywhere.
@@ -97,6 +98,35 @@ test("Call / Order / Directions bar shows on phones only, and never hides the pa
     return last.getBoundingClientRect().bottom - barTop;
   }, (await bar.boundingBox())!.y);
   expect(overlap, "last text hidden behind the bar").toBeLessThanOrEqual(0);
+});
+
+test("the footer: the Hungry band, hours and contact, trimmed on phones", async ({ page }) => {
+  await open(page);
+  const footer = page.locator("footer");
+  await jumpTo(page, "footer", 0);
+  await expect(footer.getByText("Hungry?")).toBeVisible();
+  await expect(footer.getByText(`Dinner ${site.hours[0].short}, ${site.hours[0].time}`)).toBeVisible();
+  const hours = footer.getByRole("region", { name: "Hours" });
+  for (const h of site.hours) await expect(hours).toContainText(h.time);
+  await expect(hours).toContainText(site.pickupOffer);
+  await expect(footer.getByRole("link", { name: site.phone.display })).toHaveAttribute("href", site.phone.href);
+  await expect(footer.getByRole("link", { name: site.email })).toHaveAttribute("href", `mailto:${site.email}`);
+  for (const s of site.social) await expect(footer.getByRole("link", { name: s.name, exact: true })).toHaveAttribute("href", s.href);
+  await expect(footer.getByRole("link", { name: "Indian Wok, back to top" })).toHaveAttribute("href", "#top");
+  await expect(footer.getByRole("radiogroup", { name: "Theme" })).toBeVisible();
+
+  // Phones skip what's already on screen: Call and Order are in the bottom bar, the address and Directions in Find us.
+  const call = footer.getByRole("link", { name: "Call to order" });
+  const visit = footer.getByRole("region", { name: "Visit" });
+  if (page.viewportSize()!.width >= 768) {
+    await expect(call).toBeVisible();
+    await expect(call).toHaveAttribute("href", site.phone.href);
+    await expect(visit).toBeVisible();
+    await expect(visit.getByRole("link", { name: "Directions" })).toHaveAttribute("href", site.mapUrl);
+  } else {
+    await expect(call).toBeHidden();
+    await expect(visit).toBeHidden();
+  }
 });
 
 test("the section bar sticks to the top while you read the menu", async ({ page }) => {
