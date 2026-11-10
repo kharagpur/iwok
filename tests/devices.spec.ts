@@ -325,7 +325,14 @@ test("the logo is big on phones and compact on wider screens", async ({ page }) 
     expect(Math.round(logo.width), "compact logo").toBe(72);
     expect((await header.boundingBox())!.height, "compact header").toBeLessThanOrEqual(100);
   } else {
-    expect(Math.round(logo.width), "big logo on phones").toBe(250);
+    // 250 px, or all the width there is on a screen narrower than that: on the 280 px Galaxy Fold cover screen the
+    // header's padding leaves 248 px, and the logo rightly shrinks to fit rather than poke out past the edge.
+    const room = await header.getByRole("img", { name: "Indian Wok" }).evaluate((img) => {
+      const box = img.closest("a")!.parentElement!;
+      const pad = (el: Element) => parseFloat(getComputedStyle(el).paddingLeft) + parseFloat(getComputedStyle(el).paddingRight);
+      return box.clientWidth - pad(box) - pad(img.closest("a")!);
+    });
+    expect(Math.round(logo.width), "big logo on phones").toBe(Math.min(250, Math.round(room)));
   }
 });
 
