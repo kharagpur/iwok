@@ -48,7 +48,22 @@ for (const scheme of ["light", "dark"] as const) {
     await page.goto("/");
     // Open the FAQ answers so their text is checked too.
     await page.evaluate(() => document.querySelectorAll("details").forEach((d) => (d.open = true)));
-    const failures = await page.evaluate(() => {
+    expect(await contrastFailures(page)).toEqual([]);
+  });
+
+  test(`pressed menu filters are readable in the ${scheme} theme`, async ({ page }) => {
+    await page.emulateMedia({ colorScheme: scheme });
+    await page.goto("/");
+    const filters = page.getByRole("group", { name: "Show only" });
+    for (const name of ["Vegetarian", "No spice", "Mild", "Medium", "Hot"]) await filters.getByRole("button", { name, exact: true }).click();
+    await expect(filters.locator("[aria-pressed=true]")).toHaveCount(5);
+    expect(await contrastFailures(page, "#menu [role=group]")).toEqual([]);
+  });
+}
+
+/** Text whose colour is too close to the colour behind it (WCAG AA: 4.5:1, or 3:1 for large text). */
+function contrastFailures(page: Page, within = "body") {
+  return page.evaluate((within) => {
       const rgb = (c: string) => (c.match(/[\d.]+/g) ?? []).map(Number);
       const lum = ([r, g, b]: number[]) => {
         const f = (v: number) => ((v /= 255) <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);
@@ -67,7 +82,7 @@ for (const scheme of ["light", "dark"] as const) {
         return [255, 255, 255];
       };
       const out: string[] = [];
-      for (const el of document.querySelectorAll("body *")) {
+      for (const el of document.querySelectorAll(`${within} *`)) {
         if (el.closest("svg, [aria-hidden='true'], .sr-only")) continue;
         const text = [...el.childNodes].filter((n) => n.nodeType === 3).map((n) => n.textContent ?? "").join("").trim();
         if (!text) continue;
@@ -82,7 +97,5 @@ for (const scheme of ["light", "dark"] as const) {
         if (ratio < (large ? 3 : 4.5)) out.push(`"${text.slice(0, 30)}" ${ratio.toFixed(2)}:1`);
       }
       return [...new Set(out)];
-    });
-    expect(failures).toEqual([]);
-  });
+  }, within);
 }

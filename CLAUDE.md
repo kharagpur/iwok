@@ -39,15 +39,17 @@ Why the site is the way it is. Several of these look like bugs or gaps but are d
 - Order buttons for DoorDash, Uber Eats and SkipTheDishes, and the 10% off in-store pickup offer.
 - Tap-to-call phone number, opening hours, and the open-now badge.
 - The drawn map (`components/LocationMap.tsx`): exactly where the restaurant is (Kingsway at Royal Oak) and that parking is at the back. It stays a light drawing in the night theme.
-- Menu filters (vegetarian, gluten-free, no spice), dish photos one tap away, and the section bar showing where you are.
+- Menu filters in two rows: Diet (vegetarian, gluten-free) and Spice (no spice, mild, medium, hot); dish photos one tap away; and the section bar showing where you are.
 - The files for search engines and AI assistants (structured data, `llms.txt`, `llms-full.txt`, sitemap, robots).
 
 **Deliberate choices that can look odd**
 - F8 Dry Chili Fish shows "Call for price": it isn't on the restaurant's current menu, and it stays listed for now.
-- Plain Rice (J1) is one line with Small / Medium / Large prices.
+- Plain Rice (J1) is one dish with Small / Medium / Large prices. Like the soups, its sizes stack one per line in the price column on the right.
 - The section bar's highlight ("Pop") is CSS only: the current chip fills red with a small bounce. An earlier JavaScript and SVG-filter "gooey" pill was removed because it was janky; don't bring back script-driven or filter-based animation.
 - The night theme's page is a deep forest green from the logo, not black. The logo sits on a cream plate at night because its green letters vanish on a dark page.
 - The compact header applies from 768 px wide up; phones keep the big logo (`tests/devices.spec.ts` checks both).
+- The spice filter is one joined bar that reads as a heat scale, yet several levels can be on at once: a dish shows if it matches any level that's on (Mild + Medium shows both). Diet buttons narrow instead: a dish must match all of them. Pressed spice levels fill chili red; pressed diet buttons fill dark.
+- On phones the round dish photo in the red band runs 24 px past the right edge on purpose, so the plate looks bigger than the phone. From 768 px wide up it sits fully inside the band.
 
 ## Common tasks
 - **Change a price, name, size or spice level:** edit the dish in `data/menu.ts`. Every part of the page (full menu, *Most ordered*, Google's data, llms.txt) reads from it. Then `npm test -- --project=data`, and `npm start` to look at it on http://localhost:4000.

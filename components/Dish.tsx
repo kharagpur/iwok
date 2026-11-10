@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { formatPrice, spiceLabel, type MenuItem } from "@/data/menu";
 import { ChiliIcon } from "./icons";
 
@@ -24,10 +25,19 @@ export function Spice({ item }: { item: MenuItem }) {
 
 /** Price, sizes (soups, plain rice) or a call-for-price note. */
 export function Price({ item, className = "" }: { item: MenuItem; className?: string }) {
+  // Dishes with sizes (soups, plain rice): one size per line, small to large, the prices lined up on the right.
   if (item.sizes) {
     return (
-      <span className={`text-sm font-bold ${className}`}>
-        {item.sizes.map((s) => `${s.label[0]} ${formatPrice(s.price)}`).join(" · ")}
+      <span className={`grid grid-cols-[auto_auto] items-baseline justify-end gap-x-1.5 text-right ${className}`}>
+        {item.sizes.map((s) => (
+          <Fragment key={s.label}>
+            <span className="text-xs font-semibold text-stone">
+              {s.label[0]}
+              <span className="sr-only">{s.label.slice(1)}</span>
+            </span>
+            <span className="font-bold tabular-nums">{formatPrice(s.price)}</span>
+          </Fragment>
+        ))}
       </span>
     );
   }
