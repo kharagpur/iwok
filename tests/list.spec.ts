@@ -104,6 +104,42 @@ test("the list screen fits on screen, reads in menu order, and says it isn't an 
   expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBe(0);
 });
 
+test("a long list scrolls without a visible scrollbar", async ({ page }) => {
+  for (const dish of plain.slice(0, 12)) await add(page, dish);
+  await tapOrClick(page, bar(page));
+  const screen = listScreen(page);
+  await expect(screen.locator("li p")).toHaveCount(12);
+  const box = await screen.evaluate((d: HTMLElement) => {
+    d.scrollTop = 300;
+    return { gutter: d.offsetWidth - d.clientWidth, scrolls: d.scrollHeight > d.clientHeight, top: d.scrollTop };
+  });
+  expect(box.gutter, "no scrollbar taking up room").toBe(0);
+  expect(box.scrolls && box.top > 0, "still scrolls").toBe(true);
+});
+
+test("opening a popup focuses its title, not Close: no amber ring on a tap; Tab still reaches Close", async ({ page }) => {
+  const focused = () => page.evaluate(() => ({ id: document.activeElement?.id, ring: document.activeElement?.matches(":focus-visible") }));
+
+  // The order list, opened with a tap or click.
+  await add(page, first);
+  await tapOrClick(page, bar(page));
+  await expect.poll(focused).toEqual({ id: "list-h", ring: expect.anything() });
+  const close = listScreen(page).getByRole("button", { name: "Close" });
+  expect(await close.evaluate((b) => b.matches(":focus-visible")), "no ring on Close after a tap").toBe(false);
+  // Keyboard users: Tab goes to Close, and there the amber ring shows.
+  await page.keyboard.press("Tab");
+  await expect(close).toBeFocused();
+  expect(await close.evaluate((b) => getComputedStyle(b).outlineStyle)).toBe("solid");
+  await page.keyboard.press("Escape");
+
+  // The size picker and the dish photo do the same.
+  await add(page, sized);
+  await expect.poll(focused).toMatchObject({ id: "size-h" });
+  await page.keyboard.press("Escape");
+  await tapOrClick(page, page.locator("#menu button[aria-haspopup='dialog']").first());
+  await expect.poll(focused).toMatchObject({ id: "photo-h" });
+});
+
 test("the list is still there after a reload; Clear list asks once more", async ({ page }) => {
   await add(page, first);
   await page.reload();

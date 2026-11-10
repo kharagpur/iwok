@@ -109,7 +109,10 @@ export function Menu() {
   }, [active]);
 
   useEffect(() => {
-    if (photo) dialogRef.current?.showModal();
+    if (!photo) return;
+    dialogRef.current?.showModal();
+    // Focus on the dish name, not the Close button (see components/OrderList.tsx): no amber ring on a tap.
+    dialogRef.current?.querySelector<HTMLElement>("#photo-h")?.focus({ preventScroll: true });
   }, [photo]);
 
   const toggle = <T,>(id: T) => (cur: T[]) => (cur.includes(id) ? cur.filter((f) => f !== id) : [...cur, id]);
@@ -277,7 +280,7 @@ export function Menu() {
         aria-labelledby="photo-h"
         onClose={() => setPhoto(null)}
         onClick={(e) => e.target === dialogRef.current && dialogRef.current?.close()}
-        className="m-auto max-h-[calc(100dvh-1.5rem)] w-[min(92vw,440px)] overflow-y-auto rounded-3xl bg-paper p-0 text-ink backdrop:bg-black/70 [@media(max-height:520px)]:w-[min(92vw,640px)]"
+        className="m-auto max-h-[calc(100dvh-1.5rem)] w-[min(92vw,440px)] no-scrollbar overflow-y-auto rounded-3xl bg-paper p-0 text-ink backdrop:bg-black/70 [@media(max-height:520px)]:w-[min(92vw,640px)]"
       >
         {/* Phones held sideways: photo on the left, name and Call button on the right, so nothing is cut off. */}
         {photo && (
@@ -295,7 +298,7 @@ export function Menu() {
             </div>
             <div className="flex flex-col gap-2 p-5 [@media(max-height:520px)]:grow">
               <div className="flex items-baseline justify-between gap-3">
-                <h3 id="photo-h" className="font-display text-xl leading-tight font-extrabold">
+                <h3 id="photo-h" tabIndex={-1} className="font-display text-xl leading-tight font-extrabold outline-none">
                   {photo.name}
                 </h3>
                 <Price item={photo} className="shrink-0 text-ember" />

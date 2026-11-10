@@ -12,7 +12,7 @@ import { MinusIcon, PlusIcon, TrashIcon } from "./icons";
  */
 
 /** Adds one of the dish, or asks for a size. `wide` is the labelled button for the photo cards and popup. */
-export function AddButton({ item, wide = false, className = "" }: { item: MenuItem; wide?: boolean; className?: string }) {
+function AddButton({ item, wide = false, className = "" }: { item: MenuItem; wide?: boolean; className?: string }) {
   if (!item.code) return null;
   const code = item.code;
   const add = () => (item.sizes ? pickSize(code) : change(code, 1));
@@ -92,7 +92,7 @@ export function SizePills({ item }: { item: MenuItem }) {
  * A full-width − 1 + bar (just the number, like the menu's pill and the delivery apps): what the "Add to order list" button turns into on a Most ordered card (40 px)
  * and in the photo popup (48 px, as tall as Call to order). The menu's red pill, at the button's size and in its place.
  */
-export function WideStepper({ code, qty, tall = false }: { code: string; qty: number; tall?: boolean }) {
+function WideStepper({ code, qty, tall = false }: { code: string; qty: number; tall?: boolean }) {
   const name = dishName(code);
   const button = `group inline-flex ${tall ? "size-12" : "size-10"} shrink-0 items-center justify-center`;
   const face = "inline-flex size-8 items-center justify-center rounded-full group-hover:bg-chili-press";
