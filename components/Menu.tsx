@@ -5,7 +5,7 @@ import { menu, type MenuItem, type Spice as SpiceLevel } from "@/data/menu";
 import { site } from "@/data/site";
 import { DishControl, SizePills } from "./AddToList";
 import { DishPhoto, Price, Spice, warmPhoto } from "./Dish";
-import { CameraIcon, ChiliIcon, CloseIcon, LeafIcon, PhoneIcon } from "./icons";
+import { CameraIcon, ChiliIcon, CloseIcon, LeafIcon, NutIcon, PhoneIcon } from "./icons";
 
 const shortName: Record<string, string> = {
   "Tofu and Paneer": "Tofu & Paneer",
@@ -185,6 +185,14 @@ export function Menu() {
             })}
           </div>
         </div>
+        {/* Only some dishes are marked; kitchens share pans and oil, so anyone with an allergy should check with us. */}
+        <p className="mt-3 text-sm text-stone">
+          Food allergy?{" "}
+          <a href={site.phone.href} className="font-semibold text-ember underline underline-offset-2">
+            Call us
+          </a>{" "}
+          and we&apos;ll check before you order.
+        </p>
       </div>
 
       <nav aria-label="Menu sections" className="sticky top-0 z-10 mt-3 border-b border-line bg-paper/95 backdrop-blur">
@@ -246,9 +254,7 @@ export function Menu() {
                       <span className="flex flex-wrap gap-1.5">
                         {item.vegetarian && <VegTag />}
                         <Spice item={item} />
-                        {item.containsNuts && (
-                          <span className="rounded-full bg-mist px-2 py-0.5 text-xs font-semibold text-stone">Contains nuts</span>
-                        )}
+                        {item.containsNuts && <NutTag />}
                       </span>
                     )}
                     <SizePills item={item} />
@@ -297,6 +303,7 @@ export function Menu() {
               <span className="flex flex-wrap gap-1.5">
                 {photo.vegetarian && <VegTag />}
                 <Spice item={photo} />
+                {photo.containsNuts && <NutTag />}
               </span>
               <div className="mt-2 flex flex-wrap gap-2">
                 <div className="min-w-0 grow basis-40">
@@ -314,6 +321,19 @@ export function Menu() {
         )}
       </dialog>
     </section>
+  );
+}
+
+/**
+ * Allergy tag: a nut icon and the words, never the icon alone. Amber so it stands out from the green Veg and red spice
+ * tags. A generic nut, not a peanut: peanut and tree-nut allergies are different, and these dishes' nuts aren't confirmed.
+ */
+function NutTag() {
+  return (
+    <span className="inline-flex items-center gap-1 rounded-full bg-turmeric-soft px-2 py-0.5 text-xs font-semibold text-ink">
+      <NutIcon className="size-3" />
+      Contains nuts
+    </span>
   );
 }
 

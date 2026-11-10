@@ -144,3 +144,13 @@ export function TrashIcon({ className = "size-4" }: IconProps) {
     </svg>
   );
 }
+
+/** A generic nut (an almond shape with its seam), for the "Contains nuts" tag; not a peanut, which is a different allergy. */
+export function NutIcon({ className = "size-3" }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M12 3c4 3 6.5 7 6.5 11a6.5 6.5 0 0 1-13 0C5.5 10 8 6 12 3z" />
+      <path d="M12 7.5v12" />
+    </svg>
+  );
+}

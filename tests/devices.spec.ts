@@ -340,3 +340,18 @@ test("the open-now badge shows today's status", async ({ page }) => {
   await open(page);
   await expect(page.locator("#top p[aria-live]").first()).toHaveText(/^(Open now|Closing soon|Closed)/);
 });
+
+test("dishes with nuts say so in words with a nut icon, and an allergy line points to the phone", async ({ page }) => {
+  await open(page);
+  const nutDishes = menu.flatMap((c) => c.items).filter((i) => i.containsNuts);
+  expect(nutDishes.length).toBeGreaterThan(0);
+  for (const dish of nutDishes) {
+    const row = page.locator("#menu li").filter({ hasText: dish.name }).first();
+    const tag = row.getByText("Contains nuts", { exact: true });
+    await expect(tag, dish.name).toBeVisible();
+    await expect(tag.locator("svg"), `${dish.name}: nut icon next to the words`).toHaveCount(1);
+  }
+  // Only some dishes are marked, so the menu points anyone with an allergy to the phone.
+  await expect(page.locator("#menu").getByText(/Food allergy\?/)).toBeVisible();
+  await expect(page.locator("#menu").getByRole("link", { name: "Call us" })).toHaveAttribute("href", /^tel:\+1\d{10}$/);
+});
