@@ -35,7 +35,6 @@ export function Header() {
         {/* AVIF where the browser supports it (about half the bytes: 45 KB instead of 84 KB on phones), else WebP. */}
         <picture>
           <source type="image/avif" srcSet="/images/logo-480.avif 480w, /images/logo-720.avif 720w" sizes="(min-width: 768px) 72px, 250px" />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/logo-480.webp"
             srcSet="/images/logo-480.webp 480w, /images/logo-720.webp 720w"

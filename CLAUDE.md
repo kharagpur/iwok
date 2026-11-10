@@ -20,7 +20,7 @@ Static site for Indian Wok, an Indian-Chinese restaurant in Burnaby, British Col
 - Personal preferences for Claude belong in your own `~/.claude/CLAUDE.md`, `CLAUDE.local.md` or `.claude/settings.local.json` (the last two are ignored by Git), never in this file.
 - Commit messages: a short plain summary of the change.
 - `npm install` must stay clean: ESLint 10; patched `minimatch`/`compression` pinned under `overrides` in package.json; `.npmrc` has `legacy-peer-deps=true` because the Next.js lint plugins haven't declared ESLint 10 support. Run `npm audit` after adding packages.
-- Tests: `tests/` with Playwright — `data.spec.ts` (menu, hours, FAQ, search text), `devices.spec.ts` (every test on 4 iPhone/iPad and 5 Android/Fold screens plus a laptop), `site.spec.ts` (links, images, Google data, 404), `theme.spec.ts` (light/night themes and text contrast in both, on every device), `list.spec.ts` (*My list*, on every device). Run `npm test` before every commit and add or update a test with each change; when a test fails because the site rightly changed, update the test in the same commit. GitHub runs them on every pull request (`.github/workflows/test.yml`).
+- Tests: `tests/` with Playwright — `data.spec.ts` (menu, hours, FAQ, search text), `devices.spec.ts` (every test on 4 iPhone/iPad and 5 Android/Fold screens plus a laptop), `site.spec.ts` (links, images, Google data, 404), `theme.spec.ts` (light/night themes and text contrast in both, on every device), `list.spec.ts` (the order list, on every device). Run `npm test` before every commit and add or update a test with each change; when a test fails because the site rightly changed, update the test in the same commit. GitHub runs them on every pull request (`.github/workflows/test.yml`).
 - This Next.js version (16) differs from older docs: read AGENTS.md and the guides in `node_modules/next/dist/docs/` before writing code.
 
 ## Product decisions
@@ -45,7 +45,6 @@ Why the site is the way it is. Several of these look like bugs or gaps but are d
 - The files for search engines and AI assistants (structured data, `llms.txt`, `llms-full.txt`, sitemap, robots).
 
 **Deliberate choices that can look odd**
-- F8 Dry Chili Fish shows "Call for price": it isn't on the restaurant's current menu, and it stays listed for now.
 - Plain Rice (J1) is one dish with Small / Medium / Large prices. Like the soups, its sizes stack one per line in the price column on the right.
 - The section bar's highlight ("Pop") is CSS only: the current chip fills red with a small bounce. An earlier JavaScript and SVG-filter "gooey" pill was removed because it was janky; don't bring back script-driven or filter-based animation.
 - The night theme's page is a deep forest green from the logo, not black. The logo sits on a cream plate at night because its green letters vanish on a dark page.
