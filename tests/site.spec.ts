@@ -24,6 +24,8 @@ test("every picture, font and script on the page loads", async ({ page, request 
       add(img.getAttribute("src"));
       img.srcset?.split(",").forEach((s) => add(s.trim().split(" ")[0]));
     });
+    // <picture> sources too (the AVIF logo).
+    document.querySelectorAll<HTMLSourceElement>("source[srcset]").forEach((src) => src.srcset.split(",").forEach((s) => add(s.trim().split(" ")[0])));
     document.querySelectorAll("link[href], script[src]").forEach((el) => add(el.getAttribute("href") ?? el.getAttribute("src")));
     return [...out].filter((u) => u.startsWith(location.origin));
   });
@@ -72,4 +74,26 @@ test("a wrong address shows the not-found page", async ({ page }) => {
   const res = await page.goto("/no-such-page");
   expect(res?.status()).toBe(404);
   await expect(page.getByText(/could not be found/i)).toBeVisible();
+});
+
+test("the logo and hero photo load first; other photos show a blurred preview until they arrive", async ({ page }) => {
+  await page.goto("/");
+  // The top of the page: high priority, and the logo in AVIF (about half the bytes) with WebP as the fallback.
+  const logo = page.getByRole("banner").getByRole("img", { name: "Indian Wok" });
+  await expect(logo).toHaveAttribute("fetchpriority", "high");
+  await expect(page.getByRole("banner").locator('picture source[type="image/avif"]')).toHaveAttribute("srcset", /logo-720\.avif/);
+  const hero = page.locator("#top section img").first();
+  await expect(hero).toHaveAttribute("fetchpriority", "high");
+  expect(await hero.evaluate((img) => getComputedStyle(img).backgroundImage)).toContain("data:image/webp;base64,");
+
+  // Most ordered: low priority (the top of the page goes first) and a blurred preview behind each photo.
+  const cards = page.getByRole("list", { name: "Most ordered dishes" }).locator("img");
+  expect(await cards.count()).toBeGreaterThan(5);
+  for (const img of await cards.all()) {
+    await expect(img).toHaveAttribute("fetchpriority", "low");
+    expect(await img.evaluate((el) => getComputedStyle(el).backgroundImage)).toContain("data:image/webp;base64,");
+  }
+
+  // The delivery logos further down wait until they're needed.
+  for (const img of await page.locator("#order img").all()) await expect(img).toHaveAttribute("loading", "lazy");
 });

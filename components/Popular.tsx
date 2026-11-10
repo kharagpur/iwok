@@ -1,4 +1,5 @@
 import { popularItems } from "@/data/menu";
+import placeholders from "@/data/placeholders.json";
 import { site } from "@/data/site";
 import { DishControl } from "./AddToList";
 import { DishPhoto, Price, Spice } from "./Dish";
@@ -20,7 +21,13 @@ export function Popular() {
           {popularItems.map((item) => (
             <li key={item.code} className="flex w-[200px] shrink-0 snap-start flex-col md:w-auto">
               {item.photo ? (
-                <DishPhoto item={item} sizes="(min-width: 1024px) 220px, (min-width: 768px) 33vw, 200px" className="aspect-square w-full rounded-[20px]" />
+                <DishPhoto
+                  item={item}
+                  sizes="(min-width: 1024px) 220px, (min-width: 768px) 33vw, 200px"
+                  placeholder={item.photo ? (placeholders as Record<string, string>)[item.photo] : undefined}
+                  lowPriority
+                  className="aspect-square w-full rounded-[20px]"
+                />
               ) : (
                 <div aria-hidden="true" className="flex aspect-square w-full items-center justify-center rounded-[20px] bg-mist text-ember">
                   <ChiliIcon className="size-12" />
@@ -57,7 +64,7 @@ export function Popular() {
                 style={{ backgroundColor: d.color }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={d.logo} alt={`Order delivery on ${d.name}`} className="max-w-full object-contain" style={{ height: d.logoHeight }} />
+                <img src={d.logo} alt={`Order delivery on ${d.name}`} loading="lazy" decoding="async" className="max-w-full object-contain" style={{ height: d.logoHeight }} />
               </a>
             </li>
           ))}

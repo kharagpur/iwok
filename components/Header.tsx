@@ -32,16 +32,22 @@ export function Header() {
         className="block md:order-1 dark:rounded-[28px] dark:bg-[#f6efe6] dark:px-[22px] dark:py-[14px] md:dark:rounded-xl md:dark:px-2 md:dark:py-1.5"
         aria-label="Indian Wok, back to top"
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/logo-480.webp"
-          srcSet="/images/logo-480.webp 480w, /images/logo-720.webp 720w"
-          sizes="(min-width: 768px) 72px, 250px"
-          width={480}
-          height={383}
-          alt="Indian Wok"
-          className="h-auto w-[250px] md:w-[72px]"
-        />
+        {/* AVIF where the browser supports it (about half the bytes: 45 KB instead of 84 KB on phones), else WebP. */}
+        <picture>
+          <source type="image/avif" srcSet="/images/logo-480.avif 480w, /images/logo-720.avif 720w" sizes="(min-width: 768px) 72px, 250px" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/logo-480.webp"
+            srcSet="/images/logo-480.webp 480w, /images/logo-720.webp 720w"
+            sizes="(min-width: 768px) 72px, 250px"
+            width={480}
+            height={383}
+            alt="Indian Wok"
+            // The first thing on screen: download it ahead of everything below.
+            fetchPriority="high"
+            className="h-auto w-[250px] md:w-[72px]"
+          />
+        </picture>
       </a>
     </header>
   );

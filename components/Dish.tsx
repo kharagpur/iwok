@@ -48,7 +48,24 @@ export function Price({ item, className = "" }: { item: MenuItem; className?: st
 }
 
 /** Square dish photo: the 320 px file for small spots, 640 px on sharp screens. */
-export function DishPhoto({ item, className, sizes }: { item: MenuItem; className: string; sizes: string }) {
+export function DishPhoto({
+  item,
+  className,
+  sizes,
+  placeholder,
+  eager = false,
+  lowPriority = false,
+}: {
+  item: MenuItem;
+  className: string;
+  sizes: string;
+  /** Tiny blurred preview shown until the photo arrives (data/placeholders.json; pass it from server components only). */
+  placeholder?: string;
+  /** Load at once (the photo popup) instead of when it nears the screen. */
+  eager?: boolean;
+  /** Below the first screen: let the logo and hero photo download first. */
+  lowPriority?: boolean;
+}) {
   if (!item.photo) return null;
   const src = `/images/dishes/${item.photo}`;
   return (
@@ -61,9 +78,26 @@ export function DishPhoto({ item, className, sizes }: { item: MenuItem; classNam
       width={320}
       height={320}
       alt={item.name}
-      loading="lazy"
+      loading={eager ? "eager" : "lazy"}
+      fetchPriority={lowPriority ? "low" : undefined}
       decoding="async"
-      className={`object-cover ${className}`}
+      style={placeholder ? { backgroundImage: `url(${placeholder})` } : undefined}
+      className={`bg-mist bg-cover bg-center object-cover ${className}`}
     />
   );
 }
+
+/**
+ * Starts downloading a dish's popup photo before the popup opens: called when a finger touches the dish name or the
+ * mouse hovers over it, so the photo is usually there by the time the popup shows. Same files and `sizes` as the
+ * popup's DishPhoto, so the browser picks the same one and reuses it.
+ */
+export function warmPhoto(item: MenuItem, sizes: string) {
+  if (!item.photo || warmed.has(item.photo)) return;
+  warmed.add(item.photo);
+  const src = `/images/dishes/${item.photo}`;
+  const img = new Image();
+  img.sizes = sizes;
+  img.srcset = `${src}-320.webp 320w, ${src}-640.webp 640w`;
+}
+const warmed = new Set<string>();

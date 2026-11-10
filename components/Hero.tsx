@@ -1,3 +1,4 @@
+import placeholders from "@/data/placeholders.json";
 import { site } from "@/data/site";
 import { BagIcon, PhoneIcon } from "./icons";
 import { OpenNow } from "./OpenNow";
@@ -35,12 +36,16 @@ export function Hero() {
           <img
             src="/images/hero-dish-640.webp"
             srcSet="/images/hero-dish-640.webp 640w, /images/hero-dish-960.webp 960w"
-            sizes="(min-width: 768px) 440px, 250px"
+            // The photo inside the 8 px cream border: 234 px on phones, 424 px from 768 px up. Saying 250 px made phones
+            // pick the 960 px file (89 KB) when the 640 px one (50 KB) is just as sharp there.
+            sizes="(min-width: 768px) 424px, 234px"
             width={640}
             height={640}
             alt="Masala Chicken"
             fetchPriority="high"
-            className="absolute right-[-24px] bottom-[-110px] size-[250px] rounded-full border-8 border-cream object-cover md:right-6 md:bottom-[-120px] md:size-[440px]"
+            // A blurred preview until the photo arrives (scripts/placeholders.mjs), so slow phones see the dish at once.
+            style={{ backgroundImage: `url(${placeholders.hero})` }}
+            className="absolute bg-cream bg-cover bg-center right-[-24px] bottom-[-110px] size-[250px] rounded-full border-8 border-cream object-cover md:right-6 md:bottom-[-120px] md:size-[440px]"
           />
         </div>
       </section>

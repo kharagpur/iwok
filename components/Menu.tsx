@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { menu, type MenuItem, type Spice as SpiceLevel } from "@/data/menu";
 import { site } from "@/data/site";
 import { DishControl, SizePills } from "./AddToList";
-import { DishPhoto, Price, Spice } from "./Dish";
+import { DishPhoto, Price, Spice, warmPhoto } from "./Dish";
 import { CameraIcon, ChiliIcon, CloseIcon, LeafIcon, PhoneIcon } from "./icons";
 
 const shortName: Record<string, string> = {
@@ -29,6 +29,9 @@ const levels: { id: SpiceLevel; label: string; chilies: number }[] = [
   { id: "medium", label: "Medium", chilies: 2 },
   { id: "hot", label: "Hot", chilies: 3 },
 ];
+
+// The photo popup is 440 px wide, or 92% of a phone screen; warmPhoto() uses the same, so the files match.
+const popupSizes = "(min-width: 480px) 440px, 92vw";
 
 const dishCount = menu.reduce((n, c) => n + c.items.length, 0);
 const reducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -228,6 +231,9 @@ export function Menu() {
                       <button
                         type="button"
                         onClick={() => setPhoto(item)}
+                        onPointerDown={() => warmPhoto(item, popupSizes)}
+                        onMouseEnter={() => warmPhoto(item, popupSizes)}
+                        onFocus={() => warmPhoto(item, popupSizes)}
                         aria-haspopup="dialog"
                         className="group relative w-fit text-left text-[15px] leading-snug font-semibold before:absolute before:-inset-x-2 before:-inset-y-3 before:content-['']"
                       >
@@ -271,7 +277,7 @@ export function Menu() {
         {photo && (
           <div className="[@media(max-height:520px)]:flex [@media(max-height:520px)]:items-center">
             <div className="relative [@media(max-height:520px)]:w-[min(45%,calc(100dvh-1.5rem))] [@media(max-height:520px)]:shrink-0">
-              <DishPhoto item={photo} sizes="(min-width: 480px) 440px, 92vw" className="aspect-square w-full" />
+              <DishPhoto item={photo} sizes={popupSizes} eager className="aspect-square w-full" />
               <button
                 type="button"
                 onClick={() => dialogRef.current?.close()}

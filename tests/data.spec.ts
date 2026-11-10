@@ -4,6 +4,7 @@ import { expect, test } from "@playwright/test";
 import { faq } from "@/data/faq";
 import { menu, popularCodes, findItem, type MenuItem } from "@/data/menu";
 import { site } from "@/data/site";
+import placeholders from "@/data/placeholders.json";
 import { openStatus } from "@/lib/hours";
 import { llmsFullTxt, structuredData } from "@/lib/seo";
 
@@ -144,4 +145,13 @@ test.describe("search engines and AI assistants", () => {
     expect(site.mapUrl).toMatch(/^https:\/\//);
     expect(site.analytics.googleId).toMatch(/^G-[A-Z0-9]+$/);
   });
+});
+
+test("every dish photo and the hero photo have a blurred preview (npm run placeholders)", () => {
+  const previews = placeholders as Record<string, string>;
+  const photos = ["hero", ...menu.flatMap((c) => c.items.flatMap((i) => (i.photo ? [i.photo] : [])))];
+  for (const photo of photos) {
+    expect(previews[photo], `no preview for ${photo}: run npm run placeholders`).toMatch(/^data:image\/webp;base64,/);
+    expect(previews[photo].length, `${photo} preview too big for the page`).toBeLessThan(400);
+  }
 });

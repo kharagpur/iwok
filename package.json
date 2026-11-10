@@ -8,6 +8,7 @@
     "start": "next build && NO_UPDATE_CHECK=1 serve out -l 4000",
     "lint": "eslint",
     "photos": "node scripts/resize-photos.mjs",
+    "placeholders": "node scripts/placeholders.mjs",
     "test": "next build && playwright test",
     "test:setup": "playwright install chromium webkit",
     "test:report": "playwright show-report"

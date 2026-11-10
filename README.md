@@ -24,7 +24,8 @@ Run these in Terminal from this folder.
 | `npm run test:report` | Opens the last test results in the browser, with a recording of any failed test | After a red test |
 | `npm run test:setup` | Downloads the test browsers (Chrome's and Safari's engines) | Once per computer, and again if a test says a browser is missing |
 | `npm run lint` | Checks the code for common mistakes | Before a push |
-| `npm run photos` | Re-makes the dish photos and icons in `public/images/` | After adding or swapping a dish photo |
+| `npm run photos` | Re-makes the dish photos and icons in `public/images/`, then the blurred previews | After adding or swapping a dish photo |
+| `npm run placeholders` | Re-makes only the blurred previews shown while photos load (`data/placeholders.json`) | If the data tests say a photo has no preview |
 
 Press **Ctrl + C** to stop `npm run dev` or `npm start`.
 

@@ -12,6 +12,7 @@ import { mkdirSync, readFileSync, rmSync } from "node:fs";
 import { homedir } from "node:os";
 import { join, resolve } from "node:path";
 import sharp from "sharp";
+import { writePlaceholders } from "./placeholders.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const arg = process.argv[2] ?? root;
@@ -24,8 +25,9 @@ rmSync(dishesOut, { recursive: true, force: true });
 mkdirSync(dishesOut, { recursive: true });
 
 const git = (args) => execFileSync("git", ["-C", source, ...args], { maxBuffer: 128 * 1024 * 1024 });
-// The 2021 web copies live on master (this branch no longer has the old files), so read them from there.
-const fromRepo = (path) => git(["show", `origin/master:${path}`]);
+// The 2021 web copies live on Old_Website_CheckPoint, the 2021 site kept for rollback. (They used to be on master
+// too, until the new site replaced it on 2026-11-08, which broke `npm run photos`; fixed 2026-11-09.)
+const fromRepo = (path) => git(["show", `origin/Old_Website_CheckPoint:${path}`]);
 // A dish's best source: the full-size original if the history has it, else the 2021 web copy.
 const dishSource = (d) => (d.blob ? git(["cat-file", "-p", d.blob]) : fromRepo(d.file));
 
@@ -95,6 +97,10 @@ const logo = git(["show", `${sources.logo.ref}:${sources.logo.path}`]);
 for (const width of [240, 480, 720]) {
   await save(sharp(logo).resize({ width }).webp({ quality: 85 }), join(out, `logo-${width}.webp`));
 }
+// The header logo in AVIF as well: it looks the same at about half the size (45 KB instead of 84 KB on phones).
+for (const width of [480, 720]) {
+  await save(sharp(logo).resize({ width }).avif({ quality: 60, effort: 6 }), join(out, `logo-${width}.avif`));
+}
 
 // Site icons: the logo on white, square. Next.js picks up app/icon.png and app/apple-icon.png.
 const square = (size) => {
@@ -110,3 +116,6 @@ await save(square(512), join(root, "app", "icon.png"));
 await save(square(180), join(root, "app", "apple-icon.png"));
 
 console.log(`Wrote ${count} images from ${source}`);
+
+// The blurred previews shown while photos load (scripts/placeholders.mjs).
+console.log(`Wrote ${await writePlaceholders(root)} placeholders to data/placeholders.json`);
